@@ -1,9 +1,9 @@
 # A PHP package that implement Bybit API
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/allanmcarvalho/bybitapi.svg?style=flat-square)](https://packagist.org/packages/allanmcarvalho/bybitapi)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/allanmcarvalho/bybitapi/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/allanmcarvalho/bybitapi/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/allanmcarvalho/bybitapi/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/allanmcarvalho/bybitapi/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/allanmcarvalho/bybitapi.svg?style=flat-square)](https://packagist.org/packages/allanmcarvalho/bybitapi)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/wss-group/bybitapi.svg?style=flat-square)](https://packagist.org/packages/wss-group/bybitapi)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/wss-group/bybitapi/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/wss-group/bybitapi/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/wss-group/bybitapi/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/wss-group/bybitapi/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/wss-group/bybitapi.svg?style=flat-square)](https://packagist.org/packages/wss-group/bybitapi)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
