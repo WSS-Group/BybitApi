@@ -1,9 +1,5 @@
 ## Work progress
-<style>
-.status {
-    text-align: center;
-}
-</style>
+
 <table>
     <thead>
         <tr>

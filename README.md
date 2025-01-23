@@ -30,7 +30,7 @@ return [
 
 ## Work Progress
 
-- [See here](./PROGRESS.md)
+### See current API implementation progress [here](./PROGRESS.md)
 
 ## Usage
 
