@@ -2,9 +2,9 @@
 
 namespace BybitApi;
 
+use BybitApi\Commands\BybitApiCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use BybitApi\Commands\BybitApiCommand;
 
 class BybitApiServiceProvider extends PackageServiceProvider
 {

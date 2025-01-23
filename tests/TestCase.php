@@ -2,9 +2,9 @@
 
 namespace BybitApi\Tests;
 
+use BybitApi\BybitApiServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use BybitApi\BybitApiServiceProvider;
 
 class TestCase extends Orchestra
 {
