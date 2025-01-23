@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace BybitApi\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class BybitApiCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'bybitapi';
 
     public $description = 'My command';
 
