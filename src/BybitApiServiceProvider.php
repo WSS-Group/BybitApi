@@ -2,7 +2,6 @@
 
 namespace BybitApi;
 
-use BybitApi\Commands\BybitApiCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -16,10 +15,7 @@ class BybitApiServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('bybitapi')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_bybitapi_table')
-            ->hasCommand(BybitApiCommand::class);
+            ->name('bybit-api')
+            ->hasConfigFile();
     }
 }
