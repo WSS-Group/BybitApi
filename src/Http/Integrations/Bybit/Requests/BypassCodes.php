@@ -4,7 +4,6 @@ namespace BybitApi\Http\Integrations\Bybit\Requests;
 
 interface BypassCodes
 {
-
     /**
      * @return int[]
      */

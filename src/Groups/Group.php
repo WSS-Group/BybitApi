@@ -9,7 +9,6 @@ use BybitApi\Http\Integrations\Bybit\BybitConnector;
 
 abstract class Group
 {
-
     protected BybitActor $bybitParams;
 
     public function connector(): BybitConnector
@@ -22,7 +21,7 @@ abstract class Group
     public function actingAs(BybitActor|ActorSupplier $entity): self
     {
         $this->bybitParams = $entity instanceof BybitActor ? $entity : $entity->actingAs();
+
         return $this;
     }
-
 }
