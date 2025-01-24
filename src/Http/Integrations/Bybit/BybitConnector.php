@@ -3,6 +3,7 @@
 namespace BybitApi\Http\Integrations\Bybit;
 
 use BybitApi\BybitActor;
+use BybitApi\Http\Integrations\Bybit\Middleware\CheckResultMiddleware;
 use BybitApi\Http\Integrations\Bybit\Plugins\HasFormattedParams;
 use BybitApi\Http\Integrations\Bybit\Auth\SignedAuthenticator;
 use Saloon\Contracts\Authenticator;
@@ -17,7 +18,7 @@ class BybitConnector extends Connector
     public function __construct(
         public BybitActor $bybitParams,
     ) {
-        //
+        $this->middleware()->onResponse(new CheckResultMiddleware());
     }
 
     /**

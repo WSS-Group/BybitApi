@@ -3,18 +3,20 @@
 namespace BybitApi\Groups;
 
 use BybitApi\Exceptions\NotImplementedYetException;
+use BybitApi\Http\Integrations\Bybit\Requests\Market\GetBybitServerTime;
+use Illuminate\Support\Carbon;
 
 class Market extends Group
 {
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/time
-     * @return mixed
+     * @return Carbon
+     * @throws \Saloon\Exceptions\Request\FatalRequestException
+     * @throws \Saloon\Exceptions\Request\RequestException
      */
-    public function getBybitServerTime(): mixed
+    public function getBybitServerTime(): Carbon
     {
-        $this->connector();
-        // TODO
-        throw new NotImplementedYetException();
+        return $this->connector()->send(new GetBybitServerTime())->dto();
     }
 
     /**
