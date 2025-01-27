@@ -2,9 +2,14 @@
 
 namespace BybitApi\Groups;
 
+use BackedEnum;
+use BybitApi\Enums\Category;
+use BybitApi\Enums\Interval;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetBybitServerTime;
-use Illuminate\Support\Carbon;
+use BybitApi\Http\Integrations\Bybit\Requests\Market\GetKline;
+use Carbon\Carbon;
+use Illuminate\Support\Collection;
 
 class Market extends Group
 {
@@ -21,11 +26,21 @@ class Market extends Group
 
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/kline
+     *
+     * @return Collection<int, \BybitApi\DTOs\Kline>
+     *
+     * @throws \Saloon\Exceptions\Request\FatalRequestException
+     * @throws \Saloon\Exceptions\Request\RequestException
      */
-    public function getKline(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getKline(
+        BackedEnum|string $symbol,
+        Interval $interval,
+        ?Category $category = null,
+        ?Carbon $start = null,
+        ?Carbon $end = null,
+        ?int $limit = null,
+    ): Collection {
+        return $this->connector()->send(new GetKline($symbol, $interval, $category, $start, $end, $limit))->dto();
     }
 
     /**

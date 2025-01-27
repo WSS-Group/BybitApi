@@ -10,7 +10,7 @@ use Saloon\Http\Faking\MockClient;
 
 it('return an exception on not found', function () {
     MockClient::global([
-        GetBybitServerTime::class => new NotFoundFixture(),
+        GetBybitServerTime::class => new NotFoundFixture,
     ]);
 
     expect(fn () => Market::actingAs($this->defaultActor())->getBybitServerTime())
@@ -19,7 +19,7 @@ it('return an exception on not found', function () {
 
 it('return an exception on something went wrong', function () {
     MockClient::global([
-        GetBybitServerTime::class => new ErrorFixture(),
+        GetBybitServerTime::class => new ErrorFixture,
     ]);
 
     expect(fn () => Market::actingAs($this->defaultActor())->getBybitServerTime())

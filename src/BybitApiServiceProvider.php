@@ -15,7 +15,7 @@ class BybitApiServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('bybit-api')
-            ->hasConfigFile('bybit_api');
+            ->name('bybit_api')
+            ->hasTranslations();
     }
 }
