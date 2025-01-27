@@ -14,7 +14,7 @@
             <td rowspan="16">Market</td>
             <td><a href="https://bybit-exchange.github.io/docs/v5/market/time">Get Bybit Server Time</a></td>
             <td class="status">✅</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/market/kline">Get Kline</a></td>
