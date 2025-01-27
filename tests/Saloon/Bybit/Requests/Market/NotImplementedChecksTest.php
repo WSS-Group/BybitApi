@@ -21,9 +21,6 @@ it('', function () {
         ->and(fn () => $market->getOrderBook())
         ->toThrow(NotImplementedYetException::class,
             "Endpoint not implemented yet on 'BybitApi\Groups\Market::getOrderBook'.")
-        ->and(fn () => $market->getTickers())
-        ->toThrow(NotImplementedYetException::class,
-            "Endpoint not implemented yet on 'BybitApi\Groups\Market::getTickers'.")
         ->and(fn () => $market->getFundingRateHistory())
         ->toThrow(NotImplementedYetException::class,
             "Endpoint not implemented yet on 'BybitApi\Groups\Market::getFundingRateHistory'.")
