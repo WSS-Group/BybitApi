@@ -11,14 +11,14 @@ class TwentyMinuteCandlesFixture extends Fixture
         $current = now();
 
         return [
-            "retCode" => 0,
-            "retMsg" => "OK",
-            "result" => [
-                "symbol" => "BTCUSDT",
-                "category" => "",
-                "list" => $this->candles(),
+            'retCode' => 0,
+            'retMsg' => 'OK',
+            'result' => [
+                'symbol' => 'BTCUSDT',
+                'category' => '',
+                'list' => $this->candles(),
             ],
-            "retExtInfo" => [],
+            'retExtInfo' => [],
             'time' => $current->getTimestampMs(),
         ];
     }
@@ -42,7 +42,7 @@ class TwentyMinuteCandlesFixture extends Fixture
                 3 => $startPrice * $variation3,
                 4 => $closePrice,
                 5 => fake()->randomFloat(2, 1_000_000, 30_000_000),
-                6 => "374844.1461",
+                6 => '374844.1461',
             ];
             $startPrice = $closePrice;
             $firstTs = $firstTs->subMinute();
@@ -59,19 +59,19 @@ class TwentyMinuteCandlesFixture extends Fixture
     public function headers(): array
     {
         return [
-            "Content-Type" => "application/json",
-            "Content-Length" => "1684",
-            "Connection" => "keep-alive",
-            "Date" => "Mon, 27 Jan 2025 18:08:02 GMT",
-            "x-cld-src" => "Loc-A",
-            "Ret_code" => "0",
-            "Traceid" => "01cc371f77726ae06b62251b92af71eb",
-            "Timenow" => "1738001282568",
-            "Server" => "Openresty",
-            "X-Cache" => "Miss from cloudfront",
-            "Via" => "1.1 257bf616e82b7bdb9c0b2562445411f0.cloudfront.net (CloudFront)",
-            "X-Amz-Cf-Pop" => "GRU3-C2",
-            "X-Amz-Cf-Id" => "gxo443lMk1IG_kqXoZA5_yWFX-JHa77EQ64188a7xCA-NcoQERB4eA==",
+            'Content-Type' => 'application/json',
+            'Content-Length' => '1684',
+            'Connection' => 'keep-alive',
+            'Date' => 'Mon, 27 Jan 2025 18:08:02 GMT',
+            'x-cld-src' => 'Loc-A',
+            'Ret_code' => '0',
+            'Traceid' => '01cc371f77726ae06b62251b92af71eb',
+            'Timenow' => '1738001282568',
+            'Server' => 'Openresty',
+            'X-Cache' => 'Miss from cloudfront',
+            'Via' => '1.1 257bf616e82b7bdb9c0b2562445411f0.cloudfront.net (CloudFront)',
+            'X-Amz-Cf-Pop' => 'GRU3-C2',
+            'X-Amz-Cf-Id' => 'gxo443lMk1IG_kqXoZA5_yWFX-JHa77EQ64188a7xCA-NcoQERB4eA==',
         ];
     }
 }

@@ -26,13 +26,9 @@ class Market extends Group
 
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/kline
-     * @param  \BackedEnum|string  $symbol
-     * @param  \BybitApi\Enums\Interval  $interval
-     * @param  \BybitApi\Enums\Category|null  $category
-     * @param  \Carbon\Carbon|null  $start
-     * @param  \Carbon\Carbon|null  $end
-     * @param  int|null  $limit
+     *
      * @return Collection<int, \BybitApi\DTOs\Kline>
+     *
      * @throws \Saloon\Exceptions\Request\FatalRequestException
      * @throws \Saloon\Exceptions\Request\RequestException
      */

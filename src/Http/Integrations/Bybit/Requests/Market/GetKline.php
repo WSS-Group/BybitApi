@@ -56,7 +56,7 @@ class GetKline extends Request
     public function createDtoFromResponse(Response $response): Collection
     {
         return collect($response->json('result.list'))
-            ->mapWithKeys(fn(array $data) => [
+            ->mapWithKeys(fn (array $data) => [
                 intval(Arr::get($data, 0)) => new Kline(
                     intval(Arr::get($data, 0)),
                     floatval(Arr::get($data, 1)),
@@ -65,7 +65,7 @@ class GetKline extends Request
                     floatval(Arr::get($data, 4)),
                     floatval(Arr::get($data, 5)),
                     floatval(Arr::get($data, 6)),
-                )
+                ),
             ]);
     }
 }

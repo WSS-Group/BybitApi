@@ -11,7 +11,7 @@ use Saloon\Http\Faking\MockClient;
 
 it('return a carbon object on success', function () {
     MockClient::global([
-        GetKline::class => new TwentyMinuteCandlesFixture(),
+        GetKline::class => new TwentyMinuteCandlesFixture,
     ]);
 
     $result = Market::actingAs($this->defaultActor())
