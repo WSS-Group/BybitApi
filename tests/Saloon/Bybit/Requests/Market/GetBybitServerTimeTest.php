@@ -8,7 +8,7 @@ use Saloon\Http\Faking\MockClient;
 
 it('return a carbon object on success', function () {
     MockClient::global([
-        GetBybitServerTime::class => new OkFixture()()
+        GetBybitServerTime::class => new OkFixture(),
     ]);
 
     $result = Market::actingAs($this->defaultActor())->getBybitServerTime();
