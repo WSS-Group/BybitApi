@@ -31,13 +31,13 @@ return [
 
 ## Work Progress
 
-### See current API implementation progress [here](./PROGRESS.md)
+Please see [PROGRESS](PROGRESS.md) for more information about current implementation progress.
 
 ## Usage
 
 ```php
-$bybitApi = new BybitApi();
-echo $bybitApi->echoPhrase('Hello, Allan Mariucci Carvalho!');
+// Market group
+\BybitApi\Facades\Market::actingAs($entity)->getBybitServerTime();
 ```
 
 ## Testing
