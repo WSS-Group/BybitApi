@@ -13,6 +13,7 @@ class Parser
         if ($value !== null && $value !== '') {
             return $fqn::tryFrom($value) ?? $fallback;
         }
+
         return null;
     }
 
@@ -22,6 +23,7 @@ class Parser
         if ($value !== null && $value !== '') {
             return floatval($value);
         }
+
         return null;
     }
 
@@ -31,6 +33,7 @@ class Parser
         if ($value !== null && $value !== '') {
             return intval($value);
         }
+
         return null;
     }
 }

@@ -5,7 +5,7 @@ use BybitApi\Conditional;
 it('remove unnecessary from array', function () {
     expect(Conditional::array([
         'line1' => 'abc',
-        'line2' => new Conditional(),
+        'line2' => new Conditional,
         'line3' => true,
         'line4' => '',
         'line5' => null,

@@ -52,7 +52,7 @@ class GetTickers extends Request
     public function createDtoFromResponse(Response $response): Collection|Ticker
     {
         $collection = collect($response->json('result.list'))
-            ->mapWithKeys(fn(array $data) => [
+            ->mapWithKeys(fn (array $data) => [
                 Arr::get($data, 'symbol') => new Ticker(
                     Arr::get($data, 'symbol'),
                     Parser::floatIfNotEmpty($data, 'lastPrice'),
@@ -83,6 +83,7 @@ class GetTickers extends Request
                     Parser::enumIfNotEmpty($data, 'curPreListingPhase', CurAuctionPhase::class, CurAuctionPhase::OTHER),
                 ),
             ]);
-        return !empty($this->symbol) ? $collection->first() : $collection;
+
+        return ! empty($this->symbol) ? $collection->first() : $collection;
     }
 }
