@@ -6,10 +6,7 @@ use BybitApi\Facades\Market;
 it('', function () {
     $market = Market::actingAs($this->defaultActor());
 
-    expect(fn () => $market->getKline())
-        ->toThrow(NotImplementedYetException::class,
-            "Endpoint not implemented yet on 'BybitApi\Groups\Market::getKline'.")
-        ->and(fn () => $market->getMarkPriceKline())
+    expect(fn () => $market->getMarkPriceKline())
         ->toThrow(NotImplementedYetException::class,
             "Endpoint not implemented yet on 'BybitApi\Groups\Market::getMarkPriceKline'.")
         ->and(fn () => $market->getIndexPriceKline())
