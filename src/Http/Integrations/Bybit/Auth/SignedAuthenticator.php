@@ -9,7 +9,6 @@ use Saloon\Http\PendingRequest;
 
 class SignedAuthenticator implements Authenticator
 {
-
     /**
      * Apply the authentication to the request.
      */
@@ -24,7 +23,7 @@ class SignedAuthenticator implements Authenticator
         $pendingRequest->headers()->add('X-BAPI-TIMESTAMP', $timestamp);
         $pendingRequest->headers()->add('X-BAPI-RECV-WINDOW', $connector->bybitParams->recvWindow);
         $pendingRequest->headers()->add('X-BAPI-SIGN', $signature);
-        if (!empty($connector->bybitParams->referer)) {
+        if (! empty($connector->bybitParams->referer)) {
             $pendingRequest->headers()->add('X-Referer', $connector->bybitParams->referer);
         }
     }

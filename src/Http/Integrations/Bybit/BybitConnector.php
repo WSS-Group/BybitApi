@@ -3,9 +3,9 @@
 namespace BybitApi\Http\Integrations\Bybit;
 
 use BybitApi\BybitActor;
+use BybitApi\Http\Integrations\Bybit\Auth\SignedAuthenticator;
 use BybitApi\Http\Integrations\Bybit\Middleware\CheckResultMiddleware;
 use BybitApi\Http\Integrations\Bybit\Plugins\HasFormattedParams;
-use BybitApi\Http\Integrations\Bybit\Auth\SignedAuthenticator;
 use Saloon\Contracts\Authenticator;
 use Saloon\Http\Connector;
 use Saloon\Traits\Plugins\AcceptsJson;
@@ -18,7 +18,7 @@ class BybitConnector extends Connector
     public function __construct(
         public BybitActor $bybitParams,
     ) {
-        $this->middleware()->onResponse(new CheckResultMiddleware());
+        $this->middleware()->onResponse(new CheckResultMiddleware);
     }
 
     /**
@@ -47,6 +47,6 @@ class BybitConnector extends Connector
 
     protected function defaultAuth(): Authenticator
     {
-        return new SignedAuthenticator();
+        return new SignedAuthenticator;
     }
 }

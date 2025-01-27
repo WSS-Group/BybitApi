@@ -14,7 +14,7 @@ class NotImplementedYetException extends Error
         parent::__construct(
             sprintf(
                 'Endpoint not implemented yet%s.',
-                !empty($method) ? " on '$class::$method'" : '',
+                ! empty($method) ? " on '$class::$method'" : '',
             ),
             500
         );
