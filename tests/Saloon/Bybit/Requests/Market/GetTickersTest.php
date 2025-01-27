@@ -12,7 +12,7 @@ use Saloon\Http\Faking\MockClient;
 
 it('return then tickers when passing only category parameter', function () {
     MockClient::global([
-        GetTickers::class => new TenSymbolsFixture()(),
+        GetTickers::class => new TenSymbolsFixture(),
     ]);
 
     $collection = Market::actingAs($this->defaultActor())
@@ -27,7 +27,7 @@ it('return then tickers when passing only category parameter', function () {
 
 it('return a ticker object when passing a symbol parameter', function () {
     MockClient::global([
-        GetTickers::class => new OneSymbolFixture()(),
+        GetTickers::class => new OneSymbolFixture(),
     ]);
 
     $ticker = Market::actingAs($this->defaultActor())

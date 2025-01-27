@@ -92,11 +92,9 @@ class Market extends Group
 
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/tickers
-     * @param  \BybitApi\Enums\Category  $category
-     * @param  \BackedEnum|string|null  $symbol
-     * @param  \BackedEnum|string|null  $baseCoin
-     * @param  string|null  $expDate
+     *
      * @return Collection<string, \BybitApi\DTOs\Ticker>|\BybitApi\DTOs\Ticker
+     *
      * @throws \Saloon\Exceptions\Request\FatalRequestException
      * @throws \Saloon\Exceptions\Request\RequestException
      */
@@ -105,8 +103,7 @@ class Market extends Group
         BackedEnum|string|null $symbol = null,
         BackedEnum|string|null $baseCoin = null,
         ?string $expDate = null,
-    ): Collection|Ticker
-    {
+    ): Collection|Ticker {
         return $this->connector()->send(new GetTickers($category, $symbol, $baseCoin, $expDate))->dto();
     }
 
