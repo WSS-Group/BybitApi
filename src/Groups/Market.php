@@ -3,11 +3,13 @@
 namespace BybitApi\Groups;
 
 use BackedEnum;
+use BybitApi\DTOs\Ticker;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\Interval;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetBybitServerTime;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetKline;
+use BybitApi\Http\Integrations\Bybit\Requests\Market\GetTickers;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
@@ -90,11 +92,19 @@ class Market extends Group
 
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/tickers
+     *
+     * @return Collection<string, \BybitApi\DTOs\Ticker>|\BybitApi\DTOs\Ticker
+     *
+     * @throws \Saloon\Exceptions\Request\FatalRequestException
+     * @throws \Saloon\Exceptions\Request\RequestException
      */
-    public function getTickers(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getTickers(
+        Category $category,
+        BackedEnum|string|null $symbol = null,
+        BackedEnum|string|null $baseCoin = null,
+        ?string $expDate = null,
+    ): Collection|Ticker {
+        return $this->connector()->send(new GetTickers($category, $symbol, $baseCoin, $expDate))->dto();
     }
 
     /**
