@@ -20,7 +20,6 @@ use BybitApi\Enums\Category;
  */
 readonly class Car extends DTO
 {
-
     public function aliases(): array
     {
         return [

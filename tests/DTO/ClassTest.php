@@ -20,7 +20,7 @@ it('check all possibilities from class', function () {
         ->toBe('fusca')
         ->and($car->brand)
         ->toBe('VW')
-        ->and(fn() => $car->brand_name)
+        ->and(fn () => $car->brand_name)
         ->toThrow('Undefined property: BybitApi\Tests\DTO\Car::$brand_name')
         ->and($car->year)
         ->toBe(1979)

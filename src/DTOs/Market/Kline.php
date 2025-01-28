@@ -17,7 +17,6 @@ use BybitApi\DTOs\DTO;
  */
 readonly class Kline extends DTO
 {
-
     public function aliases(): array
     {
         return [

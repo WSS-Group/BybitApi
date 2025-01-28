@@ -26,7 +26,7 @@ it('cast enum', function () {
 });
 
 it('cast float', function () {
-    $cast = new FloatCast();
+    $cast = new FloatCast;
 
     expect($cast('12.4'))
         ->toBe(12.4)
@@ -39,7 +39,7 @@ it('cast float', function () {
 });
 
 it('cast int', function () {
-    $cast = new IntCast();
+    $cast = new IntCast;
 
     expect($cast('12'))
         ->toBe(12)
@@ -54,7 +54,7 @@ it('cast int', function () {
 });
 
 it('cast string', function () {
-    $cast = new StringCast();
+    $cast = new StringCast;
 
     expect($cast('abc'))
         ->toBe('abc')
@@ -67,7 +67,7 @@ it('cast string', function () {
 });
 
 it('cast timestamp', function () {
-    $cast = new TimestampCast();
+    $cast = new TimestampCast;
 
     expect($cast(today()->getTimestampMs()))
         ->toEqual(today())

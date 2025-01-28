@@ -9,12 +9,11 @@ use Illuminate\Support\Arr;
 
 abstract readonly class DTO
 {
-
     protected array $dtoPayload;
 
     public static function init(array $payload): self
     {
-        $dto = new static();
+        $dto = new static;
         foreach ($dto->aliases() as $key => $alias) {
             if (isset($payload[$key])) {
                 $payload[$alias] = $payload[$key];
@@ -22,6 +21,7 @@ abstract readonly class DTO
             }
         }
         $dto->dtoPayload = $payload;
+
         return $dto;
     }
 
@@ -42,16 +42,18 @@ abstract readonly class DTO
                     $cast = $castFqn;
                     $castFqn = $cast::class;
                 } else {
-                    throw_if(!class_exists($castFqn), Exception::class, "class '$castFqn' not found");
+                    throw_if(! class_exists($castFqn), Exception::class, "class '$castFqn' not found");
                     $cast = new $castFqn;
                 }
-                throw_if(!$cast instanceof Castable, Exception::class, "class '$castFqn' must be a implementation of ". Castable::class);
+                throw_if(! $cast instanceof Castable, Exception::class, "class '$castFqn' must be a implementation of ".Castable::class);
+
                 return $cast($input);
             }
+
             return $input;
         }
         throw new ErrorException(sprintf(
-            "Undefined property: %s::$%s",
+            'Undefined property: %s::$%s',
             static::class,
             $name
         ));
