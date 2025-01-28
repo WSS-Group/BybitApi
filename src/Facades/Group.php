@@ -8,10 +8,10 @@ use BybitApi\Http\Integrations\Bybit\BybitConnector;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method self actingAs(BybitActor|ActorSupplier $entity)
+ * @method $this actingAs(BybitActor|ActorSupplier $entity)
  * @method BybitConnector connector()
- * @method self withCache(int $ttl)
- * @method self withoutCache()
+ * @method $this withCache(int $ttl)
+ * @method $this withoutCache()
  *
  * @see \BybitApi\Groups\Market
  */

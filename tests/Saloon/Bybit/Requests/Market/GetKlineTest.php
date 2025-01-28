@@ -1,6 +1,6 @@
 <?php
 
-use BybitApi\DTOs\Kline;
+use BybitApi\DTOs\Market\Kline;
 use BybitApi\Enums\Interval;
 use BybitApi\Facades\Market;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetKline;

@@ -4,7 +4,7 @@ namespace BybitApi\Http\Integrations\Bybit\Requests\Market;
 
 use BackedEnum;
 use BybitApi\Conditional;
-use BybitApi\DTOs\Kline;
+use BybitApi\DTOs\Market\Kline;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\Interval;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
@@ -55,16 +55,6 @@ class GetKline extends Request
     public function createDtoFromResponse(Response $response): Collection
     {
         return collect($response->json('result.list'))
-            ->mapWithKeys(fn (array $data) => [
-                intval(Arr::get($data, 0)) => new Kline(
-                    intval(Arr::get($data, 0)),
-                    floatval(Arr::get($data, 1)),
-                    floatval(Arr::get($data, 2)),
-                    floatval(Arr::get($data, 3)),
-                    floatval(Arr::get($data, 4)),
-                    floatval(Arr::get($data, 5)),
-                    floatval(Arr::get($data, 6)),
-                ),
-            ]);
+            ->mapWithKeys(fn (array $data) => [intval(Arr::get($data, 0)) => Kline::init($data)]);
     }
 }

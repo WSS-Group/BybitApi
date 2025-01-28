@@ -1,6 +1,6 @@
 <?php
 
-use BybitApi\DTOs\Ticker;
+use BybitApi\DTOs\Market\Ticker;
 use BybitApi\Enums\Category;
 use BybitApi\Facades\Market;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetTickers;
