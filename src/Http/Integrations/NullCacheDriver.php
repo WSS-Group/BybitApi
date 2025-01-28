@@ -7,7 +7,6 @@ use Saloon\CachePlugin\Data\CachedResponse;
 
 class NullCacheDriver implements Driver
 {
-
     public function set(string $key, CachedResponse $cachedResponse): void
     {
         // Do nothing

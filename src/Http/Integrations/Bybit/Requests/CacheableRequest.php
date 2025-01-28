@@ -4,10 +4,10 @@ namespace BybitApi\Http\Integrations\Bybit\Requests;
 
 use BybitApi\Http\Integrations\NullCacheDriver;
 use Illuminate\Support\Facades\Cache;
+use Saloon\CachePlugin\Contracts\Cacheable;
 use Saloon\CachePlugin\Contracts\Driver;
 use Saloon\CachePlugin\Drivers\PsrCacheDriver;
 use Saloon\CachePlugin\Traits\HasCaching;
-use Saloon\CachePlugin\Contracts\Cacheable;
 use Saloon\Http\PendingRequest;
 use Saloon\Http\Request;
 use Saloon\Traits\Body\HasFormBody;
@@ -29,7 +29,7 @@ abstract class CacheableRequest extends Request implements Cacheable
     {
         return $this->cacheTTL !== false
             ? new PsrCacheDriver(Cache::driver())
-            : new NullCacheDriver();
+            : new NullCacheDriver;
     }
 
     /**
@@ -54,12 +54,14 @@ abstract class CacheableRequest extends Request implements Cacheable
             default => '',
         };
         $md5 = md5("$endpoint::$query::$body");
+
         return static::class.'::'.$md5;
     }
 
     public function setCache(false|int $ttl): self
     {
         $this->cacheTTL = $ttl;
+
         return $this;
     }
 }

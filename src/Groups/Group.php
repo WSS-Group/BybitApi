@@ -10,7 +10,6 @@ use BybitApi\Http\Integrations\Bybit\BybitConnector;
 
 abstract class Group
 {
-
     private false|int $cacheTTL = false;
 
     protected BybitActor $bybitParams;
@@ -19,7 +18,7 @@ abstract class Group
     {
         throw_if(empty($this->bybitParams), ActorNotProvidedException::class);
 
-        return new BybitConnector($this->bybitParams);
+        return new BybitConnector($this->bybitParams, $this->cacheTTL());
     }
 
     public function actingAs(BybitActor|ActorSupplier $entity): self
@@ -33,6 +32,7 @@ abstract class Group
     {
         $ttl = $this->cacheTTL;
         $this->withoutCache();
+
         return $ttl;
     }
 
@@ -40,12 +40,14 @@ abstract class Group
     {
         throw_if($ttl <= 0, InvalidCacheTTLException::class);
         $this->cacheTTL = $ttl;
+
         return $this;
     }
 
     public function withoutCache(): self
     {
         $this->cacheTTL = false;
+
         return $this;
     }
 }

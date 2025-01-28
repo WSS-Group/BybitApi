@@ -16,7 +16,6 @@ use Saloon\Http\Response;
 
 class GetKline extends Request
 {
-
     /**
      * The HTTP method of the request
      */
@@ -30,7 +29,7 @@ class GetKline extends Request
         public ?Carbon $end = null,
         public ?int $limit = null,
     ) {
-       //
+        //
     }
 
     protected function defaultQuery(): array

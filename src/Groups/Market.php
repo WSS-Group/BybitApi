@@ -24,7 +24,7 @@ class Market extends Group
     public function getBybitServerTime(): Carbon
     {
         return $this->connector()
-            ->send(new GetBybitServerTime()->setCache($this->cacheTTL()))
+            ->send(new GetBybitServerTime)
             ->dto();
     }
 
@@ -45,7 +45,7 @@ class Market extends Group
         ?int $limit = null,
     ): Collection {
         return $this->connector()
-            ->send(new GetKline($symbol, $interval, $category, $start, $end, $limit)->setCache($this->cacheTTL()))
+            ->send(new GetKline($symbol, $interval, $category, $start, $end, $limit))
             ->dto();
     }
 
@@ -109,7 +109,7 @@ class Market extends Group
         ?string $expDate = null,
     ): Collection|Ticker {
         return $this->connector()
-            ->send(new GetTickers($category, $symbol, $baseCoin, $expDate)->setCache($this->cacheTTL()))
+            ->send(new GetTickers($category, $symbol, $baseCoin, $expDate))
             ->dto();
     }
 
