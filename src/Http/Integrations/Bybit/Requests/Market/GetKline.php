@@ -7,15 +7,16 @@ use BybitApi\Conditional;
 use BybitApi\DTOs\Kline;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\Interval;
+use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Saloon\Enums\Method;
-use Saloon\Http\Request;
 use Saloon\Http\Response;
 
 class GetKline extends Request
 {
+
     /**
      * The HTTP method of the request
      */
@@ -29,8 +30,7 @@ class GetKline extends Request
         public ?Carbon $end = null,
         public ?int $limit = null,
     ) {
-
-        //
+       //
     }
 
     protected function defaultQuery(): array

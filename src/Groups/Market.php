@@ -23,7 +23,9 @@ class Market extends Group
      */
     public function getBybitServerTime(): Carbon
     {
-        return $this->connector()->send(new GetBybitServerTime)->dto();
+        return $this->connector()
+            ->send(new GetBybitServerTime()->setCache($this->cacheTTL()))
+            ->dto();
     }
 
     /**
@@ -42,7 +44,9 @@ class Market extends Group
         ?Carbon $end = null,
         ?int $limit = null,
     ): Collection {
-        return $this->connector()->send(new GetKline($symbol, $interval, $category, $start, $end, $limit))->dto();
+        return $this->connector()
+            ->send(new GetKline($symbol, $interval, $category, $start, $end, $limit)->setCache($this->cacheTTL()))
+            ->dto();
     }
 
     /**
@@ -104,7 +108,9 @@ class Market extends Group
         BackedEnum|string|null $baseCoin = null,
         ?string $expDate = null,
     ): Collection|Ticker {
-        return $this->connector()->send(new GetTickers($category, $symbol, $baseCoin, $expDate))->dto();
+        return $this->connector()
+            ->send(new GetTickers($category, $symbol, $baseCoin, $expDate)->setCache($this->cacheTTL()))
+            ->dto();
     }
 
     /**

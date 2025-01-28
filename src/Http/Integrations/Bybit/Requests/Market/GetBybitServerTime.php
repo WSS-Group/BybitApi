@@ -2,9 +2,10 @@
 
 namespace BybitApi\Http\Integrations\Bybit\Requests\Market;
 
+use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use Illuminate\Support\Carbon;
 use Saloon\Enums\Method;
-use Saloon\Http\Request;
+
 use Saloon\Http\Response;
 
 class GetBybitServerTime extends Request

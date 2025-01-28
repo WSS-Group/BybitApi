@@ -7,11 +7,11 @@ use BybitApi\Conditional;
 use BybitApi\DTOs\Ticker;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\CurAuctionPhase;
+use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use BybitApi\Parser;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Saloon\Enums\Method;
-use Saloon\Http\Request;
 use Saloon\Http\Response;
 
 class GetTickers extends Request

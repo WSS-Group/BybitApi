@@ -16,6 +16,7 @@ class BybitApiServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('bybit_api')
+            ->hasConfigFile()
             ->hasTranslations();
     }
 }
