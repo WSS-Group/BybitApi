@@ -3,7 +3,7 @@
 namespace BybitApi\Groups;
 
 use BackedEnum;
-use BybitApi\DTOs\Ticker;
+use BybitApi\DTOs\Market\Ticker;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\Interval;
 use BybitApi\Exceptions\NotImplementedYetException;
@@ -31,7 +31,7 @@ class Market extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/kline
      *
-     * @return Collection<int, \BybitApi\DTOs\Kline>
+     * @return Collection<int, \BybitApi\DTOs\Market\Kline>
      *
      * @throws \Saloon\Exceptions\Request\FatalRequestException
      * @throws \Saloon\Exceptions\Request\RequestException
@@ -97,7 +97,7 @@ class Market extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/tickers
      *
-     * @return Collection<string, \BybitApi\DTOs\Ticker>|\BybitApi\DTOs\Ticker
+     * @return Collection<string, \BybitApi\DTOs\Market\Ticker>|\BybitApi\DTOs\Market\Ticker
      *
      * @throws \Saloon\Exceptions\Request\FatalRequestException
      * @throws \Saloon\Exceptions\Request\RequestException
