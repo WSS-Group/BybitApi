@@ -49,20 +49,36 @@ abstract readonly class DTO implements Arrayable
     {
         $data = [];
         foreach (array_keys($this->dtoPayload) as $key) {
-            $data[$key] = $this->{$key};
+            $data[$key] = match (true) {
+                $this->{$key} instanceof DTO => $this->{$key}->toArray(),
+                is_array($this->{$key}) => $this->arrayParse($this->{$key}),
+                default => $this->{$key}
+            };
         }
         return $data;
     }
 
+    private function arrayParse(array $items): array
+    {
+        foreach ($items as $key => $data) {
+            if ($data instanceof DTO) {
+                $items[$key] = $data->toArray();
+            }
+        }
+        return $items;
+    }
+
     public function __get(string $name)
     {
-        if (isset($this->dtoPayload[$name])) {
+        if (key_exists($name, $this->dtoPayload)) {
             $castFqn = Arr::get($this->casts(), $name);
             $input = $this->dtoPayload[$name];
             if ($castFqn !== null) {
                 if (is_object($castFqn)) {
                     $cast = $castFqn;
                     $castFqn = $cast::class;
+                } elseif (is_subclass_of($castFqn, DTO::class)) {
+                    return is_array($input) ? $castFqn::init($input) : $input;
                 } else {
                     throw_if(! class_exists($castFqn), Exception::class, "class '$castFqn' not found");
                     $cast = new $castFqn;

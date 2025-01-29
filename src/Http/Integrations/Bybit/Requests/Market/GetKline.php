@@ -32,6 +32,14 @@ class GetKline extends Request
         //
     }
 
+    /**
+     * The endpoint for the request
+     */
+    public function resolveEndpoint(): string
+    {
+        return '/v5/market/kline';
+    }
+
     protected function defaultQuery(): array
     {
         return Conditional::array([
@@ -42,14 +50,6 @@ class GetKline extends Request
             'end' => Conditional::ifNotNull($this->end),
             'limit' => Conditional::ifNotNull($this->limit),
         ]);
-    }
-
-    /**
-     * The endpoint for the request
-     */
-    public function resolveEndpoint(): string
-    {
-        return '/v5/market/kline';
     }
 
     public function createDtoFromResponse(Response $response): Collection

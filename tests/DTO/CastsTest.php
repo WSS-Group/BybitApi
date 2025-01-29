@@ -1,5 +1,6 @@
 <?php
 
+use BybitApi\DTOs\Casts\BooleanCast;
 use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\IntCast;
@@ -22,6 +23,31 @@ it('cast enum', function () {
         ->and($cast2('abc'))
         ->toBeNull()
         ->and($cast2(''))
+        ->toBeNull();
+});
+
+it('cast boolean', function () {
+    $cast = new BooleanCast();
+
+    expect($cast('1'))
+        ->toBeTrue()
+        ->and($cast('foo'))
+        ->toBeFalse()
+        ->and($cast('true'))
+        ->toBeTrue()
+        ->and($cast(true))
+        ->toBeTrue()
+        ->and($cast('foo'))
+        ->toBeFalse()
+        ->and($cast('0'))
+        ->toBeFalse()
+        ->and($cast('false'))
+        ->toBeFalse()
+        ->and($cast(false))
+        ->toBeFalse()
+        ->and($cast(''))
+        ->toBeNull()
+        ->and($cast(null))
         ->toBeNull();
 });
 

@@ -29,6 +29,14 @@ class GetTickers extends Request
         //
     }
 
+    /**
+     * The endpoint for the request
+     */
+    public function resolveEndpoint(): string
+    {
+        return '/v5/market/tickers';
+    }
+
     protected function defaultQuery(): array
     {
         return Conditional::array([
@@ -37,14 +45,6 @@ class GetTickers extends Request
             'baseCoin' => Conditional::ifNotNull($this->baseCoin),
             'expDate' => Conditional::ifNotNull($this->expDate),
         ]);
-    }
-
-    /**
-     * The endpoint for the request
-     */
-    public function resolveEndpoint(): string
-    {
-        return '/v5/market/tickers';
     }
 
     public function createDtoFromResponse(Response $response): Collection|Ticker
