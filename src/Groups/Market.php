@@ -3,11 +3,17 @@
 namespace BybitApi\Groups;
 
 use BackedEnum;
+use BybitApi\CursorCollection;
+use BybitApi\DTOs\Market\InstrumentInfo\LinearInverse;
+use BybitApi\DTOs\Market\InstrumentInfo\Option;
+use BybitApi\DTOs\Market\InstrumentInfo\Spot;
 use BybitApi\DTOs\Market\Ticker;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\Interval;
+use BybitApi\Enums\SymbolStatus;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetBybitServerTime;
+use BybitApi\Http\Integrations\Bybit\Requests\Market\GetInstrumentsInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetKline;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetTickers;
 use Carbon\Carbon;
@@ -17,9 +23,6 @@ class Market extends Group
 {
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/time
-     *
-     * @throws \Saloon\Exceptions\Request\FatalRequestException
-     * @throws \Saloon\Exceptions\Request\RequestException
      */
     public function getBybitServerTime(): Carbon
     {
@@ -29,12 +32,9 @@ class Market extends Group
     }
 
     /**
-     * @link https://bybit-exchange.github.io/docs/v5/market/kline
-     *
      * @return Collection<int, \BybitApi\DTOs\Market\Kline>
      *
-     * @throws \Saloon\Exceptions\Request\FatalRequestException
-     * @throws \Saloon\Exceptions\Request\RequestException
+     * @link https://bybit-exchange.github.io/docs/v5/market/kline
      */
     public function getKline(
         BackedEnum|string $symbol,
@@ -77,12 +77,21 @@ class Market extends Group
     }
 
     /**
+     * @return CursorCollection<string, LinearInverse|Option|Spot>|LinearInverse|Option|Spot
+     *
      * @link https://bybit-exchange.github.io/docs/v5/market/instrument
      */
-    public function getInstrumentsInfo(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getInstrumentsInfo(
+        Category $category,
+        null|BackedEnum|string $symbol = null,
+        ?SymbolStatus $status = null,
+        null|BackedEnum|string $baseCoin = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): CursorCollection|LinearInverse|Option|Spot {
+        return $this->connector()
+            ->send(new GetInstrumentsInfo($category, $symbol, $status, $baseCoin, $limit, $cursor))
+            ->dto();
     }
 
     /**
@@ -98,9 +107,6 @@ class Market extends Group
      * @link https://bybit-exchange.github.io/docs/v5/market/tickers
      *
      * @return Collection<string, \BybitApi\DTOs\Market\Ticker>|\BybitApi\DTOs\Market\Ticker
-     *
-     * @throws \Saloon\Exceptions\Request\FatalRequestException
-     * @throws \Saloon\Exceptions\Request\RequestException
      */
     public function getTickers(
         Category $category,

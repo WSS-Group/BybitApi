@@ -1,11 +1,14 @@
 <?php
 
+use BybitApi\DTOs\Casts\BooleanCast;
+use BybitApi\DTOs\Casts\DTOArrayCast;
 use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\IntCast;
 use BybitApi\DTOs\Casts\StringCast;
 use BybitApi\DTOs\Casts\TimestampCast;
 use BybitApi\Enums\Category;
+use BybitApi\Tests\DTO\Car;
 
 it('cast enum', function () {
     $cast1 = new EnumCast(Category::class, Category::SPOT, Category::INVERSE);
@@ -22,6 +25,62 @@ it('cast enum', function () {
         ->and($cast2('abc'))
         ->toBeNull()
         ->and($cast2(''))
+        ->toBeNull();
+});
+
+it('cast dto array', function () {
+    $cast = new DTOArrayCast(Car::class);
+
+    $casted = $cast([
+        [
+            'model' => 'fusca',
+            'brand_name' => 'VW',
+            'year' => '1979',
+            'cost' => '21432.21',
+            'category' => 'inverse',
+            'boughtAt' => '1738108800000',
+        ],
+        [
+            'model' => 'gol',
+            'brand_name' => 'VW',
+            'year' => '203',
+            'cost' => '43432.21',
+            'category' => 'spot',
+            'boughtAt' => '1738108800000',
+        ],
+    ]);
+
+    expect($casted)
+        ->toBeArray()
+        ->toHaveCount(2)
+        ->each
+        ->toBeInstanceOf(Car::class)
+        ->and($cast('dsa'))
+        ->toBeNull();
+});
+
+it('cast boolean', function () {
+    $cast = new BooleanCast;
+
+    expect($cast('1'))
+        ->toBeTrue()
+        ->and($cast('foo'))
+        ->toBeFalse()
+        ->and($cast('true'))
+        ->toBeTrue()
+        ->and($cast(true))
+        ->toBeTrue()
+        ->and($cast('foo'))
+        ->toBeFalse()
+        ->and($cast('0'))
+        ->toBeFalse()
+        ->and($cast('false'))
+        ->toBeFalse()
+        ->and($cast(false))
+        ->toBeFalse()
+        ->and($cast(''))
+        ->toBeNull()
+        ->and($cast(null))
         ->toBeNull();
 });
 
