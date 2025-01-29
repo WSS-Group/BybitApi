@@ -4,15 +4,14 @@ namespace BybitApi\Http\Integrations\Bybit\Requests\Market;
 
 use BackedEnum;
 use BybitApi\Conditional;
+use BybitApi\CursorCollection;
 use BybitApi\DTOs\Market\InstrumentInfo\LinearInverse;
 use BybitApi\DTOs\Market\InstrumentInfo\Option;
 use BybitApi\DTOs\Market\InstrumentInfo\Spot;
-use BybitApi\DTOs\Market\Ticker;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\SymbolStatus;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use Saloon\Enums\Method;
 use Saloon\Http\Response;
 
@@ -54,18 +53,21 @@ class GetInstrumentsInfo extends Request
         ]);
     }
 
-    public function createDtoFromResponse(Response $response): Collection|LinearInverse|Option|Spot
+    public function createDtoFromResponse(Response $response): CursorCollection|LinearInverse|Option|Spot
     {
         $category = Category::from($response->json('result.category'));
+        $cursor = $response->json('result.nextPageCursor');
+        $cursor = !empty($cursor) ? $cursor : null;
 
-        $collection = collect($response->json('result.list'))
+        $collection = new CursorCollection($response->json('result.list'))
             ->mapWithKeys(fn(array $data) => [
                 Arr::get($data, 'symbol') => match ($category) {
                     Category::INVERSE, Category::LINEAR => LinearInverse::init($data),
                     Category::OPTION => Option::init($data),
                     Category::SPOT => Spot::init($data),
                 }
-            ]);
+            ])
+            ->setCursor($cursor);
 
         return !empty($this->symbol) ? $collection->first() : $collection;
     }

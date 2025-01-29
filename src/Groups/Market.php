@@ -3,6 +3,7 @@
 namespace BybitApi\Groups;
 
 use BackedEnum;
+use BybitApi\CursorCollection;
 use BybitApi\DTOs\Market\InstrumentInfo\LinearInverse;
 use BybitApi\DTOs\Market\InstrumentInfo\Option;
 use BybitApi\DTOs\Market\InstrumentInfo\Spot;
@@ -90,7 +91,7 @@ class Market extends Group
      * @param  \BackedEnum|string|null  $baseCoin
      * @param  int|null  $limit
      * @param  string|null  $cursor
-     * @return Collection<string, LinearInverse|Option|Spot>|LinearInverse|Option|Spot
+     * @return CursorCollection<string, LinearInverse|Option|Spot>|LinearInverse|Option|Spot
      *
      * @link https://bybit-exchange.github.io/docs/v5/market/instrument
      */
@@ -101,7 +102,7 @@ class Market extends Group
         null|BackedEnum|string $baseCoin = null,
         null|int $limit = null,
         null|string $cursor = null,
-    ): Collection|LinearInverse|Option|Spot {
+    ): CursorCollection|LinearInverse|Option|Spot {
         return $this->connector()
             ->send(new GetInstrumentsInfo($category, $symbol, $status, $baseCoin, $limit, $cursor))
             ->dto();
