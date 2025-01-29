@@ -25,10 +25,10 @@ class GetInstrumentsInfo extends Request
     public function __construct(
         public Category $category,
         public null|BackedEnum|string $symbol = null,
-        public null|SymbolStatus $status = null,
+        public ?SymbolStatus $status = null,
         public null|BackedEnum|string $baseCoin = null,
-        public null|int $limit = null,
-        public null|string $cursor = null,
+        public ?int $limit = null,
+        public ?string $cursor = null,
     ) {
         //
     }
@@ -57,18 +57,18 @@ class GetInstrumentsInfo extends Request
     {
         $category = Category::from($response->json('result.category'));
         $cursor = $response->json('result.nextPageCursor');
-        $cursor = !empty($cursor) ? $cursor : null;
+        $cursor = ! empty($cursor) ? $cursor : null;
 
         $collection = new CursorCollection($response->json('result.list'))
-            ->mapWithKeys(fn(array $data) => [
+            ->mapWithKeys(fn (array $data) => [
                 Arr::get($data, 'symbol') => match ($category) {
                     Category::INVERSE, Category::LINEAR => LinearInverse::init($data),
                     Category::OPTION => Option::init($data),
                     Category::SPOT => Spot::init($data),
-                }
+                },
             ])
             ->setCursor($cursor);
 
-        return !empty($this->symbol) ? $collection->first() : $collection;
+        return ! empty($this->symbol) ? $collection->first() : $collection;
     }
 }

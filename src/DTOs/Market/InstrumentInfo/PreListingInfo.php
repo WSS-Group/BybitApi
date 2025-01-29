@@ -14,7 +14,6 @@ use BybitApi\Enums\CurAuctionPhase;
  */
 readonly class PreListingInfo extends DTO
 {
-
     public function casts(): array
     {
         return [

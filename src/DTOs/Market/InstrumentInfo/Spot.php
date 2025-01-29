@@ -14,7 +14,6 @@ use BybitApi\Enums\SymbolStatus;
  */
 readonly class Spot extends DTO
 {
-
     public function casts(): array
     {
         return [

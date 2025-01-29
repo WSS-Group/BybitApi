@@ -42,6 +42,7 @@ abstract readonly class DTO implements Arrayable
                 unset($payload[$alias]);
             }
         }
+
         return $payload;
     }
 
@@ -55,6 +56,7 @@ abstract readonly class DTO implements Arrayable
                 default => $this->{$key}
             };
         }
+
         return $data;
     }
 
@@ -65,12 +67,13 @@ abstract readonly class DTO implements Arrayable
                 $items[$key] = $data->toArray();
             }
         }
+
         return $items;
     }
 
     public function __get(string $name)
     {
-        if (key_exists($name, $this->dtoPayload)) {
+        if (array_key_exists($name, $this->dtoPayload)) {
             $castFqn = Arr::get($this->casts(), $name);
             $input = $this->dtoPayload[$name];
             if ($castFqn !== null) {

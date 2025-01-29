@@ -23,7 +23,6 @@ use BybitApi\Enums\SymbolStatus;
  */
 readonly class Option extends DTO
 {
-
     public function casts(): array
     {
         return [

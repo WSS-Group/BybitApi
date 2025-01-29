@@ -14,57 +14,57 @@ class SpotListFixture extends Fixture
             'retCode' => 0,
             'retMsg' => 'OK',
             'result' => [
-                "category" => "spot",
-                "list" => [
+                'category' => 'spot',
+                'list' => [
                     [
-                        "symbol" => "BTCUSDT",
-                        "baseCoin" => "BTC",
-                        "quoteCoin" => "USDT",
-                        "innovation" => "0",
-                        "status" => "Trading",
-                        "marginTrading" => "utaOnly",
-                        "stTag" => "0",
-                        "lotSizeFilter" => [
-                            "basePrecision" => "0.000001",
-                            "quotePrecision" => "0.00000001",
-                            "minOrderQty" => "0.000048",
-                            "maxOrderQty" => "100",
-                            "minOrderAmt" => "5",
-                            "maxOrderAmt" => "8000000",
+                        'symbol' => 'BTCUSDT',
+                        'baseCoin' => 'BTC',
+                        'quoteCoin' => 'USDT',
+                        'innovation' => '0',
+                        'status' => 'Trading',
+                        'marginTrading' => 'utaOnly',
+                        'stTag' => '0',
+                        'lotSizeFilter' => [
+                            'basePrecision' => '0.000001',
+                            'quotePrecision' => '0.00000001',
+                            'minOrderQty' => '0.000048',
+                            'maxOrderQty' => '100',
+                            'minOrderAmt' => '5',
+                            'maxOrderAmt' => '8000000',
                         ],
-                        "priceFilter" => [
-                            "tickSize" => "0.01",
+                        'priceFilter' => [
+                            'tickSize' => '0.01',
                         ],
-                        "riskParameters" => [
-                            "priceLimitRatioX" => "0.1",
-                            "priceLimitRatioY" => "0.1",
-                        ]
+                        'riskParameters' => [
+                            'priceLimitRatioX' => '0.1',
+                            'priceLimitRatioY' => '0.1',
+                        ],
                     ],
                     [
-                        "symbol" => "ETHUSDT",
-                        "baseCoin" => "ETH",
-                        "quoteCoin" => "USDT",
-                        "innovation" => "0",
-                        "status" => "Trading",
-                        "marginTrading" => "utaOnly",
-                        "stTag" => "0",
-                        "lotSizeFilter" => [
-                            "basePrecision" => "0.000001",
-                            "quotePrecision" => "0.00000001",
-                            "minOrderQty" => "0.000048",
-                            "maxOrderQty" => "100",
-                            "minOrderAmt" => "5",
-                            "maxOrderAmt" => "8000000",
+                        'symbol' => 'ETHUSDT',
+                        'baseCoin' => 'ETH',
+                        'quoteCoin' => 'USDT',
+                        'innovation' => '0',
+                        'status' => 'Trading',
+                        'marginTrading' => 'utaOnly',
+                        'stTag' => '0',
+                        'lotSizeFilter' => [
+                            'basePrecision' => '0.000001',
+                            'quotePrecision' => '0.00000001',
+                            'minOrderQty' => '0.000048',
+                            'maxOrderQty' => '100',
+                            'minOrderAmt' => '5',
+                            'maxOrderAmt' => '8000000',
                         ],
-                        "priceFilter" => [
-                            "tickSize" => "0.01",
+                        'priceFilter' => [
+                            'tickSize' => '0.01',
                         ],
-                        "riskParameters" => [
-                            "priceLimitRatioX" => "0.1",
-                            "priceLimitRatioY" => "0.1",
-                        ]
-                    ]
-                ]
+                        'riskParameters' => [
+                            'priceLimitRatioX' => '0.1',
+                            'priceLimitRatioY' => '0.1',
+                        ],
+                    ],
+                ],
             ],
             'retExtInfo' => [],
             'time' => $current->getTimestampMs(),

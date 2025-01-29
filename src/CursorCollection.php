@@ -6,11 +6,12 @@ use Illuminate\Support\Collection;
 
 class CursorCollection extends Collection
 {
-    readonly private ?string $cursor;
+    private readonly ?string $cursor;
 
     public function setCursor(?string $cursor): static
     {
         $this->cursor = $cursor;
+
         return $this;
     }
 

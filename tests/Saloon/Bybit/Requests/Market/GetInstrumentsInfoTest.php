@@ -25,7 +25,7 @@ use Saloon\Http\Faking\MockClient;
 
 it('works with single linear', function () {
     MockClient::global([
-        GetInstrumentsInfo::class => new LinearSingleFixture(),
+        GetInstrumentsInfo::class => new LinearSingleFixture,
     ]);
 
     $instrumentInfo = Market::actingAs($this->defaultActor())
@@ -81,7 +81,7 @@ it('works with single linear', function () {
 
 it('works with list linear', function () {
     MockClient::global([
-        GetInstrumentsInfo::class => new LinearListFixture(),
+        GetInstrumentsInfo::class => new LinearListFixture,
     ]);
 
     $collection = Market::actingAs($this->defaultActor())
@@ -142,7 +142,7 @@ it('works with list linear', function () {
 
 it('works with single option', function () {
     MockClient::global([
-        GetInstrumentsInfo::class => new OptionSingleFixture(),
+        GetInstrumentsInfo::class => new OptionSingleFixture,
     ]);
 
     $instrumentInfo = Market::actingAs($this->defaultActor())
@@ -178,7 +178,7 @@ it('works with single option', function () {
 
 it('works with list option', function () {
     MockClient::global([
-        GetInstrumentsInfo::class => new OptionListFixture(),
+        GetInstrumentsInfo::class => new OptionListFixture,
     ]);
 
     $collection = Market::actingAs($this->defaultActor())
@@ -218,7 +218,7 @@ it('works with list option', function () {
 
 it('works with single spot', function () {
     MockClient::global([
-        GetInstrumentsInfo::class => new SpotSingleFixture(),
+        GetInstrumentsInfo::class => new SpotSingleFixture,
     ]);
 
     $instrumentInfo = Market::actingAs($this->defaultActor())
@@ -252,7 +252,7 @@ it('works with single spot', function () {
 
 it('works with list spot', function () {
     MockClient::global([
-        GetInstrumentsInfo::class => new SpotListFixture(),
+        GetInstrumentsInfo::class => new SpotListFixture,
     ]);
 
     $collection = Market::actingAs($this->defaultActor())

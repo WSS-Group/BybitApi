@@ -60,7 +60,7 @@ it('cast dto array', function () {
 });
 
 it('cast boolean', function () {
-    $cast = new BooleanCast();
+    $cast = new BooleanCast;
 
     expect($cast('1'))
         ->toBeTrue()

@@ -12,7 +12,6 @@ use BybitApi\DTOs\DTO;
  */
 readonly class LeverageFilter extends DTO
 {
-
     public function casts(): array
     {
         return [

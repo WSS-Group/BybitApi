@@ -19,7 +19,6 @@ use BybitApi\DTOs\DTO;
  */
 readonly class LotSizeFilter extends DTO
 {
-
     public function casts(): array
     {
         return [

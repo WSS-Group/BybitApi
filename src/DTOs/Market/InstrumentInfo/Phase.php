@@ -14,7 +14,6 @@ use BybitApi\Enums\CurAuctionPhase;
  */
 readonly class Phase extends DTO
 {
-
     public function casts(): array
     {
         return [

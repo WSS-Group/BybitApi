@@ -42,7 +42,7 @@ it('check all possibilities from class', function () {
                 'boughtAt' => '1738108800000',
                 'inspiration' => null,
                 'children' => null,
-            ]
+            ],
         ],
     ]);
 

@@ -38,7 +38,6 @@ use BybitApi\Enums\SymbolStatus;
  */
 readonly class LinearInverse extends DTO
 {
-
     public function casts(): array
     {
         return [

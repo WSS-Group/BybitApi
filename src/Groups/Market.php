@@ -22,8 +22,6 @@ use Illuminate\Support\Collection;
 class Market extends Group
 {
     /**
-     * @return \Carbon\Carbon
-     *
      * @link https://bybit-exchange.github.io/docs/v5/market/time
      */
     public function getBybitServerTime(): Carbon
@@ -34,12 +32,6 @@ class Market extends Group
     }
 
     /**
-     * @param  \BackedEnum|string  $symbol
-     * @param  \BybitApi\Enums\Interval  $interval
-     * @param  \BybitApi\Enums\Category|null  $category
-     * @param  \Carbon\Carbon|null  $start
-     * @param  \Carbon\Carbon|null  $end
-     * @param  int|null  $limit
      * @return Collection<int, \BybitApi\DTOs\Market\Kline>
      *
      * @link https://bybit-exchange.github.io/docs/v5/market/kline
@@ -85,12 +77,6 @@ class Market extends Group
     }
 
     /**
-     * @param  \BybitApi\Enums\Category  $category
-     * @param  \BackedEnum|string|null  $symbol
-     * @param  \BybitApi\Enums\SymbolStatus|null  $status
-     * @param  \BackedEnum|string|null  $baseCoin
-     * @param  int|null  $limit
-     * @param  string|null  $cursor
      * @return CursorCollection<string, LinearInverse|Option|Spot>|LinearInverse|Option|Spot
      *
      * @link https://bybit-exchange.github.io/docs/v5/market/instrument
@@ -98,10 +84,10 @@ class Market extends Group
     public function getInstrumentsInfo(
         Category $category,
         null|BackedEnum|string $symbol = null,
-        null|SymbolStatus $status = null,
+        ?SymbolStatus $status = null,
         null|BackedEnum|string $baseCoin = null,
-        null|int $limit = null,
-        null|string $cursor = null,
+        ?int $limit = null,
+        ?string $cursor = null,
     ): CursorCollection|LinearInverse|Option|Spot {
         return $this->connector()
             ->send(new GetInstrumentsInfo($category, $symbol, $status, $baseCoin, $limit, $cursor))
@@ -120,12 +106,7 @@ class Market extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/tickers
      *
-     * @param  \BybitApi\Enums\Category  $category
-     * @param  \BackedEnum|string|null  $symbol
-     * @param  \BackedEnum|string|null  $baseCoin
-     * @param  string|null  $expDate
      * @return Collection<string, \BybitApi\DTOs\Market\Ticker>|\BybitApi\DTOs\Market\Ticker
-     *
      */
     public function getTickers(
         Category $category,
