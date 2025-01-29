@@ -4,7 +4,7 @@ namespace BybitApi\DTOs\Casts;
 
 use BackedEnum;
 
-class EnumCast implements Castable
+readonly class EnumCast implements Castable
 {
     public function __construct(
         public string $enumFQN,

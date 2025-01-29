@@ -3,7 +3,7 @@
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Facades\Market;
 
-it('', function () {
+it('check if all not implemented tests throw exception', function () {
     $market = Market::actingAs($this->defaultActor());
 
     expect(fn () => $market->getMarkPriceKline())
@@ -15,9 +15,6 @@ it('', function () {
         ->and(fn () => $market->getPremiumIndexPriceKline())
         ->toThrow(NotImplementedYetException::class,
             "Endpoint not implemented yet on 'BybitApi\Groups\Market::getPremiumIndexPriceKline'.")
-        ->and(fn () => $market->getInstrumentsInfo())
-        ->toThrow(NotImplementedYetException::class,
-            "Endpoint not implemented yet on 'BybitApi\Groups\Market::getInstrumentsInfo'.")
         ->and(fn () => $market->getOrderBook())
         ->toThrow(NotImplementedYetException::class,
             "Endpoint not implemented yet on 'BybitApi\Groups\Market::getOrderBook'.")
