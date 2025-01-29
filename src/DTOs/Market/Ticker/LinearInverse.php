@@ -1,6 +1,6 @@
 <?php
 
-namespace BybitApi\DTOs\Market;
+namespace BybitApi\DTOs\Market\Ticker;
 
 use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
@@ -39,7 +39,7 @@ use Illuminate\Support\Carbon;
  * @property null|float $preQty
  * @property null|CurAuctionPhase $curPreListingPhase
  */
-readonly class Ticker extends DTO
+readonly class LinearInverse extends DTO
 {
     public function casts(): array
     {
