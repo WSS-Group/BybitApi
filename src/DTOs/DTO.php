@@ -42,6 +42,7 @@ abstract readonly class DTO implements Arrayable
                 unset($payload[$alias]);
             }
         }
+
         return $payload;
     }
 
@@ -51,6 +52,7 @@ abstract readonly class DTO implements Arrayable
         foreach (array_keys($this->dtoPayload) as $key) {
             $data[$key] = $this->{$key};
         }
+
         return $data;
     }
 
