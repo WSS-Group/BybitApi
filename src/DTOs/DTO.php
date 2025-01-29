@@ -5,9 +5,10 @@ namespace BybitApi\DTOs;
 use BybitApi\DTOs\Casts\Castable;
 use ErrorException;
 use Exception;
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 
-abstract readonly class DTO
+abstract readonly class DTO implements Arrayable
 {
     protected array $dtoPayload;
 
@@ -31,6 +32,27 @@ abstract readonly class DTO
     }
 
     abstract public function casts(): array;
+
+    public function raw(): array
+    {
+        $payload = $this->dtoPayload;
+        foreach ($this->aliases() as $key => $alias) {
+            if (isset($payload[$alias])) {
+                $payload[$key] = $payload[$alias];
+                unset($payload[$alias]);
+            }
+        }
+        return $payload;
+    }
+
+    public function toArray(): array
+    {
+        $data = [];
+        foreach (array_keys($this->dtoPayload) as $key) {
+            $data[$key] = $this->{$key};
+        }
+        return $data;
+    }
 
     public function __get(string $name)
     {

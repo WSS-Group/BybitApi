@@ -29,5 +29,17 @@ it('check all possibilities from class', function () {
         ->and($car->category)
         ->toBe(Category::INVERSE)
         ->and($car->boughtAt)
+        ->toBeInstanceOf(Carbon::class)
+        ->and($car->raw())
+        ->toBeArray()
+        ->toHaveKeys(['model', 'brand_name', 'year', 'cost', 'category', 'boughtAt'])
+        ->not
+        ->toHaveKey('brand')
+        ->and($car->toArray())
+        ->toBeArray()
+        ->toHaveKeys(['model', 'brand', 'year', 'cost', 'category', 'boughtAt'])
+        ->not
+        ->toHaveKey('brand_name')
+        ->and($car->toArray()['boughtAt'])
         ->toBeInstanceOf(Carbon::class);
 });
