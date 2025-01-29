@@ -58,7 +58,7 @@ class GetTickers extends Request
                     Category::INVERSE, Category::LINEAR => LinearInverse::init($data),
                     Category::OPTION => Option::init($data),
                     Category::SPOT => Spot::init($data),
-                }
+                },
             ]);
 
         return ! empty($this->symbol) ? $collection->first() : $collection;

@@ -6,8 +6,8 @@ use BybitApi\DTOs\Market\Ticker\Spot;
 use BybitApi\Enums\Category;
 use BybitApi\Facades\Market;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetTickers;
-use BybitApi\Tests\Fixtures\Bybit\Market\GetTickers\LinearSingleFixture;
 use BybitApi\Tests\Fixtures\Bybit\Market\GetTickers\LinearListFixture;
+use BybitApi\Tests\Fixtures\Bybit\Market\GetTickers\LinearSingleFixture;
 use BybitApi\Tests\Fixtures\Bybit\Market\GetTickers\OptionListFixture;
 use BybitApi\Tests\Fixtures\Bybit\Market\GetTickers\OptionSingleFixture;
 use BybitApi\Tests\Fixtures\Bybit\Market\GetTickers\SpotListFixture;
@@ -50,7 +50,7 @@ it('works with list linear', function () {
 
 it('works with single option', function () {
     MockClient::global([
-        GetTickers::class => new OptionSingleFixture(),
+        GetTickers::class => new OptionSingleFixture,
     ]);
 
     $ticker = Market::actingAs($this->defaultActor())
@@ -64,7 +64,7 @@ it('works with single option', function () {
 
 it('works with list option', function () {
     MockClient::global([
-        GetTickers::class => new OptionListFixture(),
+        GetTickers::class => new OptionListFixture,
     ]);
 
     $collection = Market::actingAs($this->defaultActor())
@@ -79,7 +79,7 @@ it('works with list option', function () {
 
 it('works with single spot', function () {
     MockClient::global([
-        GetTickers::class => new SpotSingleFixture(),
+        GetTickers::class => new SpotSingleFixture,
     ]);
 
     $ticker = Market::actingAs($this->defaultActor())
@@ -93,7 +93,7 @@ it('works with single spot', function () {
 
 it('works with list spot', function () {
     MockClient::global([
-        GetTickers::class => new SpotListFixture(),
+        GetTickers::class => new SpotListFixture,
     ]);
 
     $collection = Market::actingAs($this->defaultActor())
