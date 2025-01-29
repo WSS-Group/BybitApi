@@ -7,7 +7,9 @@ use BybitApi\CursorCollection;
 use BybitApi\DTOs\Market\InstrumentInfo\LinearInverse;
 use BybitApi\DTOs\Market\InstrumentInfo\Option;
 use BybitApi\DTOs\Market\InstrumentInfo\Spot;
-use BybitApi\DTOs\Market\Ticker;
+use BybitApi\DTOs\Market\Ticker\LinearInverse as TickerLinearInverse;
+use BybitApi\DTOs\Market\Ticker\Option as TickerOption;
+use BybitApi\DTOs\Market\Ticker\Spot as TickerSpot;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\Interval;
 use BybitApi\Enums\SymbolStatus;
@@ -106,14 +108,14 @@ class Market extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/tickers
      *
-     * @return Collection<string, \BybitApi\DTOs\Market\Ticker>|\BybitApi\DTOs\Market\Ticker
+     * @return Collection<string, TickerLinearInverse|TickerOption|TickerSpot>|TickerLinearInverse|TickerOption|TickerSpot
      */
     public function getTickers(
         Category $category,
         BackedEnum|string|null $symbol = null,
         BackedEnum|string|null $baseCoin = null,
         ?string $expDate = null,
-    ): Collection|Ticker {
+    ): Collection|TickerLinearInverse|TickerOption|TickerSpot {
         return $this->connector()
             ->send(new GetTickers($category, $symbol, $baseCoin, $expDate))
             ->dto();

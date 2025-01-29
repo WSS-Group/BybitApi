@@ -4,7 +4,9 @@ namespace BybitApi\Http\Integrations\Bybit\Requests\Market;
 
 use BackedEnum;
 use BybitApi\Conditional;
-use BybitApi\DTOs\Market\Ticker;
+use BybitApi\DTOs\Market\Ticker\LinearInverse;
+use BybitApi\DTOs\Market\Ticker\Option;
+use BybitApi\DTOs\Market\Ticker\Spot;
 use BybitApi\Enums\Category;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use Illuminate\Support\Arr;
@@ -47,10 +49,17 @@ class GetTickers extends Request
         ]);
     }
 
-    public function createDtoFromResponse(Response $response): Collection|Ticker
+    public function createDtoFromResponse(Response $response): Collection|LinearInverse|Option|Spot
     {
+        $category = Category::from($response->json('result.category'));
         $collection = collect($response->json('result.list'))
-            ->mapWithKeys(fn (array $data) => [Arr::get($data, 'symbol') => Ticker::init($data)]);
+            ->mapWithKeys(fn (array $data) => [
+                Arr::get($data, 'symbol') => match ($category) {
+                    Category::INVERSE, Category::LINEAR => LinearInverse::init($data),
+                    Category::OPTION => Option::init($data),
+                    Category::SPOT => Spot::init($data),
+                },
+            ]);
 
         return ! empty($this->symbol) ? $collection->first() : $collection;
     }

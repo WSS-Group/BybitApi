@@ -4,7 +4,7 @@ namespace BybitApi\Tests\Fixtures\Bybit\Market\GetTickers;
 
 use BybitApi\Tests\Fixtures\Fixture;
 
-class TenSymbolsFixture extends Fixture
+class LinearListFixture extends Fixture
 {
     public function body(): array|string|int
     {

@@ -1,18 +1,40 @@
 <?php
 
-use BybitApi\DTOs\Market\Ticker;
+use BybitApi\DTOs\Market\Ticker\LinearInverse;
+use BybitApi\DTOs\Market\Ticker\Option;
+use BybitApi\DTOs\Market\Ticker\Spot;
 use BybitApi\Enums\Category;
 use BybitApi\Facades\Market;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetTickers;
-use BybitApi\Tests\Fixtures\Bybit\Market\GetTickers\OneSymbolFixture;
-use BybitApi\Tests\Fixtures\Bybit\Market\GetTickers\TenSymbolsFixture;
+use BybitApi\Tests\Fixtures\Bybit\Market\GetTickers\LinearListFixture;
+use BybitApi\Tests\Fixtures\Bybit\Market\GetTickers\LinearSingleFixture;
+use BybitApi\Tests\Fixtures\Bybit\Market\GetTickers\OptionListFixture;
+use BybitApi\Tests\Fixtures\Bybit\Market\GetTickers\OptionSingleFixture;
+use BybitApi\Tests\Fixtures\Bybit\Market\GetTickers\SpotListFixture;
+use BybitApi\Tests\Fixtures\Bybit\Market\GetTickers\SpotSingleFixture;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Saloon\Http\Faking\MockClient;
 
-it('return then tickers when passing only category parameter', function () {
+it('works with single linear', function () {
     MockClient::global([
-        GetTickers::class => new TenSymbolsFixture,
+        GetTickers::class => new LinearSingleFixture,
+    ]);
+
+    $ticker = Market::actingAs($this->defaultActor())
+        ->getTickers(Category::LINEAR, 'BTCUSDT');
+
+    expect($ticker)
+        ->toBeInstanceOf(LinearInverse::class)
+        ->and($ticker->deliveryTime)
+        ->toBeInstanceOf(Carbon::class)
+        ->and($ticker->nextFundingTime)
+        ->toBeInstanceOf(Carbon::class);
+});
+
+it('works with list linear', function () {
+    MockClient::global([
+        GetTickers::class => new LinearListFixture,
     ]);
 
     $collection = Market::actingAs($this->defaultActor())
@@ -22,21 +44,64 @@ it('return then tickers when passing only category parameter', function () {
         ->toBeInstanceOf(Collection::class)
         ->toHaveCount(10)
         ->each
-        ->toBeInstanceOf(Ticker::class);
+        ->toBeInstanceOf(LinearInverse::class);
+
 });
 
-it('return a ticker object when passing a symbol parameter', function () {
+it('works with single option', function () {
     MockClient::global([
-        GetTickers::class => new OneSymbolFixture,
+        GetTickers::class => new OptionSingleFixture,
     ]);
 
     $ticker = Market::actingAs($this->defaultActor())
-        ->getTickers(Category::INVERSE, 'BTCUSDT');
+        ->getTickers(Category::OPTION, 'BTC-28MAR25-80000-C');
 
     expect($ticker)
-        ->toBeInstanceOf(Ticker::class)
-        ->and($ticker->deliveryTime)
-        ->toBeInstanceOf(Carbon::class)
-        ->and($ticker->nextFundingTime)
-        ->toBeInstanceOf(Carbon::class);
+        ->toBeInstanceOf(Option::class)
+        ->and($ticker->toArray())
+        ->toBeArray();
+});
+
+it('works with list option', function () {
+    MockClient::global([
+        GetTickers::class => new OptionListFixture,
+    ]);
+
+    $collection = Market::actingAs($this->defaultActor())
+        ->getTickers(Category::OPTION, baseCoin: 'BTC');
+
+    expect($collection)
+        ->toBeInstanceOf(Collection::class)
+        ->toHaveCount(2)
+        ->each
+        ->toBeInstanceOf(Option::class);
+});
+
+it('works with single spot', function () {
+    MockClient::global([
+        GetTickers::class => new SpotSingleFixture,
+    ]);
+
+    $ticker = Market::actingAs($this->defaultActor())
+        ->getTickers(Category::SPOT, 'BTCUSDT');
+
+    expect($ticker)
+        ->toBeInstanceOf(Spot::class)
+        ->and($ticker->toArray())
+        ->toBeArray();
+});
+
+it('works with list spot', function () {
+    MockClient::global([
+        GetTickers::class => new SpotListFixture,
+    ]);
+
+    $collection = Market::actingAs($this->defaultActor())
+        ->getTickers(Category::SPOT);
+
+    expect($collection)
+        ->toBeInstanceOf(Collection::class)
+        ->toHaveCount(2)
+        ->each
+        ->toBeInstanceOf(Spot::class);
 });
