@@ -2,17 +2,20 @@
 
 namespace BybitApi\Groups;
 
+use BybitApi\DTOs\Trade\PlacedOrder;
+use BybitApi\Enums\Category;
 use BybitApi\Exceptions\NotImplementedYetException;
+use BybitApi\Http\Integrations\Bybit\Entity\Order;
+use BybitApi\Http\Integrations\Bybit\Requests\Trade\PlaceOrder;
 
 class Trade extends Group
 {
     /**
      * @link https://bybit-exchange.github.io/docs/v5/order/create-order
      */
-    public function placeOrder(): mixed
+    public function placeOrder(Category $category, Order $order): PlacedOrder
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->connector()->send(new PlaceOrder($category, $order))->dto();
     }
 
     /**

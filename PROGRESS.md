@@ -94,8 +94,8 @@
         <tr>
             <td rowspan="12">Trade</td>
             <td><a href="https://bybit-exchange.github.io/docs/v5/order/create-order">Place Order</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/order/amend-order">Amend Order</a></td>
