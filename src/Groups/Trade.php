@@ -6,7 +6,9 @@ use BybitApi\DTOs\Trade\PlacedOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Entity\Order;
+use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchPlaceOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\PlaceOrder;
+use Illuminate\Support\Collection;
 
 class Trade extends Group
 {
@@ -73,12 +75,13 @@ class Trade extends Group
     }
 
     /**
+     * @return Collection<int, \BybitApi\DTOs\Trade\BatchPlacedOrder>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/order/batch-place
      */
-    public function batchPlaceOrder(): mixed
+    public function batchPlaceOrder(Category $category, Order ...$orders): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->connector()->send(new BatchPlaceOrder($category, ...$orders))->dto();
     }
 
     /**

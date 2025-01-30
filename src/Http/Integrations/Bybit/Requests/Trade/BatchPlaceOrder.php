@@ -2,10 +2,10 @@
 
 namespace BybitApi\Http\Integrations\Bybit\Requests\Trade;
 
+use BybitApi\DTOs\Trade\BatchPlacedOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Http\Integrations\Bybit\Entity\Order;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
@@ -49,11 +49,9 @@ class BatchPlaceOrder extends Request implements HasBody
         ];
     }
 
-    public function createDtoFromResponse(Response $response): Carbon
+    public function createDtoFromResponse(Response $response): Collection
     {
-        $miliSeconds = intval($response->json('result.timeNano')) / 1_000_000;
-
-        return Carbon::createFromTimestampMs($miliSeconds)
-            ->setTimezone(config('app.timezone'));
+        return collect($response->json('retExtInfo.list'))
+            ->map(fn(array $i, int $k) => BatchPlacedOrder::init($i + $response->json("result.list.$k", [])));
     }
 }
