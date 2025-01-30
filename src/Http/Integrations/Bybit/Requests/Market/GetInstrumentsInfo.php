@@ -15,6 +15,9 @@ use Illuminate\Support\Arr;
 use Saloon\Enums\Method;
 use Saloon\Http\Response;
 
+/**
+ * @link https://bybit-exchange.github.io/docs/v5/market/instrument
+ */
 class GetInstrumentsInfo extends Request
 {
     /**
