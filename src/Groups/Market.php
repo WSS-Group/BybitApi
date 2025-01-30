@@ -19,6 +19,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Market\GetIndexPriceKline;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetInstrumentsInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetKline;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetMarkPriceKline;
+use BybitApi\Http\Integrations\Bybit\Requests\Market\GetPremiumIndexPriceKline;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetTickers;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
@@ -91,12 +92,22 @@ class Market extends Group
     }
 
     /**
+     * @return Collection<int, \BybitApi\DTOs\Market\MarkIndexPriceKline>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/market/premium-index-kline
      */
-    public function getPremiumIndexPriceKline(): mixed
+    public function getPremiumIndexPriceKline(
+        BackedEnum|string $symbol,
+        Interval $interval,
+        ?Category $category = null,
+        ?Carbon $start = null,
+        ?Carbon $end = null,
+        ?int $limit = null,
+    ): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->connector()
+            ->send(new GetPremiumIndexPriceKline($symbol, $interval, $category, $start, $end, $limit))
+            ->dto();
     }
 
     /**
