@@ -12,10 +12,10 @@ enum Category: string
     public function label(): string
     {
         return match ($this) {
-            self::SPOT => __('bybit_api::categories.spot'),
-            self::LINEAR => __('bybit_api::categories.linear'),
-            self::INVERSE => __('bybit_api::categories.inverse'),
-            self::OPTION => __('bybit_api::categories.option'),
+            self::SPOT => __('bybit_api::enums.categories.spot'),
+            self::LINEAR => __('bybit_api::enums.categories.linear'),
+            self::INVERSE => __('bybit_api::enums.categories.inverse'),
+            self::OPTION => __('bybit_api::enums.categories.option'),
         };
     }
 }
