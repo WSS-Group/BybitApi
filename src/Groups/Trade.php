@@ -6,7 +6,6 @@ use BybitApi\Exceptions\NotImplementedYetException;
 
 class Trade extends Group
 {
-
     /**
      * @link https://bybit-exchange.github.io/docs/v5/order/create-order
      */

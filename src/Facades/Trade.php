@@ -3,7 +3,6 @@
 namespace BybitApi\Facades;
 
 /**
- *
  * @see \BybitApi\Groups\Trade
  */
 class Trade extends Group
