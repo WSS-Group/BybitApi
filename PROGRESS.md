@@ -1,5 +1,9 @@
 ## Work progress
 
+![](https://geps.dev/progress/6)
+
+### `~9/145`
+
 <table>
     <thead>
         <tr>
@@ -94,8 +98,8 @@
         <tr>
             <td rowspan="12">Trade</td>
             <td><a href="https://bybit-exchange.github.io/docs/v5/order/create-order">Place Order</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/order/amend-order">Amend Order</a></td>
@@ -129,8 +133,8 @@
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/order/batch-place">Batch Place Order</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/order/batch-amend">Batch Amend Order</a></td>

@@ -6,6 +6,6 @@ class StringCast implements Castable
 {
     public function __invoke(mixed $input): ?string
     {
-        return $input !== null ? strval($input) : null;
+        return $input !== null && $input !== '' ? strval($input) : null;
     }
 }

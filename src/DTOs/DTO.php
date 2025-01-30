@@ -12,7 +12,7 @@ abstract readonly class DTO implements Arrayable
 {
     protected array $dtoPayload;
 
-    public static function init(array $payload): self
+    public static function init(array $payload): static
     {
         $dto = new static;
         foreach ($dto->aliases() as $key => $alias) {
