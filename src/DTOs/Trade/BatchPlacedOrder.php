@@ -20,7 +20,6 @@ use BybitApi\Enums\Category;
  */
 readonly class BatchPlacedOrder extends DTO
 {
-
     public function casts(): array
     {
         return [
