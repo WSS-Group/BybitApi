@@ -6,16 +6,7 @@ use BybitApi\Facades\Market;
 it('check if all not implemented tests throw exception', function () {
     $market = Market::actingAs($this->defaultActor());
 
-    expect(fn () => $market->getMarkPriceKline())
-        ->toThrow(NotImplementedYetException::class,
-            "Endpoint not implemented yet on 'BybitApi\Groups\Market::getMarkPriceKline'.")
-        ->and(fn () => $market->getIndexPriceKline())
-        ->toThrow(NotImplementedYetException::class,
-            "Endpoint not implemented yet on 'BybitApi\Groups\Market::getIndexPriceKline'.")
-        ->and(fn () => $market->getPremiumIndexPriceKline())
-        ->toThrow(NotImplementedYetException::class,
-            "Endpoint not implemented yet on 'BybitApi\Groups\Market::getPremiumIndexPriceKline'.")
-        ->and(fn () => $market->getOrderBook())
+    expect(fn () => $market->getOrderBook())
         ->toThrow(NotImplementedYetException::class,
             "Endpoint not implemented yet on 'BybitApi\Groups\Market::getOrderBook'.")
         ->and(fn () => $market->getFundingRateHistory())
