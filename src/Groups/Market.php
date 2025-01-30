@@ -15,6 +15,7 @@ use BybitApi\Enums\Interval;
 use BybitApi\Enums\SymbolStatus;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetBybitServerTime;
+use BybitApi\Http\Integrations\Bybit\Requests\Market\GetIndexPriceKline;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetInstrumentsInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetKline;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetMarkPriceKline;
@@ -53,7 +54,7 @@ class Market extends Group
     }
 
     /**
-     * @return Collection<int, \BybitApi\DTOs\Market\MarkPriceKline>
+     * @return Collection<int, \BybitApi\DTOs\Market\MarkIndexPriceKline>
      *
      * @link https://bybit-exchange.github.io/docs/v5/market/mark-kline
      */
@@ -71,12 +72,22 @@ class Market extends Group
     }
 
     /**
+     * @return Collection<int, \BybitApi\DTOs\Market\MarkIndexPriceKline>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/market/index-kline
      */
-    public function getIndexPriceKline(): mixed
+    public function getIndexPriceKline(
+        BackedEnum|string $symbol,
+        Interval $interval,
+        ?Category $category = null,
+        ?Carbon $start = null,
+        ?Carbon $end = null,
+        ?int $limit = null,
+    ): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->connector()
+            ->send(new GetIndexPriceKline($symbol, $interval, $category, $start, $end, $limit))
+            ->dto();
     }
 
     /**

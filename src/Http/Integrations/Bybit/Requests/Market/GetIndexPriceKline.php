@@ -14,7 +14,7 @@ use Illuminate\Support\Collection;
 use Saloon\Enums\Method;
 use Saloon\Http\Response;
 
-class GetMarkPriceKline extends Request
+class GetIndexPriceKline extends Request
 {
     /**
      * The HTTP method of the request
@@ -37,7 +37,7 @@ class GetMarkPriceKline extends Request
      */
     public function resolveEndpoint(): string
     {
-        return '/v5/market/mark-price-kline';
+        return '/v5/market/index-price-kline';
     }
 
     protected function defaultQuery(): array

@@ -13,7 +13,7 @@ use BybitApi\DTOs\DTO;
  * @property null|float $lowPrice
  * @property null|float $closePrice
  */
-readonly class MarkPriceKline extends DTO
+readonly class MarkIndexPriceKline extends DTO
 {
     public function aliases(): array
     {

@@ -3,19 +3,19 @@
 use BybitApi\DTOs\Market\MarkIndexPriceKline;
 use BybitApi\Enums\Interval;
 use BybitApi\Facades\Market;
-use BybitApi\Http\Integrations\Bybit\Requests\Market\GetMarkPriceKline;
-use BybitApi\Tests\Fixtures\Bybit\Market\GetMarkPriceKline\TwentyMinuteCandlesFixture;
+use BybitApi\Http\Integrations\Bybit\Requests\Market\GetIndexPriceKline;
+use BybitApi\Tests\Fixtures\Bybit\Market\GetIndexPriceKline\TwentyMinuteCandlesFixture;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Saloon\Http\Faking\MockClient;
 
 it('return a carbon object on success', function () {
     MockClient::global([
-        GetMarkPriceKline::class => new TwentyMinuteCandlesFixture,
+        GetIndexPriceKline::class => new TwentyMinuteCandlesFixture,
     ]);
 
     $result = Market::actingAs($this->defaultActor())
-        ->getMarkPriceKline('BTCUSDT', Interval::M1, limit: 20);
+        ->getIndexPriceKline('BTCUSDT', Interval::M1, limit: 20);
 
     expect($result)
         ->toBeInstanceOf(Collection::class)
