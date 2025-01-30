@@ -84,8 +84,7 @@ class Market extends Group
         ?Carbon $start = null,
         ?Carbon $end = null,
         ?int $limit = null,
-    ): Collection
-    {
+    ): Collection {
         return $this->connector()
             ->send(new GetIndexPriceKline($symbol, $interval, $category, $start, $end, $limit))
             ->dto();
@@ -103,8 +102,7 @@ class Market extends Group
         ?Carbon $start = null,
         ?Carbon $end = null,
         ?int $limit = null,
-    ): Collection
-    {
+    ): Collection {
         return $this->connector()
             ->send(new GetPremiumIndexPriceKline($symbol, $interval, $category, $start, $end, $limit))
             ->dto();
