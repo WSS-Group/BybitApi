@@ -17,6 +17,7 @@ use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetBybitServerTime;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetInstrumentsInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetKline;
+use BybitApi\Http\Integrations\Bybit\Requests\Market\GetMarkPriceKline;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetTickers;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
@@ -52,12 +53,21 @@ class Market extends Group
     }
 
     /**
+     * @return Collection<int, \BybitApi\DTOs\Market\MarkPriceKline>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/market/mark-kline
      */
-    public function getMarkPriceKline(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getMarkPriceKline(
+        BackedEnum|string $symbol,
+        Interval $interval,
+        ?Category $category = null,
+        ?Carbon $start = null,
+        ?Carbon $end = null,
+        ?int $limit = null,
+    ): Collection {
+        return $this->connector()
+            ->send(new GetMarkPriceKline($symbol, $interval, $category, $start, $end, $limit))
+            ->dto();
     }
 
     /**

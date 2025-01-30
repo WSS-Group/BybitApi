@@ -8,6 +8,7 @@ use BybitApi\DTOs\Market\InstrumentInfo\LinearInverse;
 use BybitApi\DTOs\Market\InstrumentInfo\Option;
 use BybitApi\DTOs\Market\InstrumentInfo\Spot;
 use BybitApi\DTOs\Market\Kline;
+use BybitApi\DTOs\Market\MarkPriceKline;
 use BybitApi\DTOs\Market\Ticker\LinearInverse as TickerLinearInverse;
 use BybitApi\DTOs\Market\Ticker\Option as TickerOption;
 use BybitApi\DTOs\Market\Ticker\Spot as TickerSpot;
@@ -20,6 +21,7 @@ use Illuminate\Support\Collection;
 /**
  * @method Carbon getBybitServerTime()
  * @method Collection<int, Kline> getKline(BackedEnum|string $symbol, Interval $interval, ?Category $category = null, ?Carbon $start = null, ?Carbon $end = null, ?int $limit = null)
+ * @method Collection<int, MarkPriceKline> getMarkPriceKline(BackedEnum|string $symbol, Interval $interval, ?Category $category = null, ?Carbon $start = null, ?Carbon $end = null, ?int $limit = null)
  * @method CursorCollection<string, LinearInverse|Option|Spot>|LinearInverse|Option|Spot getInstrumentsInfo(Category $category, null|BackedEnum|string $symbol = null, null|SymbolStatus $status = null, null|BackedEnum|string $baseCoin = null, null|int $limit = null, null|string $cursor = null)
  * @method Collection<string, TickerLinearInverse|TickerOption|TickerSpot>|TickerLinearInverse|TickerOption|TickerSpot getTickers(Category $category, BackedEnum|string|null $symbol = null, BackedEnum|string|null $baseCoin = null, ?string $expDate = null)
  *
