@@ -14,6 +14,9 @@ use Illuminate\Support\Collection;
 use Saloon\Enums\Method;
 use Saloon\Http\Response;
 
+/**
+ * @link https://bybit-exchange.github.io/docs/v5/market/tickers
+ */
 class GetTickers extends Request
 {
     /**

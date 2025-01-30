@@ -7,6 +7,9 @@ use Illuminate\Support\Carbon;
 use Saloon\Enums\Method;
 use Saloon\Http\Response;
 
+/**
+ * @link https://bybit-exchange.github.io/docs/v5/market/time
+ */
 class GetBybitServerTime extends Request
 {
     /**
