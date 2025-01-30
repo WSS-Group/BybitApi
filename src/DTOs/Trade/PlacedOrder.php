@@ -11,7 +11,6 @@ use BybitApi\DTOs\DTO;
  */
 readonly class PlacedOrder extends DTO
 {
-
     public function casts(): array
     {
         return [

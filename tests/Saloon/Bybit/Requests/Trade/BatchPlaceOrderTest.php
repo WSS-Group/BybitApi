@@ -14,7 +14,7 @@ use Saloon\Http\Faking\MockClient;
 
 it('can place two orders, one success and one invalid', function () {
     MockClient::global([
-        BatchPlaceOrder::class => new OneSuccessAndOneErrorFixture(),
+        BatchPlaceOrder::class => new OneSuccessAndOneErrorFixture,
     ]);
 
     $result = Trade::actingAs($this->defaultActor())->batchPlaceOrder(
