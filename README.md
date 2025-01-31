@@ -15,7 +15,7 @@ A PHP package that implement [Bybit API](https://bybit-exchange.github.io/docs/v
 You can install the package via composer:
 
 ```bash
-composer require allanmcarvalho/bybitapi
+composer require wss-group/bybitapi
 ```
 
 You can publish the config file with:
