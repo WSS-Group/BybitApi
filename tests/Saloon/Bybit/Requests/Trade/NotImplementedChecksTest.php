@@ -9,8 +9,6 @@ it('check if all not implemented tests throw exception', function () {
 
     expect(fn () => $trade->amendOrder())
         ->toThrow(NotImplementedYetException::class, "{$commonError}amendOrder'.")
-        ->and(fn () => $trade->cancelOrder())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}cancelOrder'.")
         ->and(fn () => $trade->getRealTimeOrders())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getRealTimeOrders'.")
         ->and(fn () => $trade->cancelAllOrders())

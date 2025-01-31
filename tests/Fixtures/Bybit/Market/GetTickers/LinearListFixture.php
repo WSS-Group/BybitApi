@@ -3,10 +3,11 @@
 namespace BybitApi\Tests\Fixtures\Bybit\Market\GetTickers;
 
 use BybitApi\Tests\Fixtures\Fixture;
+use Saloon\Http\PendingRequest;
 
 class LinearListFixture extends Fixture
 {
-    public function body(): array|string|int
+    public function body(PendingRequest $pendingRequest): array|string|int
     {
         $current = now();
 
@@ -63,12 +64,12 @@ class LinearListFixture extends Fixture
         return $symbols;
     }
 
-    public function status(): int
+    public function status(PendingRequest $pendingRequest): int
     {
         return 200;
     }
 
-    public function headers(): array
+    public function headers(PendingRequest $pendingRequest): array
     {
         return [
             'Content-Type' => 'application/json; charset=utf-8',

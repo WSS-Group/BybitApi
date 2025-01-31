@@ -12,7 +12,7 @@ use Saloon\Http\Faking\MockClient;
 
 it('can place a single order', function () {
     MockClient::global([
-        PlaceOrder::class => new OkFixture,
+        PlaceOrder::class => OkFixture::call(),
     ]);
 
     $result = Trade::actingAs($this->defaultActor())->placeOrder(

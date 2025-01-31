@@ -32,7 +32,7 @@ it('can set cache on group', function () {
 
 it('can cache', function () {
     MockClient::global([
-        GetBybitServerTime::class => new OkFixture,
+        GetBybitServerTime::class => OkFixture::call(),
     ]);
     $connector = MarketFacade::actingAs($this->defaultActor())->withCache(10)->connector();
     $result = $connector->send(new GetBybitServerTime);
@@ -45,7 +45,7 @@ it('can cache', function () {
 
 it('don\'t cache', function () {
     MockClient::global([
-        GetBybitServerTime::class => new OkFixture,
+        GetBybitServerTime::class => OkFixture::call(),
     ]);
     $connector = MarketFacade::actingAs($this->defaultActor())->withoutCache()->connector();
     $result = $connector->send(new GetBybitServerTime);
