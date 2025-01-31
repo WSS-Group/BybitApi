@@ -10,7 +10,7 @@ use BybitApi\DTOs\DTO;
  * @property null|float $maxLeverage
  * @property null|float $leverageStep
  */
-readonly class LeverageFilter extends DTO
+class LeverageFilter extends DTO
 {
     public function casts(): array
     {

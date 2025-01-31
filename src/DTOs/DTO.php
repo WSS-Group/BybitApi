@@ -7,9 +7,12 @@ use ErrorException;
 use Exception;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Traits\Macroable;
 
-abstract readonly class DTO implements Arrayable
+abstract class DTO implements Arrayable
 {
+    use Macroable;
+
     protected array $dtoPayload;
 
     public static function init(array $payload): static

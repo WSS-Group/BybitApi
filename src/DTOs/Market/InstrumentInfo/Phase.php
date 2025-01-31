@@ -12,7 +12,7 @@ use BybitApi\Enums\CurAuctionPhase;
  * @property null|\Illuminate\Support\Carbon $startTime
  * @property null|\Illuminate\Support\Carbon $endTime
  */
-readonly class Phase extends DTO
+class Phase extends DTO
 {
     public function casts(): array
     {

@@ -17,8 +17,6 @@ it('check if all not implemented tests throw exception', function () {
         ->toThrow(NotImplementedYetException::class, "{$commonError}getTradeHistory'.")
         ->and(fn () => $trade->batchAmendOrder())
         ->toThrow(NotImplementedYetException::class, "{$commonError}batchAmendOrder'.")
-        ->and(fn () => $trade->batchCancelOrder())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}batchCancelOrder'.")
         ->and(fn () => $trade->getBorrowQuota())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getBorrowQuota'.")
         ->and(fn () => $trade->setDisconnectCancelAll())

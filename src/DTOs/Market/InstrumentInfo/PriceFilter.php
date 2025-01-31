@@ -10,7 +10,7 @@ use BybitApi\DTOs\DTO;
  * @property null|float $maxPrice
  * @property null|float $tickSize
  */
-readonly class PriceFilter extends DTO
+class PriceFilter extends DTO
 {
     public function casts(): array
     {

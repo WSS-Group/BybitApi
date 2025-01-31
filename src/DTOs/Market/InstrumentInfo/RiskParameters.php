@@ -9,7 +9,7 @@ use BybitApi\DTOs\DTO;
  * @property null|float $priceLimitRatioX
  * @property null|float $priceLimitRatioY
  */
-readonly class RiskParameters extends DTO
+class RiskParameters extends DTO
 {
     public function casts(): array
     {

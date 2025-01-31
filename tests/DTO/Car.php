@@ -21,7 +21,7 @@ use BybitApi\Enums\Category;
  * @property null|\BybitApi\Tests\DTO\Car $inspiration
  * @property null|Car[] $children
  */
-readonly class Car extends DTO
+class Car extends DTO
 {
     public function aliases(): array
     {

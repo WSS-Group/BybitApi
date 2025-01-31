@@ -52,7 +52,7 @@ it('check all possibilities from class', function () {
         ->toBe('fusca')
         ->and($car->brand)
         ->toBe('VW')
-        ->and(fn () => $car->brand_name)
+        ->and(fn() => $car->brand_name)
         ->toThrow('Undefined property: BybitApi\Tests\DTO\Car::$brand_name')
         ->and($car->year)
         ->toBe(1979)
@@ -80,4 +80,24 @@ it('check all possibilities from class', function () {
         ->toHaveKey('brand_name')
         ->and($car->toArray()['boughtAt'])
         ->toBeInstanceOf(Carbon::class);
+});
+
+it('can create a macro', function () {
+    Car::macro('getModel', function () {
+        return $this->model;
+    });
+
+    $car = Car::init([
+        'model' => 'fusca',
+        'brand_name' => 'VW',
+        'year' => '1979',
+        'cost' => '21432.21',
+        'category' => 'inverse',
+        'boughtAt' => '1738108800000'
+    ]);
+
+    expect(Car::hasMacro('getModel'))
+        ->toBeTrue()
+        ->and($car->getModel())
+        ->toBe('fusca');
 });

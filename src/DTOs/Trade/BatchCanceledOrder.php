@@ -18,7 +18,7 @@ use BybitApi\Enums\Category;
  * @property null|string $orderLinkId
  * @property null|\Illuminate\Support\Carbon $createAt
  */
-class BatchPlacedOrder extends DTO
+class BatchCanceledOrder extends DTO
 {
     public function casts(): array
     {

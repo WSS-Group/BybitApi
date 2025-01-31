@@ -21,7 +21,7 @@ use BybitApi\DTOs\DTO;
  * @property null|float $volume24h
  * @property null|float $usdIndexPrice
  */
-readonly class Spot extends DTO
+class Spot extends DTO
 {
     public function casts(): array
     {

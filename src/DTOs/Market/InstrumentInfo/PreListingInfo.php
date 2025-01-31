@@ -12,7 +12,7 @@ use BybitApi\Enums\CurAuctionPhase;
  * @property null|\BybitApi\DTOs\Market\InstrumentInfo\Phase[] $phases
  * @property null|\BybitApi\DTOs\Market\InstrumentInfo\AuctionFeeInfo $auctionFeeInfo
  */
-readonly class PreListingInfo extends DTO
+class PreListingInfo extends DTO
 {
     public function casts(): array
     {

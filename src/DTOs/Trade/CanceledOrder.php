@@ -9,7 +9,7 @@ use BybitApi\DTOs\DTO;
  * @property null|string $orderId
  * @property null|string $orderLinkId
  */
-readonly class CanceledOrder extends DTO
+class CanceledOrder extends DTO
 {
     public function casts(): array
     {

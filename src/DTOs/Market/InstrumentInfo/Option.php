@@ -21,7 +21,7 @@ use BybitApi\Enums\SymbolStatus;
  * @property null|\BybitApi\DTOs\Market\InstrumentInfo\PriceFilter $priceFilter
  * @property null|\BybitApi\DTOs\Market\InstrumentInfo\LotSizeFilter $lotSizeFilter
  */
-readonly class Option extends DTO
+class Option extends DTO
 {
     public function casts(): array
     {

@@ -10,6 +10,7 @@ use BybitApi\Enums\OrderFilter;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Entities\Order;
 use BybitApi\Http\Integrations\Bybit\Entities\OrderToCancel;
+use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchCancelOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchPlaceOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\CancelAllOrders;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\CancelOrder;
@@ -111,12 +112,13 @@ class Trade extends Group
     }
 
     /**
+     * @return Collection<int, \BybitApi\DTOs\Trade\BatchCanceledOrder>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/order/batch-cancel
      */
-    public function batchCancelOrder(): mixed
+    public function batchCancelOrder(Category $category, OrderToCancel ...$orders): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->connector()->send(new BatchCancelOrder($category, ...$orders))->dto();
     }
 
     /**
