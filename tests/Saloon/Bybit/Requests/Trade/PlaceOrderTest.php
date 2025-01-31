@@ -5,7 +5,7 @@ use BybitApi\Enums\Category;
 use BybitApi\Enums\OrderSide;
 use BybitApi\Enums\OrderType;
 use BybitApi\Facades\Trade;
-use BybitApi\Http\Integrations\Bybit\Entity\Order;
+use BybitApi\Http\Integrations\Bybit\Entities\Order;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\PlaceOrder;
 use BybitApi\Tests\Fixtures\Bybit\Trade\PlaceOrder\OkFixture;
 use Saloon\Http\Faking\MockClient;

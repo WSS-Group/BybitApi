@@ -39,6 +39,18 @@ return [
         'limit' => 'limit',
         'unknown' => 'unknown',
     ],
+    'stop_order_types' => [
+        'take_profit' => 'take profit',
+        'stop_loss' => 'stop loss',
+        'trailing_stop' => 'trailing stop',
+        'stop' => 'stop',
+        'partial_take_profit' => 'partial take profit',
+        'partial_stop_loss' => 'partial stop loss',
+        'tp_sl_order' => 'take profit stop loss order',
+        'oco_order' => 'oco order',
+        'mm_rate_close' => 'mm rate close',
+        'bidirectional_tp_sl_order' => 'bidirectional take profit stop loss order',
+    ],
     'symbol_statuses' => [
         'pre_launch' => 'pre launch',
         'trading' => 'trading',

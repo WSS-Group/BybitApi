@@ -7,16 +7,18 @@ use BybitApi\Conditional;
 use BybitApi\DTOs\Trade\CanceledOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\OrderFilter;
+use BybitApi\Enums\StopOrderType;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
+use Illuminate\Support\Collection;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Response;
 use Saloon\Traits\Body\HasJsonBody;
 
 /**
- * @link https://bybit-exchange.github.io/docs/v5/order/cancel-order
+ * @link https://bybit-exchange.github.io/docs/v5/order/cancel-all
  */
-class CancelOrder extends Request implements HasBody
+class CancelAllOrders extends Request implements HasBody
 {
     use HasJsonBody;
 
@@ -27,10 +29,11 @@ class CancelOrder extends Request implements HasBody
 
     public function __construct(
         public Category $category,
-        public BackedEnum|string $symbol,
-        public ?string $orderId  = null,
-        public ?string $orderLinkId  = null,
+        public null|BackedEnum|string $symbol = null,
+        public null|BackedEnum|string $baseCoin = null,
+        public null|BackedEnum|string $settleCoin = null,
         public ?OrderFilter $orderFilter = null,
+        public ?StopOrderType $stopOrderType = null,
     ) {
         //
     }
@@ -40,22 +43,24 @@ class CancelOrder extends Request implements HasBody
      */
     public function resolveEndpoint(): string
     {
-        return '/v5/order/cancel';
+        return '/v5/order/cancel-all';
     }
 
     protected function defaultBody(): array
     {
         return Conditional::array([
             'category' => $this->category,
-            'symbol' => $this->symbol,
-            'orderId' => Conditional::ifNotEmpty($this->orderId),
-            'orderLinkId' => Conditional::ifNotEmpty($this->orderLinkId),
+            'symbol' => Conditional::ifNotEmpty($this->symbol),
+            'baseCoin' => Conditional::ifNotEmpty($this->baseCoin),
+            'settleCoin' => Conditional::ifNotEmpty($this->settleCoin),
             'orderFilter' => Conditional::ifNotNull($this->orderFilter),
+            'stopOrderType' => Conditional::ifNotNull($this->stopOrderType),
         ]);
     }
 
-    public function createDtoFromResponse(Response $response): CanceledOrder
+    public function createDtoFromResponse(Response $response): Collection
     {
-        return CanceledOrder::init($response->json('result'));
+        return collect($response->json('result.list'))
+            ->map(fn (array $data) => CanceledOrder::init($data));
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace BybitApi\Http\Integrations\Bybit\Entity;
+namespace BybitApi\Http\Integrations\Bybit\Entities;
 
 use BackedEnum;
 use BybitApi\Conditional;
@@ -19,7 +19,7 @@ use Illuminate\Contracts\Support\Arrayable;
 readonly class Order implements Arrayable
 {
     public function __construct(
-        public null|BackedEnum|string $symbol,
+        public BackedEnum|string $symbol,
         public OrderSide $side,
         public OrderType $orderType,
         public string $qty,

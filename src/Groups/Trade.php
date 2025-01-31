@@ -8,8 +8,9 @@ use BybitApi\DTOs\Trade\PlacedOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\OrderFilter;
 use BybitApi\Exceptions\NotImplementedYetException;
-use BybitApi\Http\Integrations\Bybit\Entity\Order;
+use BybitApi\Http\Integrations\Bybit\Entities\Order;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchPlaceOrder;
+use BybitApi\Http\Integrations\Bybit\Requests\Trade\CancelAllOrders;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\CancelOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\PlaceOrder;
 use Illuminate\Support\Collection;
@@ -38,12 +39,11 @@ class Trade extends Group
      */
     public function cancelOrder(
         Category $category,
-        null|BackedEnum|string $symbol,
-        ?string $orderId  = null,
-        ?string $orderLinkId  = null,
+        BackedEnum|string $symbol,
+        ?string $orderId = null,
+        ?string $orderLinkId = null,
         ?OrderFilter $orderFilter = null,
-    ): CanceledOrder
-    {
+    ): CanceledOrder {
         return $this->connector()
             ->send(new CancelOrder($category, $symbol, $orderId, $orderLinkId, $orderFilter))
             ->dto();
@@ -61,10 +61,17 @@ class Trade extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/order/cancel-all
      */
-    public function cancelAllOrders(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function cancelAllOrders(
+        Category $category,
+        null|BackedEnum|string $symbol = null,
+        null|BackedEnum|string $baseCoin = null,
+        null|BackedEnum|string $settleCoin = null,
+        ?OrderFilter $orderFilter = null,
+        ?StopOrderType $stopOrderType = null,
+    ): Collection {
+        return $this->connector()
+            ->send(new CancelAllOrders($category, $symbol, $baseCoin, $settleCoin, $orderFilter, $stopOrderType))
+            ->dto();
     }
 
     /**
