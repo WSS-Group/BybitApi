@@ -8,11 +8,6 @@ use Saloon\Http\PendingRequest;
 class OkFixture extends Fixture
 {
 
-    public function __construct(
-        public string $orderId
-    ) {
-        //
-    }
 
     public function body(PendingRequest $pendingRequest): array|string|int
     {
@@ -21,8 +16,8 @@ class OkFixture extends Fixture
             'retCode' => 0,
             'retMsg' => 'OK',
             'result' => [
-                'orderId' => $this->orderId,
-                'orderLinkId' => $this->orderId,
+                'orderId' => $pendingRequest->getRequest()->orderId,
+                'orderLinkId' => $pendingRequest->getRequest()->orderId,
             ],
             'retExtInfo' => [],
             'time' => $current->getTimestampMs(),
