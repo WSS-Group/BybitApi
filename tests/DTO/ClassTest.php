@@ -52,7 +52,7 @@ it('check all possibilities from class', function () {
         ->toBe('fusca')
         ->and($car->brand)
         ->toBe('VW')
-        ->and(fn() => $car->brand_name)
+        ->and(fn () => $car->brand_name)
         ->toThrow('Undefined property: BybitApi\Tests\DTO\Car::$brand_name')
         ->and($car->year)
         ->toBe(1979)
@@ -93,7 +93,7 @@ it('can create a macro', function () {
         'year' => '1979',
         'cost' => '21432.21',
         'category' => 'inverse',
-        'boughtAt' => '1738108800000'
+        'boughtAt' => '1738108800000',
     ]);
 
     expect(Car::hasMacro('getModel'))

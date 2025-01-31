@@ -53,6 +53,6 @@ class BatchCancelOrder extends Request implements HasBody
     public function createDtoFromResponse(Response $response): Collection
     {
         return collect($response->json('retExtInfo.list'))
-            ->map(fn(array $i, int $k) => BatchCanceledOrder::init($i + $response->json("result.list.$k", [])));
+            ->map(fn (array $i, int $k) => BatchCanceledOrder::init($i + $response->json("result.list.$k", [])));
     }
 }

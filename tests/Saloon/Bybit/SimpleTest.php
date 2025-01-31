@@ -14,6 +14,7 @@ it('check if referer is appended when it is present', function () {
             expect($pendingRequest->headers()->get('X-Referer'))
                 ->toBe('foo_bar');
             $current = now();
+
             return MockResponse::make([
                 'retCode' => 0,
                 'retMsg' => 'OK',
@@ -46,6 +47,7 @@ it('check if referer is null when it is\'t present', function () {
             expect($pendingRequest->headers()->get('X-Referer'))
                 ->toBeNull();
             $current = now();
+
             return MockResponse::make([
                 'retCode' => 0,
                 'retMsg' => 'OK',
