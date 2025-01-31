@@ -9,6 +9,7 @@ use BybitApi\Enums\Category;
 use BybitApi\Enums\OrderFilter;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Entities\Order;
+use BybitApi\Http\Integrations\Bybit\Entities\OrderToCancel;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchPlaceOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\CancelAllOrders;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\CancelOrder;
@@ -39,13 +40,11 @@ class Trade extends Group
      */
     public function cancelOrder(
         Category $category,
-        BackedEnum|string $symbol,
-        ?string $orderId = null,
-        ?string $orderLinkId = null,
-        ?OrderFilter $orderFilter = null,
+        OrderToCancel $orderToCancel,
+        ?OrderFilter $orderFilter = null
     ): CanceledOrder {
         return $this->connector()
-            ->send(new CancelOrder($category, $symbol, $orderId, $orderLinkId, $orderFilter))
+            ->send(new CancelOrder($category, $orderToCancel, $orderFilter))
             ->dto();
     }
 

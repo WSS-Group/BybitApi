@@ -2,11 +2,11 @@
 
 namespace BybitApi\Http\Integrations\Bybit\Requests\Trade;
 
-use BackedEnum;
 use BybitApi\Conditional;
 use BybitApi\DTOs\Trade\CanceledOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\OrderFilter;
+use BybitApi\Http\Integrations\Bybit\Entities\OrderToCancel;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
@@ -27,9 +27,7 @@ class CancelOrder extends Request implements HasBody
 
     public function __construct(
         public Category $category,
-        public BackedEnum|string $symbol,
-        public ?string $orderId = null,
-        public ?string $orderLinkId = null,
+        public OrderToCancel $orderToCancel,
         public ?OrderFilter $orderFilter = null,
     ) {
         //
@@ -47,9 +45,7 @@ class CancelOrder extends Request implements HasBody
     {
         return Conditional::array([
             'category' => $this->category,
-            'symbol' => $this->symbol,
-            'orderId' => Conditional::ifNotEmpty($this->orderId),
-            'orderLinkId' => Conditional::ifNotEmpty($this->orderLinkId),
+            ...$this->orderToCancel->toArray(),
             'orderFilter' => Conditional::ifNotNull($this->orderFilter),
         ]);
     }

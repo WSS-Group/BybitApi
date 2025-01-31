@@ -10,13 +10,14 @@ class OkFixture extends Fixture
     public function body(PendingRequest $pendingRequest): array|string|int
     {
         $current = now();
-
+        /** @var \BybitApi\Http\Integrations\Bybit\Requests\Trade\CancelOrder $request */
+        $request = $pendingRequest->getRequest();
         return [
             'retCode' => 0,
             'retMsg' => 'OK',
             'result' => [
-                'orderId' => $pendingRequest->getRequest()->orderId,
-                'orderLinkId' => $pendingRequest->getRequest()->orderId,
+                'orderId' => $request->orderToCancel->orderId,
+                'orderLinkId' => $request->orderToCancel->orderLinkId,
             ],
             'retExtInfo' => [],
             'time' => $current->getTimestampMs(),
