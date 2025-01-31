@@ -12,6 +12,7 @@ class OkFixture extends Fixture
         $current = now();
         /** @var \BybitApi\Http\Integrations\Bybit\Requests\Trade\CancelOrder $request */
         $request = $pendingRequest->getRequest();
+
         return [
             'retCode' => 0,
             'retMsg' => 'OK',
