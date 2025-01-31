@@ -11,8 +11,8 @@ use Saloon\Http\Faking\MockClient;
 it('can cancel all orders', function () {
     MockClient::global([
         CancelAllOrders::class => OkFixture::call(collect([
-            CanceledOrder::init(["orderId" => "1875834046228202240", "orderLinkId" => "1875834046228202241"]),
-            CanceledOrder::init(["orderId" => "1875834035172016896", "orderLinkId" => "1875834035172016897"]),
+            CanceledOrder::init(['orderId' => '1875834046228202240', 'orderLinkId' => '1875834046228202241']),
+            CanceledOrder::init(['orderId' => '1875834035172016896', 'orderLinkId' => '1875834035172016897']),
         ])),
     ]);
     $orderId = strval(fake()->numberBetween(1000000000000000000, 9999999999999999999));

@@ -11,6 +11,7 @@ abstract class Fixture
     final public static function call(...$params): Closure
     {
         $fixture = new static(...$params);
+
         return fn (PendingRequest $pendingRequest) => MockResponse::make(
             $fixture->body($pendingRequest),
             $fixture->status($pendingRequest),

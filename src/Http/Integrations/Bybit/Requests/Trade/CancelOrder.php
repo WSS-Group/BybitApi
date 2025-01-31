@@ -28,8 +28,8 @@ class CancelOrder extends Request implements HasBody
     public function __construct(
         public Category $category,
         public BackedEnum|string $symbol,
-        public ?string $orderId  = null,
-        public ?string $orderLinkId  = null,
+        public ?string $orderId = null,
+        public ?string $orderLinkId = null,
         public ?OrderFilter $orderFilter = null,
     ) {
         //
