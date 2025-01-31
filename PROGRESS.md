@@ -1,9 +1,5 @@
 ## Work progress
 
-![](https://geps.dev/progress/6)
-
-### `~9/145`
-
 <table>
     <thead>
         <tr>
