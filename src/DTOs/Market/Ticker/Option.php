@@ -33,7 +33,7 @@ use BybitApi\DTOs\DTO;
  * @property null|float $predictedDeliveryPrice
  * @property null|float $change24h
  */
-readonly class Option extends DTO
+class Option extends DTO
 {
     public function casts(): array
     {

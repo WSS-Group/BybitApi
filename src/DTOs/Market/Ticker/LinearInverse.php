@@ -39,7 +39,7 @@ use Illuminate\Support\Carbon;
  * @property null|float $preQty
  * @property null|CurAuctionPhase $curPreListingPhase
  */
-readonly class LinearInverse extends DTO
+class LinearInverse extends DTO
 {
     public function casts(): array
     {

@@ -4,7 +4,7 @@ namespace BybitApi\Http\Integrations\Bybit\Requests\Trade;
 
 use BybitApi\DTOs\Trade\BatchPlacedOrder;
 use BybitApi\Enums\Category;
-use BybitApi\Http\Integrations\Bybit\Entity\Order;
+use BybitApi\Http\Integrations\Bybit\Entities\Order;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use Illuminate\Support\Collection;
 use Saloon\Contracts\Body\HasBody;

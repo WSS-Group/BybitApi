@@ -81,3 +81,23 @@ it('check all possibilities from class', function () {
         ->and($car->toArray()['boughtAt'])
         ->toBeInstanceOf(Carbon::class);
 });
+
+it('can create a macro', function () {
+    Car::macro('getModel', function () {
+        return $this->model;
+    });
+
+    $car = Car::init([
+        'model' => 'fusca',
+        'brand_name' => 'VW',
+        'year' => '1979',
+        'cost' => '21432.21',
+        'category' => 'inverse',
+        'boughtAt' => '1738108800000',
+    ]);
+
+    expect(Car::hasMacro('getModel'))
+        ->toBeTrue()
+        ->and($car->getModel())
+        ->toBe('fusca');
+});

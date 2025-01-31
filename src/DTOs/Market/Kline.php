@@ -15,7 +15,7 @@ use BybitApi\DTOs\DTO;
  * @property null|float $volume
  * @property null|float $turnover
  */
-readonly class Kline extends DTO
+class Kline extends DTO
 {
     public function aliases(): array
     {

@@ -10,7 +10,7 @@ use BybitApi\DTOs\DTO;
  * @property null|float $takerFeeRate
  * @property null|float $makerFeeRate
  */
-readonly class AuctionFeeInfo extends DTO
+class AuctionFeeInfo extends DTO
 {
     public function casts(): array
     {

@@ -3,10 +3,11 @@
 namespace BybitApi\Tests\Fixtures\Bybit\Market\GetKline;
 
 use BybitApi\Tests\Fixtures\Fixture;
+use Saloon\Http\PendingRequest;
 
 class TwentyMinuteCandlesFixture extends Fixture
 {
-    public function body(): array|string|int
+    public function body(PendingRequest $pendingRequest): array|string|int
     {
         $current = now();
 
@@ -51,12 +52,12 @@ class TwentyMinuteCandlesFixture extends Fixture
         return $candles;
     }
 
-    public function status(): int
+    public function status(PendingRequest $pendingRequest): int
     {
         return 200;
     }
 
-    public function headers(): array
+    public function headers(PendingRequest $pendingRequest): array
     {
         return [
             'Content-Type' => 'application/json',

@@ -4,6 +4,7 @@ use BybitApi\Enums\Category;
 use BybitApi\Enums\Interval;
 use BybitApi\Enums\OrderSide;
 use BybitApi\Enums\OrderType;
+use BybitApi\Enums\StopOrderType;
 use BybitApi\Enums\SymbolStatus;
 
 it('test interval labels', function (Interval $interval) {
@@ -25,6 +26,11 @@ it('test order type labels', function (OrderType $type) {
     expect($type->label())
         ->toBeString();
 })->with(OrderType::cases());
+
+it('test stop order types labels', function (StopOrderType $type) {
+    expect($type->label())
+        ->toBeString();
+})->with(StopOrderType::cases());
 
 it('test symbols status labels', function (SymbolStatus $status) {
     expect($status->label())

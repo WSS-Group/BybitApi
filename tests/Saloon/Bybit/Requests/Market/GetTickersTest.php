@@ -18,7 +18,7 @@ use Saloon\Http\Faking\MockClient;
 
 it('works with single linear', function () {
     MockClient::global([
-        GetTickers::class => new LinearSingleFixture,
+        GetTickers::class => LinearSingleFixture::call(),
     ]);
 
     $ticker = Market::actingAs($this->defaultActor())
@@ -34,7 +34,7 @@ it('works with single linear', function () {
 
 it('works with list linear', function () {
     MockClient::global([
-        GetTickers::class => new LinearListFixture,
+        GetTickers::class => LinearListFixture::call(),
     ]);
 
     $collection = Market::actingAs($this->defaultActor())
@@ -50,7 +50,7 @@ it('works with list linear', function () {
 
 it('works with single option', function () {
     MockClient::global([
-        GetTickers::class => new OptionSingleFixture,
+        GetTickers::class => OptionSingleFixture::call(),
     ]);
 
     $ticker = Market::actingAs($this->defaultActor())
@@ -64,7 +64,7 @@ it('works with single option', function () {
 
 it('works with list option', function () {
     MockClient::global([
-        GetTickers::class => new OptionListFixture,
+        GetTickers::class => OptionListFixture::call(),
     ]);
 
     $collection = Market::actingAs($this->defaultActor())
@@ -79,7 +79,7 @@ it('works with list option', function () {
 
 it('works with single spot', function () {
     MockClient::global([
-        GetTickers::class => new SpotSingleFixture,
+        GetTickers::class => SpotSingleFixture::call(),
     ]);
 
     $ticker = Market::actingAs($this->defaultActor())
@@ -93,7 +93,7 @@ it('works with single spot', function () {
 
 it('works with list spot', function () {
     MockClient::global([
-        GetTickers::class => new SpotListFixture,
+        GetTickers::class => SpotListFixture::call(),
     ]);
 
     $collection = Market::actingAs($this->defaultActor())

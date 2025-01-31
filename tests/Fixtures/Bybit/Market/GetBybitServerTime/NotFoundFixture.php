@@ -3,20 +3,21 @@
 namespace BybitApi\Tests\Fixtures\Bybit\Market\GetBybitServerTime;
 
 use BybitApi\Tests\Fixtures\Fixture;
+use Saloon\Http\PendingRequest;
 
 class NotFoundFixture extends Fixture
 {
-    public function body(): array|string|int
+    public function body(PendingRequest $pendingRequest): array|string|int
     {
         return '';
     }
 
-    public function status(): int
+    public function status(PendingRequest $pendingRequest): int
     {
         return 404;
     }
 
-    public function headers(): array
+    public function headers(PendingRequest $pendingRequest): array
     {
         return [
             'Content-Type' => 'application/json; charset=utf-8',

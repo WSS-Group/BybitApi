@@ -2,11 +2,18 @@
 
 namespace BybitApi\Groups;
 
+use BackedEnum;
+use BybitApi\DTOs\Trade\CanceledOrder;
 use BybitApi\DTOs\Trade\PlacedOrder;
 use BybitApi\Enums\Category;
+use BybitApi\Enums\OrderFilter;
 use BybitApi\Exceptions\NotImplementedYetException;
-use BybitApi\Http\Integrations\Bybit\Entity\Order;
+use BybitApi\Http\Integrations\Bybit\Entities\Order;
+use BybitApi\Http\Integrations\Bybit\Entities\OrderToCancel;
+use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchCancelOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchPlaceOrder;
+use BybitApi\Http\Integrations\Bybit\Requests\Trade\CancelAllOrders;
+use BybitApi\Http\Integrations\Bybit\Requests\Trade\CancelOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\PlaceOrder;
 use Illuminate\Support\Collection;
 
@@ -32,10 +39,14 @@ class Trade extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/order/cancel-order
      */
-    public function cancelOrder(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function cancelOrder(
+        Category $category,
+        OrderToCancel $orderToCancel,
+        ?OrderFilter $orderFilter = null
+    ): CanceledOrder {
+        return $this->connector()
+            ->send(new CancelOrder($category, $orderToCancel, $orderFilter))
+            ->dto();
     }
 
     /**
@@ -50,10 +61,17 @@ class Trade extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/order/cancel-all
      */
-    public function cancelAllOrders(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function cancelAllOrders(
+        Category $category,
+        null|BackedEnum|string $symbol = null,
+        null|BackedEnum|string $baseCoin = null,
+        null|BackedEnum|string $settleCoin = null,
+        ?OrderFilter $orderFilter = null,
+        ?StopOrderType $stopOrderType = null,
+    ): Collection {
+        return $this->connector()
+            ->send(new CancelAllOrders($category, $symbol, $baseCoin, $settleCoin, $orderFilter, $stopOrderType))
+            ->dto();
     }
 
     /**
@@ -94,12 +112,13 @@ class Trade extends Group
     }
 
     /**
+     * @return Collection<int, \BybitApi\DTOs\Trade\BatchCanceledOrder>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/order/batch-cancel
      */
-    public function batchCancelOrder(): mixed
+    public function batchCancelOrder(Category $category, OrderToCancel ...$orders): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->connector()->send(new BatchCancelOrder($category, ...$orders))->dto();
     }
 
     /**

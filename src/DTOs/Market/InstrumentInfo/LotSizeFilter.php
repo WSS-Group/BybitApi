@@ -17,7 +17,7 @@ use BybitApi\DTOs\DTO;
  * @property null|float $qtyStep
  * @property null|float $postOnlyMaxOrderQty
  */
-readonly class LotSizeFilter extends DTO
+class LotSizeFilter extends DTO
 {
     public function casts(): array
     {

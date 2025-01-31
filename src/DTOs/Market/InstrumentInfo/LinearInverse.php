@@ -36,7 +36,7 @@ use BybitApi\Enums\SymbolStatus;
  * @property null|bool $isPreListing
  * @property null|\BybitApi\DTOs\Market\InstrumentInfo\PreListingInfo $preListingInfo
  */
-readonly class LinearInverse extends DTO
+class LinearInverse extends DTO
 {
     public function casts(): array
     {

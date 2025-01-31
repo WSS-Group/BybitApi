@@ -12,7 +12,7 @@ use BybitApi\Enums\SymbolStatus;
 /**
  * @property null|float $turnover
  */
-readonly class Spot extends DTO
+class Spot extends DTO
 {
     public function casts(): array
     {

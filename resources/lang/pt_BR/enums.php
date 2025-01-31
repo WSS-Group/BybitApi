@@ -39,6 +39,18 @@ return [
         'limit' => 'limite',
         'unknown' => 'desconhecido',
     ],
+    'stop_order_types' => [
+        'take_profit' => 'obter lucro',
+        'stop_loss' => 'cessar a perda',
+        'trailing_stop' => 'parada móvel',
+        'stop' => 'parada',
+        'partial_take_profit' => 'lucro parcial',
+        'partial_stop_loss' => 'cessar perda parcial',
+        'tp_sl_order' => 'ordem obter lucro e cessar perda',
+        'oco_order' => 'ordem oco',
+        'mm_rate_close' => 'mm rate close',
+        'bidirectional_tp_sl_order' => 'ordem obter lucro e cessar perda bidirecional',
+    ],
     'symbol_statuses' => [
         'pre_launch' => 'pré lançamento',
         'trading' => 'negociando',

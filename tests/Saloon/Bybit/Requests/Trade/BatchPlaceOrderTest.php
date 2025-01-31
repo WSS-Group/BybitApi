@@ -4,7 +4,7 @@ use BybitApi\Enums\Category;
 use BybitApi\Enums\OrderSide;
 use BybitApi\Enums\OrderType;
 use BybitApi\Facades\Trade;
-use BybitApi\Http\Integrations\Bybit\Entity\Order;
+use BybitApi\Http\Integrations\Bybit\Entities\Order;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchPlaceOrder;
 use BybitApi\Tests\Fixtures\Bybit\Trade\BatchPlaceOrder\OneSuccessAndOneErrorFixture;
 use Illuminate\Support\Carbon;
@@ -14,7 +14,7 @@ use Saloon\Http\Faking\MockClient;
 
 it('can place two orders, one success and one invalid', function () {
     MockClient::global([
-        BatchPlaceOrder::class => new OneSuccessAndOneErrorFixture,
+        BatchPlaceOrder::class => OneSuccessAndOneErrorFixture::call(),
     ]);
 
     $result = Trade::actingAs($this->defaultActor())->batchPlaceOrder(
