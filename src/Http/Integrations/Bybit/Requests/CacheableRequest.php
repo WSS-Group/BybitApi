@@ -44,6 +44,7 @@ abstract class CacheableRequest extends Request implements Cacheable
     {
         $endpoint = $this->resolveEndpoint();
         $query = json_encode($this->defaultQuery());
+        $ttl = $this->cacheTTL !== false ? strval($this->cacheTTL) : '-1';
         $uses = class_uses($this);
         $body = match (true) {
             in_array(HasJsonBody::class, $uses) => json_encode($this->defaultBody()),
@@ -53,7 +54,7 @@ abstract class CacheableRequest extends Request implements Cacheable
             in_array(HasStringBody::class, $uses) => $this->defaultBody(),
             default => '',
         };
-        $md5 = md5("$endpoint::$query::$body");
+        $md5 = md5("$endpoint::$query::$body::$ttl");
 
         return static::class.'::'.$md5;
     }
