@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/wss-group/bybitapi.svg?style=flat-square)](https://packagist.org/packages/wss-group/bybitapi)
 [![Total Downloads](https://img.shields.io/packagist/dt/wss-group/bybitapi.svg?style=flat-square)](https://packagist.org/packages/wss-group/bybitapi)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/wss-group/bybitapi/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/wss-group/bybitapi/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/wss-group/bybitapi/run-tests.yml?branch=5.x&label=tests&style=flat-square)](https://github.com/wss-group/bybitapi/actions?query=workflow%3Arun-tests+branch%3A5.x)
 [![Fix Code Style](https://github.com/WSS-Group/BybitApi/actions/workflows/lint.yml/badge.svg)](https://github.com/WSS-Group/BybitApi/actions/workflows/lint.yml)
 [![codecov](https://codecov.io/gh/WSS-Group/BybitApi/graph/badge.svg?token=OFDCnGWLEC)](https://codecov.io/gh/WSS-Group/BybitApi)
 [![Static Badge](https://img.shields.io/badge/Progress-8.2%25%20(12%2F145)-blue)](PROGRESS.md)
