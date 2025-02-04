@@ -14,12 +14,3 @@ enum ExecType: string
     case MOVE_POSITION = 'MovePosition';
     case UNKNOWN = 'UNKNOWN';
 }
-
-
-
-
-
-
-
-
-

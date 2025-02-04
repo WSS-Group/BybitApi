@@ -76,6 +76,6 @@ class GetOrderHistory extends Request
             ->map(fn (array $data) => Order::init($data))
             ->setCursor($cursor);
 
-        return !empty($this->orderId) || !empty($this->orderLinkId) ? $collection->first() : $collection;
+        return ! empty($this->orderId) || ! empty($this->orderLinkId) ? $collection->first() : $collection;
     }
 }

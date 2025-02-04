@@ -83,4 +83,3 @@ class TradeHistoryOrder extends DTO
         ];
     }
 }
-

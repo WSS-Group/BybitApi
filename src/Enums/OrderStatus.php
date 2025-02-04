@@ -21,7 +21,7 @@ enum OrderStatus: string
 
     public function isClosed(): bool
     {
-        return !$this->isOpen();
+        return ! $this->isOpen();
     }
 
     public function label(): string

@@ -54,12 +54,3 @@ enum RejectReason: string
     case EC_CANCELBYMATCHVALUEZERO = 'EC_CancelByMatchValueZero';
     case EC_REACHMARKETPRICELIMIT = 'EC_ReachMarketPriceLimit';
 }
-
-
-
-
-
-
-
-
-

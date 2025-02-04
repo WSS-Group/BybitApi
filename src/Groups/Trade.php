@@ -16,7 +16,6 @@ use BybitApi\Enums\OrderFilter;
 use BybitApi\Enums\OrderSide;
 use BybitApi\Enums\OrderStatus;
 use BybitApi\Enums\Product;
-use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\AmendIntent;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\CancelIntent;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\PlaceIntent;
@@ -125,8 +124,7 @@ class Trade extends Group
         ?Carbon $endTime = null,
         ?int $limit = null,
         ?string $cursor = null,
-    ): null|CursorCollection|Order
-    {
+    ): null|CursorCollection|Order {
         return $this->connector()
             ->send(new GetOrderHistory(
                 $category, $symbol, $baseCoin, $settleCoin, $orderId, $orderLinkId,
@@ -151,8 +149,7 @@ class Trade extends Group
         ?ExecType $execType = null,
         ?int $limit = null,
         ?string $cursor = null,
-    ): null|CursorCollection
-    {
+    ): ?CursorCollection {
         return $this->connector()
             ->send(new GetTradeHistory(
                 $category, $symbol, $orderId, $orderLinkId, $baseCoin,

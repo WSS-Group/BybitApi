@@ -70,7 +70,6 @@ use BybitApi\Enums\TriggerDirection;
  */
 class Order extends DTO
 {
-
     public function casts(): array
     {
         return [

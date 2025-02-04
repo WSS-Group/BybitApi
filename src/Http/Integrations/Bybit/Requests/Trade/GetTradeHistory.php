@@ -62,7 +62,7 @@ class GetTradeHistory extends Request
         ]);
     }
 
-    public function createDtoFromResponse(Response $response): null|CursorCollection
+    public function createDtoFromResponse(Response $response): ?CursorCollection
     {
         $cursor = $response->json('result.nextPageCursor');
         $cursor = ! empty($cursor) ? $cursor : null;
