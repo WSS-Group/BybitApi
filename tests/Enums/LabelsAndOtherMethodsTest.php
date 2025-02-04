@@ -3,6 +3,7 @@
 use BybitApi\Enums\Category;
 use BybitApi\Enums\Interval;
 use BybitApi\Enums\OrderSide;
+use BybitApi\Enums\OrderStatus;
 use BybitApi\Enums\OrderType;
 use BybitApi\Enums\Product;
 use BybitApi\Enums\StopOrderType;
@@ -22,6 +23,15 @@ it('test order side labels', function (OrderSide $side) {
     expect($side->label())
         ->toBeString();
 })->with(OrderSide::cases());
+
+it('test order status labels and other methods', function (OrderStatus $side) {
+    expect($side->label())
+        ->toBeString()
+        ->and($side->isOpen())
+        ->toBe(in_array($side, [OrderStatus::NEW, OrderStatus::UNTRIGGERED, OrderStatus::PARTIALLY_FILLED]))
+        ->and($side->isClosed())
+        ->toBe(! in_array($side, [OrderStatus::NEW, OrderStatus::UNTRIGGERED, OrderStatus::PARTIALLY_FILLED]));
+})->with(OrderStatus::cases());
 
 it('test order type labels', function (OrderType $type) {
     expect($type->label())
