@@ -3,7 +3,6 @@
 namespace BybitApi\Http\Integrations\Bybit\Requests\Trade;
 
 use BybitApi\DTOs\Trade\AmendedOrder;
-use BybitApi\DTOs\Trade\PlacedOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\AmendIntent;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;

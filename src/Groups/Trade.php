@@ -10,8 +10,8 @@ use BybitApi\Enums\Category;
 use BybitApi\Enums\OrderFilter;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\AmendIntent;
-use BybitApi\Http\Integrations\Bybit\Entities\Orders\PlaceIntent;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\CancelIntent;
+use BybitApi\Http\Integrations\Bybit\Entities\Orders\PlaceIntent;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\AmendOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchAmendOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchCancelOrder;
@@ -107,6 +107,7 @@ class Trade extends Group
 
     /**
      * @return Collection<int, \BybitApi\DTOs\Trade\BatchAmendedOrder>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/order/batch-amend
      */
     public function batchAmendOrder(Category $category, AmendIntent ...$orders): Collection

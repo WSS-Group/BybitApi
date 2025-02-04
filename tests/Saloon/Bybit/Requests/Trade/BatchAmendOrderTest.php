@@ -17,7 +17,7 @@ it('can amend two orders', function () {
     $result = Trade::actingAs($this->defaultActor())->batchAmendOrder(
         Category::SPOT,
         new AmendIntent('BTCUSDT', '0001', price: '91000'),
-        new AmendIntent('BTCUSDT',  '0002', price: '91000'),
+        new AmendIntent('BTCUSDT', '0002', price: '91000'),
     );
     expect($result)
         ->toBeInstanceOf(Collection::class)

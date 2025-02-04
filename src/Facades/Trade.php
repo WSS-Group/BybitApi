@@ -12,8 +12,8 @@ use BybitApi\DTOs\Trade\PlacedOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\OrderFilter;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\AmendIntent;
-use BybitApi\Http\Integrations\Bybit\Entities\Orders\PlaceIntent;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\CancelIntent;
+use BybitApi\Http\Integrations\Bybit\Entities\Orders\PlaceIntent;
 use Illuminate\Support\Collection;
 
 /**
