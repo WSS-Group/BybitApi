@@ -13,6 +13,7 @@ use BybitApi\DTOs\Trade\PlacedOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\OrderFilter;
 use BybitApi\Enums\OrderSide;
+use BybitApi\Enums\Product;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\AmendIntent;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\CancelIntent;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\PlaceIntent;
@@ -26,6 +27,7 @@ use Illuminate\Support\Collection;
  * @method Collection<int, BatchPlacedOrder> batchPlaceOrder(Category $category, PlaceIntent ...$orders)
  * @method Collection<int, BatchAmendedOrder> batchAmendOrder(Category $category, AmendIntent ...$orders)
  * @method Collection<int, BatchCanceledOrder> batchCancelOrder(Category $category, CancelIntent ...$orders)
+ * @method bool setDisconnectCancelAll(int $timeWindow, ?Product $product = null)
  * @method BorrowQuota getBorrowQuota(Category $category, BackedEnum|string $symbol, OrderSide $side)
  *
  * @see \BybitApi\Groups\Trade

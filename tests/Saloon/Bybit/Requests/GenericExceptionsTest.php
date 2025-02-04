@@ -23,5 +23,10 @@ it('return an exception on something went wrong', function () {
     ]);
 
     expect(fn () => Market::actingAs($this->defaultActor())->getBybitServerTime())
-        ->toThrow(UnexpectedResultOnResponseException::class, 'Unexpected resulto on response. Code: 1010; Message: Something went wrong');
+        ->toThrow(function (UnexpectedResultOnResponseException $e) {
+            expect($e->getMessage())
+                ->toBe('Unexpected result on response. Code: 1010; Message: Something went wrong')
+                ->and($e->context())
+                ->toBeArray();
+        });
 });

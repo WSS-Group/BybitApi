@@ -39,6 +39,11 @@ return [
         'limit' => 'limit',
         'unknown' => 'unknown',
     ],
+    'products' => [
+        'options' => 'options',
+        'derivatives' => 'derivatives',
+        'spot' => 'spot',
+    ],
     'stop_order_types' => [
         'take_profit' => 'take profit',
         'stop_loss' => 'stop loss',
