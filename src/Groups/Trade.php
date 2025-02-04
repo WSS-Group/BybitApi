@@ -4,10 +4,13 @@ namespace BybitApi\Groups;
 
 use BackedEnum;
 use BybitApi\DTOs\Trade\AmendedOrder;
+use BybitApi\DTOs\Trade\BorrowQuota;
 use BybitApi\DTOs\Trade\CanceledOrder;
 use BybitApi\DTOs\Trade\PlacedOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\OrderFilter;
+use BybitApi\Enums\OrderSide;
+use BybitApi\Enums\Product;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\AmendIntent;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\CancelIntent;
@@ -18,7 +21,9 @@ use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchCancelOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchPlaceOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\CancelAllOrders;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\CancelOrder;
+use BybitApi\Http\Integrations\Bybit\Requests\Trade\GetBorrowQuota;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\PlaceOrder;
+use BybitApi\Http\Integrations\Bybit\Requests\Trade\SetDisconnectCancelAll;
 use Illuminate\Support\Collection;
 
 class Trade extends Group
@@ -128,18 +133,16 @@ class Trade extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/order/spot-borrow-quota
      */
-    public function getBorrowQuota(): mixed
+    public function getBorrowQuota(Category $category, BackedEnum|string $symbol, OrderSide $side): BorrowQuota
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->connector()->send(new GetBorrowQuota($category, $symbol, $side))->dto();
     }
 
     /**
      * @link https://bybit-exchange.github.io/docs/v5/order/dcp
      */
-    public function setDisconnectCancelAll(): mixed
+    public function setDisconnectCancelAll(int $timeWindow, ?Product $product = null): bool
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->connector()->send(new SetDisconnectCancelAll($timeWindow, $product))->dto();
     }
 }

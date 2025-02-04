@@ -13,7 +13,7 @@ abstract class DTO implements Arrayable
 {
     use Macroable;
 
-    protected array $dtoPayload;
+    protected readonly array $dtoPayload;
 
     public static function init(array $payload): static
     {
