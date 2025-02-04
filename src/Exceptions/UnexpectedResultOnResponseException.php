@@ -19,10 +19,11 @@ class UnexpectedResultOnResponseException extends Error
      * Get the exception's context information.
      *
      * @return array<string, mixed>
+     *
      * @throws \JsonException
      */
     public function context(): array
     {
-        return rescue(fn() => $this->response->json(), [], false);
+        return rescue(fn () => $this->response->json(), [], false);
     }
 }

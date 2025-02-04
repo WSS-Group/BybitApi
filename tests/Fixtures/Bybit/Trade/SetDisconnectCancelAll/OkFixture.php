@@ -7,7 +7,6 @@ use Saloon\Http\PendingRequest;
 
 class OkFixture extends Fixture
 {
-
     public function body(PendingRequest $pendingRequest): array|string|int
     {
         return [

@@ -15,7 +15,6 @@ use Saloon\Http\Response;
  */
 class GetBorrowQuota extends Request
 {
-
     /**
      * The HTTP method of the request
      */
