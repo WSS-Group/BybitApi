@@ -34,6 +34,17 @@ return [
         'buy' => 'buy',
         'sell' => 'sell',
     ],
+    'order_statuses' => [
+        'new' => 'new',
+        'partially_filled' => 'partially filled',
+        'untriggered' => 'untriggered',
+        'rejected' => 'rejected',
+        'partially_filled_canceled' => 'partially filled and canceled',
+        'filled' => 'filled',
+        'cancelled' => 'cancelled',
+        'triggered' => 'triggered',
+        'deactivated' => 'deactivated',
+    ],
     'order_types' => [
         'market' => 'market',
         'limit' => 'limit',

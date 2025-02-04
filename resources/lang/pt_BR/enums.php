@@ -34,6 +34,17 @@ return [
         'buy' => 'compra',
         'sell' => 'venda',
     ],
+    'order_statuses' => [
+        'new' => 'nova',
+        'partially_filled' => 'parcialmente preenchida',
+        'untriggered' => 'não disparada',
+        'rejected' => 'rejeitada',
+        'partially_filled_canceled' => 'parcialmente preenchida e cancelada',
+        'filled' => 'preenchida',
+        'cancelled' => 'cancelada',
+        'triggered' => 'disparada',
+        'deactivated' => 'desativada',
+    ],
     'order_types' => [
         'market' => 'mercado',
         'limit' => 'limite',

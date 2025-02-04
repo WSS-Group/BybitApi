@@ -3,13 +3,18 @@
 namespace BybitApi\Groups;
 
 use BackedEnum;
+use BybitApi\CursorCollection;
 use BybitApi\DTOs\Trade\AmendedOrder;
 use BybitApi\DTOs\Trade\BorrowQuota;
 use BybitApi\DTOs\Trade\CanceledOrder;
+use BybitApi\DTOs\Trade\Order;
 use BybitApi\DTOs\Trade\PlacedOrder;
+use BybitApi\DTOs\Trade\TradeHistoryOrder;
 use BybitApi\Enums\Category;
+use BybitApi\Enums\ExecType;
 use BybitApi\Enums\OrderFilter;
 use BybitApi\Enums\OrderSide;
+use BybitApi\Enums\OrderStatus;
 use BybitApi\Enums\Product;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\AmendIntent;
@@ -22,8 +27,12 @@ use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchPlaceOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\CancelAllOrders;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\CancelOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\GetBorrowQuota;
+use BybitApi\Http\Integrations\Bybit\Requests\Trade\GetOrderHistory;
+use BybitApi\Http\Integrations\Bybit\Requests\Trade\GetRealTimeOrders;
+use BybitApi\Http\Integrations\Bybit\Requests\Trade\GetTradeHistory;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\PlaceOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\SetDisconnectCancelAll;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 class Trade extends Group
@@ -58,12 +67,28 @@ class Trade extends Group
     }
 
     /**
+     * @return null|CursorCollection<int, \BybitApi\DTOs\Trade\Order>|Order
+     *
      * @link https://bybit-exchange.github.io/docs/v5/order/open-order
      */
-    public function getRealTimeOrders(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getRealTimeOrders(
+        Category $category,
+        null|BackedEnum|string $symbol = null,
+        null|BackedEnum|string $baseCoin = null,
+        null|BackedEnum|string $settleCoin = null,
+        ?string $orderId = null,
+        ?string $orderLinkId = null,
+        ?bool $openOnly = null,
+        ?OrderFilter $orderFilter = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): null|CursorCollection|Order {
+        return $this->connector()
+            ->send(new GetRealTimeOrders(
+                $category, $symbol, $baseCoin, $settleCoin, $orderId, $orderLinkId,
+                $openOnly, $orderFilter, $limit, $cursor
+            ))
+            ->dto();
     }
 
     /**
@@ -83,21 +108,57 @@ class Trade extends Group
     }
 
     /**
+     * @return null|CursorCollection<int, \BybitApi\DTOs\Trade\Order>|Order
+     *
      * @link https://bybit-exchange.github.io/docs/v5/order/order-list
      */
-    public function getOrderHistory(): mixed
+    public function getOrderHistory(
+        Category $category,
+        null|BackedEnum|string $symbol = null,
+        null|BackedEnum|string $baseCoin = null,
+        null|BackedEnum|string $settleCoin = null,
+        ?string $orderId = null,
+        ?string $orderLinkId = null,
+        ?OrderFilter $orderFilter = null,
+        ?OrderStatus $orderStatus = null,
+        ?Carbon $startTime = null,
+        ?Carbon $endTime = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): null|CursorCollection|Order
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->connector()
+            ->send(new GetOrderHistory(
+                $category, $symbol, $baseCoin, $settleCoin, $orderId, $orderLinkId,
+                $orderFilter, $orderStatus, $startTime, $endTime, $limit, $cursor
+            ))
+            ->dto();
     }
 
     /**
+     * @return null|CursorCollection<int, TradeHistoryOrder>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/order/execution
      */
-    public function getTradeHistory(): mixed
+    public function getTradeHistory(
+        Category $category,
+        null|BackedEnum|string $symbol = null,
+        ?string $orderId = null,
+        ?string $orderLinkId = null,
+        null|BackedEnum|string $baseCoin = null,
+        ?Carbon $startTime = null,
+        ?Carbon $endTime = null,
+        ?ExecType $execType = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): null|CursorCollection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->connector()
+            ->send(new GetTradeHistory(
+                $category, $symbol, $orderId, $orderLinkId, $baseCoin,
+                $startTime, $endTime, $execType, $limit, $cursor
+            ))
+            ->dto();
     }
 
     /**
