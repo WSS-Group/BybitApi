@@ -16,7 +16,7 @@ readonly class AmendIntent implements Arrayable
         public ?string $orderLinkId = null,
         public ?string $orderIv = null,
         public ?string $triggerPrice = null,
-        public string $qty,
+        public ?string $qty = null,
         public ?string $price = null,
         public ?TakeProfitStopLossMode $tpslMode = null,
         public ?string $takeProfit = null,
