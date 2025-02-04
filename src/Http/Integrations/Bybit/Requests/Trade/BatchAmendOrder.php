@@ -2,9 +2,10 @@
 
 namespace BybitApi\Http\Integrations\Bybit\Requests\Trade;
 
+use BybitApi\DTOs\Trade\BatchAmendedOrder;
 use BybitApi\DTOs\Trade\BatchPlacedOrder;
 use BybitApi\Enums\Category;
-use BybitApi\Http\Integrations\Bybit\Entities\Orders\PlaceIntent;
+use BybitApi\Http\Integrations\Bybit\Entities\Orders\AmendIntent;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use Illuminate\Support\Collection;
 use Saloon\Contracts\Body\HasBody;
@@ -13,9 +14,9 @@ use Saloon\Http\Response;
 use Saloon\Traits\Body\HasJsonBody;
 
 /**
- * @link https://bybit-exchange.github.io/docs/v5/order/batch-place
+ * @link https://bybit-exchange.github.io/docs/v5/order/batch-amend
  */
-class BatchPlaceOrder extends Request implements HasBody
+class BatchAmendOrder extends Request implements HasBody
 {
     use HasJsonBody;
 
@@ -28,7 +29,7 @@ class BatchPlaceOrder extends Request implements HasBody
 
     public function __construct(
         public Category $category,
-        PlaceIntent ...$orders,
+        AmendIntent ...$orders,
     ) {
         $this->orders = collect($orders);
     }
@@ -38,7 +39,7 @@ class BatchPlaceOrder extends Request implements HasBody
      */
     public function resolveEndpoint(): string
     {
-        return '/v5/order/create-batch';
+        return '/v5/order/amend-batch';
     }
 
     protected function defaultBody(): array
@@ -52,6 +53,6 @@ class BatchPlaceOrder extends Request implements HasBody
     public function createDtoFromResponse(Response $response): Collection
     {
         return collect($response->json('retExtInfo.list'))
-            ->map(fn (array $i, int $k) => BatchPlacedOrder::init($i + $response->json("result.list.$k", [])));
+            ->map(fn(array $i, int $k) => BatchAmendedOrder::init($i + $response->json("result.list.$k", [])));
     }
 }

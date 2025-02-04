@@ -2,24 +2,22 @@
 
 namespace BybitApi\Http\Integrations\Bybit\Requests\Trade;
 
-use BybitApi\DTOs\Trade\BatchPlacedOrder;
+use BybitApi\DTOs\Trade\AmendedOrder;
+use BybitApi\DTOs\Trade\PlacedOrder;
 use BybitApi\Enums\Category;
-use BybitApi\Http\Integrations\Bybit\Entities\Orders\PlaceIntent;
+use BybitApi\Http\Integrations\Bybit\Entities\Orders\AmendIntent;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
-use Illuminate\Support\Collection;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Response;
 use Saloon\Traits\Body\HasJsonBody;
 
 /**
- * @link https://bybit-exchange.github.io/docs/v5/order/batch-place
+ * @link https://bybit-exchange.github.io/docs/v5/order/amend-order
  */
-class BatchPlaceOrder extends Request implements HasBody
+class AmendOrder extends Request implements HasBody
 {
     use HasJsonBody;
-
-    public Collection $orders;
 
     /**
      * The HTTP method of the request
@@ -28,9 +26,9 @@ class BatchPlaceOrder extends Request implements HasBody
 
     public function __construct(
         public Category $category,
-        PlaceIntent ...$orders,
+        public AmendIntent $order,
     ) {
-        $this->orders = collect($orders);
+        //
     }
 
     /**
@@ -38,20 +36,19 @@ class BatchPlaceOrder extends Request implements HasBody
      */
     public function resolveEndpoint(): string
     {
-        return '/v5/order/create-batch';
+        return '/v5/order/amend';
     }
 
     protected function defaultBody(): array
     {
         return [
             'category' => $this->category,
-            'request' => $this->orders->toArray(),
+            ...$this->order->toArray(),
         ];
     }
 
-    public function createDtoFromResponse(Response $response): Collection
+    public function createDtoFromResponse(Response $response): AmendedOrder
     {
-        return collect($response->json('retExtInfo.list'))
-            ->map(fn (array $i, int $k) => BatchPlacedOrder::init($i + $response->json("result.list.$k", [])));
+        return AmendedOrder::init($response->json('result'));
     }
 }

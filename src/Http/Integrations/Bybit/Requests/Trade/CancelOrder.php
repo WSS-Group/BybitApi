@@ -6,7 +6,7 @@ use BybitApi\Conditional;
 use BybitApi\DTOs\Trade\CanceledOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\OrderFilter;
-use BybitApi\Http\Integrations\Bybit\Entities\OrderToCancel;
+use BybitApi\Http\Integrations\Bybit\Entities\Orders\CancelIntent;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
@@ -27,7 +27,7 @@ class CancelOrder extends Request implements HasBody
 
     public function __construct(
         public Category $category,
-        public OrderToCancel $orderToCancel,
+        public CancelIntent $orderToCancel,
         public ?OrderFilter $orderFilter = null,
     ) {
         //

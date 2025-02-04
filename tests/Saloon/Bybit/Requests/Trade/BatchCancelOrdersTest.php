@@ -3,7 +3,7 @@
 use BybitApi\DTOs\Trade\BatchCanceledOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Facades\Trade;
-use BybitApi\Http\Integrations\Bybit\Entities\OrderToCancel;
+use BybitApi\Http\Integrations\Bybit\Entities\Orders\CancelIntent;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchCancelOrder;
 use BybitApi\Tests\Fixtures\Bybit\Trade\BatchCancelOrders\OkFixture;
 use Illuminate\Support\Collection;
@@ -11,8 +11,8 @@ use Saloon\Http\Faking\MockClient;
 
 it('can cancel all orders', function () {
     $orders = [
-        new OrderToCancel('BTCUSDT', '1875834046228202240', '1875834046228202241'),
-        new OrderToCancel('BTCUSDT', '1875834035172016896', '1875834035172016897'),
+        new CancelIntent('BTCUSDT', '1875834046228202240', '1875834046228202241'),
+        new CancelIntent('BTCUSDT', '1875834035172016896', '1875834035172016897'),
     ];
     MockClient::global([
         BatchCancelOrder::class => OkFixture::call(collect($orders)),

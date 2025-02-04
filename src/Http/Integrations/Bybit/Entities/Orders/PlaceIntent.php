@@ -1,6 +1,6 @@
 <?php
 
-namespace BybitApi\Http\Integrations\Bybit\Entities;
+namespace BybitApi\Http\Integrations\Bybit\Entities\Orders;
 
 use BackedEnum;
 use BybitApi\Conditional;
@@ -16,7 +16,7 @@ use BybitApi\Enums\TriggerBy;
 use BybitApi\Enums\TriggerDirection;
 use Illuminate\Contracts\Support\Arrayable;
 
-readonly class Order implements Arrayable
+readonly class PlaceIntent implements Arrayable
 {
     public function __construct(
         public BackedEnum|string $symbol,
