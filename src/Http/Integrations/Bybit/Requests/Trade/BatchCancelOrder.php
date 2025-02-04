@@ -5,7 +5,7 @@ namespace BybitApi\Http\Integrations\Bybit\Requests\Trade;
 use BybitApi\Conditional;
 use BybitApi\DTOs\Trade\BatchCanceledOrder;
 use BybitApi\Enums\Category;
-use BybitApi\Http\Integrations\Bybit\Entities\OrderToCancel;
+use BybitApi\Http\Integrations\Bybit\Entities\Orders\CancelIntent;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use Illuminate\Support\Collection;
 use Saloon\Contracts\Body\HasBody;
@@ -29,7 +29,7 @@ class BatchCancelOrder extends Request implements HasBody
 
     public function __construct(
         public Category $category,
-        OrderToCancel ...$orders,
+        CancelIntent ...$orders,
     ) {
         $this->orders = collect($orders);
     }

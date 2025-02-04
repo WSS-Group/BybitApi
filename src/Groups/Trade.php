@@ -3,13 +3,17 @@
 namespace BybitApi\Groups;
 
 use BackedEnum;
+use BybitApi\DTOs\Trade\AmendedOrder;
 use BybitApi\DTOs\Trade\CanceledOrder;
 use BybitApi\DTOs\Trade\PlacedOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\OrderFilter;
 use BybitApi\Exceptions\NotImplementedYetException;
-use BybitApi\Http\Integrations\Bybit\Entities\Order;
-use BybitApi\Http\Integrations\Bybit\Entities\OrderToCancel;
+use BybitApi\Http\Integrations\Bybit\Entities\Orders\AmendIntent;
+use BybitApi\Http\Integrations\Bybit\Entities\Orders\CancelIntent;
+use BybitApi\Http\Integrations\Bybit\Entities\Orders\PlaceIntent;
+use BybitApi\Http\Integrations\Bybit\Requests\Trade\AmendOrder;
+use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchAmendOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchCancelOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchPlaceOrder;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\CancelAllOrders;
@@ -22,7 +26,7 @@ class Trade extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/order/create-order
      */
-    public function placeOrder(Category $category, Order $order): PlacedOrder
+    public function placeOrder(Category $category, PlaceIntent $order): PlacedOrder
     {
         return $this->connector()->send(new PlaceOrder($category, $order))->dto();
     }
@@ -30,10 +34,9 @@ class Trade extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/order/amend-order
      */
-    public function amendOrder(): mixed
+    public function amendOrder(Category $category, AmendIntent $order): AmendedOrder
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->connector()->send(new AmendOrder($category, $order))->dto();
     }
 
     /**
@@ -41,7 +44,7 @@ class Trade extends Group
      */
     public function cancelOrder(
         Category $category,
-        OrderToCancel $orderToCancel,
+        CancelIntent $orderToCancel,
         ?OrderFilter $orderFilter = null
     ): CanceledOrder {
         return $this->connector()
@@ -97,18 +100,19 @@ class Trade extends Group
      *
      * @link https://bybit-exchange.github.io/docs/v5/order/batch-place
      */
-    public function batchPlaceOrder(Category $category, Order ...$orders): Collection
+    public function batchPlaceOrder(Category $category, PlaceIntent ...$orders): Collection
     {
         return $this->connector()->send(new BatchPlaceOrder($category, ...$orders))->dto();
     }
 
     /**
+     * @return Collection<int, \BybitApi\DTOs\Trade\BatchAmendedOrder>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/order/batch-amend
      */
-    public function batchAmendOrder(): mixed
+    public function batchAmendOrder(Category $category, AmendIntent ...$orders): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->connector()->send(new BatchAmendOrder($category, ...$orders))->dto();
     }
 
     /**
@@ -116,7 +120,7 @@ class Trade extends Group
      *
      * @link https://bybit-exchange.github.io/docs/v5/order/batch-cancel
      */
-    public function batchCancelOrder(Category $category, OrderToCancel ...$orders): Collection
+    public function batchCancelOrder(Category $category, CancelIntent ...$orders): Collection
     {
         return $this->connector()->send(new BatchCancelOrder($category, ...$orders))->dto();
     }

@@ -4,7 +4,7 @@ namespace BybitApi\Http\Integrations\Bybit\Requests\Trade;
 
 use BybitApi\DTOs\Trade\PlacedOrder;
 use BybitApi\Enums\Category;
-use BybitApi\Http\Integrations\Bybit\Entities\Order;
+use BybitApi\Http\Integrations\Bybit\Entities\Orders\PlaceIntent;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
@@ -25,7 +25,7 @@ class PlaceOrder extends Request implements HasBody
 
     public function __construct(
         public Category $category,
-        public Order $order,
+        public PlaceIntent $order,
     ) {
         //
     }

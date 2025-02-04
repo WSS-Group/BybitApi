@@ -1,12 +1,12 @@
 <?php
 
-namespace BybitApi\Http\Integrations\Bybit\Entities;
+namespace BybitApi\Http\Integrations\Bybit\Entities\Orders;
 
 use BackedEnum;
 use BybitApi\Conditional;
 use Illuminate\Contracts\Support\Arrayable;
 
-readonly class OrderToCancel implements Arrayable
+readonly class CancelIntent implements Arrayable
 {
     public function __construct(
         public BackedEnum|string $symbol,

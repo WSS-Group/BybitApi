@@ -2,7 +2,7 @@
 
 namespace BybitApi\Tests\Fixtures\Bybit\Trade\BatchCancelOrders;
 
-use BybitApi\Http\Integrations\Bybit\Entities\OrderToCancel;
+use BybitApi\Http\Integrations\Bybit\Entities\Orders\CancelIntent;
 use BybitApi\Tests\Fixtures\Fixture;
 use Illuminate\Support\Collection;
 use Saloon\Http\PendingRequest;
@@ -12,7 +12,7 @@ class OkFixture extends Fixture
     public function __construct(
         public Collection $orders
     ) {
-        $this->orders->ensure(OrderToCancel::class);
+        $this->orders->ensure(CancelIntent::class);
     }
 
     public function body(PendingRequest $pendingRequest): array|string|int
@@ -23,7 +23,7 @@ class OkFixture extends Fixture
         $request = $pendingRequest->getRequest();
         $list = [];
         $extInfo = [];
-        /** @var OrderToCancel $order */
+        /** @var CancelIntent $order */
         foreach ($this->orders as $order) {
             $list[] = [
                 'category' => $request->category->value,

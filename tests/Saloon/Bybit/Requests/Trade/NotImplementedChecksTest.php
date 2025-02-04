@@ -7,16 +7,12 @@ it('check if all not implemented tests throw exception', function () {
     $trade = Trade::actingAs($this->defaultActor());
     $commonError = "Endpoint not implemented yet on 'BybitApi\Groups\Trade::";
 
-    expect(fn () => $trade->amendOrder())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}amendOrder'.")
-        ->and(fn () => $trade->getRealTimeOrders())
+    expect(fn () => $trade->getRealTimeOrders())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getRealTimeOrders'.")
         ->and(fn () => $trade->getOrderHistory())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getOrderHistory'.")
         ->and(fn () => $trade->getTradeHistory())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getTradeHistory'.")
-        ->and(fn () => $trade->batchAmendOrder())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}batchAmendOrder'.")
         ->and(fn () => $trade->getBorrowQuota())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getBorrowQuota'.")
         ->and(fn () => $trade->setDisconnectCancelAll())
