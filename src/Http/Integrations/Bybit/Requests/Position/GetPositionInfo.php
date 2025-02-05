@@ -18,7 +18,6 @@ use Saloon\Http\Response;
 #[AtLeastOneParameterRequired('symbol', 'baseCoin', 'settleCoin')]
 class GetPositionInfo extends Request
 {
-
     /**
      * The HTTP method of the request
      */

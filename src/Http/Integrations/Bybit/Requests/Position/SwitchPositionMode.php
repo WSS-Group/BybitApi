@@ -5,7 +5,6 @@ namespace BybitApi\Http\Integrations\Bybit\Requests\Position;
 use BackedEnum;
 use BybitApi\Attributes\AtLeastOneParameterRequired;
 use BybitApi\Conditional;
-use BybitApi\DTOs\Trade\AmendedOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\PositionMode;
 use BybitApi\Http\Integrations\Bybit\Requests\BypassCodes;
@@ -19,7 +18,7 @@ use Saloon\Traits\Body\HasJsonBody;
  * @link https://bybit-exchange.github.io/docs/v5/position/position-mode
  */
 #[AtLeastOneParameterRequired('symbol', 'coin')]
-class SwitchPositionMode extends Request implements HasBody, BypassCodes
+class SwitchPositionMode extends Request implements BypassCodes, HasBody
 {
     use HasJsonBody;
 

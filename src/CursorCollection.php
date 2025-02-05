@@ -13,8 +13,9 @@ class CursorCollection extends Collection
      */
     public static function init(array $data, string $dto, ?string $cursor): self
     {
-        $collection = new self($data)->map(fn(array $item) => $dto::init($item));
+        $collection = new self($data)->map(fn (array $item) => $dto::init($item));
         $collection->cursor = ! empty($cursor) ? $cursor : null;
+
         return $collection;
     }
 

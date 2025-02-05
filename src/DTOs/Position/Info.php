@@ -9,9 +9,9 @@ use BybitApi\DTOs\Casts\IntCast;
 use BybitApi\DTOs\Casts\StringCast;
 use BybitApi\DTOs\Casts\TimestampCast;
 use BybitApi\DTOs\DTO;
+use BybitApi\Enums\PositionIndex;
 use BybitApi\Enums\PositionStatus;
 use BybitApi\Enums\Side;
-use BybitApi\Enums\PositionIndex;
 use BybitApi\Enums\TradeMode;
 
 /**
@@ -54,8 +54,6 @@ use BybitApi\Enums\TradeMode;
  */
 class Info extends DTO
 {
-
-
     public function casts(): array
     {
         return [

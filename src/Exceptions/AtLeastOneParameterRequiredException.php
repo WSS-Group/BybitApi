@@ -11,7 +11,7 @@ class AtLeastOneParameterRequiredException extends Error
     public function __construct(Request $request, array $attributes)
     {
         $attributes = collect($attributes)
-            ->map(fn(string $value) => "'$value'")
+            ->map(fn (string $value) => "'$value'")
             ->toArray();
         $message = sprintf(
             "On request '%s' %s must be filled.",

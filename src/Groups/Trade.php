@@ -13,9 +13,9 @@ use BybitApi\DTOs\Trade\TradeHistoryOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\ExecType;
 use BybitApi\Enums\OrderFilter;
-use BybitApi\Enums\Side;
 use BybitApi\Enums\OrderStatus;
 use BybitApi\Enums\Product;
+use BybitApi\Enums\Side;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\AmendIntent;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\CancelIntent;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\PlaceIntent;
@@ -81,9 +81,9 @@ class Trade extends Group
         ?string $cursor = null,
     ): null|CursorCollection|Order {
         return $this->send(new GetRealTimeOrders(
-                $category, $symbol, $baseCoin, $settleCoin, $orderId, $orderLinkId,
-                $openOnly, $orderFilter, $limit, $cursor
-            ))
+            $category, $symbol, $baseCoin, $settleCoin, $orderId, $orderLinkId,
+            $openOnly, $orderFilter, $limit, $cursor
+        ))
             ->dto();
     }
 
@@ -122,9 +122,9 @@ class Trade extends Group
         ?string $cursor = null,
     ): null|CursorCollection|Order {
         return $this->send(new GetOrderHistory(
-                $category, $symbol, $baseCoin, $settleCoin, $orderId, $orderLinkId,
-                $orderFilter, $orderStatus, $startTime, $endTime, $limit, $cursor
-            ))
+            $category, $symbol, $baseCoin, $settleCoin, $orderId, $orderLinkId,
+            $orderFilter, $orderStatus, $startTime, $endTime, $limit, $cursor
+        ))
             ->dto();
     }
 
@@ -146,9 +146,9 @@ class Trade extends Group
         ?string $cursor = null,
     ): ?CursorCollection {
         return $this->send(new GetTradeHistory(
-                $category, $symbol, $orderId, $orderLinkId, $baseCoin,
-                $startTime, $endTime, $execType, $limit, $cursor
-            ))
+            $category, $symbol, $orderId, $orderLinkId, $baseCoin,
+            $startTime, $endTime, $execType, $limit, $cursor
+        ))
             ->dto();
     }
 

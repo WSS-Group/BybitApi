@@ -8,9 +8,7 @@ use BybitApi\Http\Integrations\Bybit\Middleware\CheckResultMiddleware;
 use BybitApi\Http\Integrations\Bybit\Plugins\HasFormattedParams;
 use Saloon\Contracts\Authenticator;
 use Saloon\Http\Connector;
-use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Request;
-use Saloon\Http\Response;
 use Saloon\Traits\Plugins\AcceptsJson;
 
 class BybitConnector extends Connector

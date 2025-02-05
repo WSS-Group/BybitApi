@@ -2,10 +2,10 @@
 
 use BybitApi\Enums\Category;
 use BybitApi\Enums\Interval;
-use BybitApi\Enums\Side;
 use BybitApi\Enums\OrderStatus;
 use BybitApi\Enums\OrderType;
 use BybitApi\Enums\Product;
+use BybitApi\Enums\Side;
 use BybitApi\Enums\StopOrderType;
 use BybitApi\Enums\SymbolStatus;
 

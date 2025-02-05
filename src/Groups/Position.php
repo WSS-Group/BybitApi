@@ -2,7 +2,6 @@
 
 namespace BybitApi\Groups;
 
-
 use BackedEnum;
 use BybitApi\CursorCollection;
 use BybitApi\Enums\Category;
@@ -25,8 +24,7 @@ class Position extends Group
         null|BackedEnum|string $settleCoin = null,
         ?int $limit = null,
         ?string $cursor = null,
-    ): CursorCollection
-    {
+    ): CursorCollection {
         return $this->send(new GetPositionInfo($category, $symbol, $baseCoin, $settleCoin, $limit, $cursor))->dto();
     }
 
@@ -56,8 +54,7 @@ class Position extends Group
         PositionMode $mode,
         null|BackedEnum|string $symbol = null,
         null|BackedEnum|string $coin = null,
-    ): true
-    {
+    ): true {
         return $this->send(new SwitchPositionMode($category, $mode, $symbol, $coin))->dto();
     }
 
@@ -143,5 +140,4 @@ class Position extends Group
         // TODO
         throw new NotImplementedYetException;
     }
-
 }
