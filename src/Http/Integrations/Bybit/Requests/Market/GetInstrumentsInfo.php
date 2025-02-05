@@ -11,7 +11,6 @@ use BybitApi\DTOs\Market\InstrumentInfo\Spot;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\SymbolStatus;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
-use Illuminate\Support\Arr;
 use Saloon\Enums\Method;
 use Saloon\Http\Response;
 
