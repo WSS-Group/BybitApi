@@ -69,12 +69,11 @@ class GetOrderHistory extends Request
 
     public function createDtoFromResponse(Response $response): null|CursorCollection|Order
     {
-        $cursor = $response->json('result.nextPageCursor');
-        $cursor = ! empty($cursor) ? $cursor : null;
-
-        $collection = new CursorCollection($response->json('result.list'))
-            ->map(fn (array $data) => Order::init($data))
-            ->setCursor($cursor);
+        $collection = CursorCollection::init(
+            $response->json('result.list'),
+            Order::class,
+            $response->json('result.nextPageCursor')
+        );
 
         return ! empty($this->orderId) || ! empty($this->orderLinkId) ? $collection->first() : $collection;
     }

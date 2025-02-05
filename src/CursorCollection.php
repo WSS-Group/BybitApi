@@ -8,11 +8,14 @@ class CursorCollection extends Collection
 {
     private readonly ?string $cursor;
 
-    public function setCursor(?string $cursor): static
+    /**
+     * @param  class-string<\BybitApi\DTOs\DTO>  $dto
+     */
+    public static function init(array $data, string $dto, ?string $cursor): self
     {
-        $this->cursor = $cursor;
-
-        return $this;
+        $collection = new self($data)->map(fn(array $item) => $dto::init($item));
+        $collection->cursor = ! empty($cursor) ? $cursor : null;
+        return $collection;
     }
 
     public function getCursor(): ?string

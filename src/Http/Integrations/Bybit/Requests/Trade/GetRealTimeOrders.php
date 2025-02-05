@@ -63,13 +63,12 @@ class GetRealTimeOrders extends Request
 
     public function createDtoFromResponse(Response $response): null|CursorCollection|Order
     {
-        $cursor = $response->json('result.nextPageCursor');
-        $cursor = ! empty($cursor) ? $cursor : null;
+        $collection = CursorCollection::init(
+            $response->json('result.list'),
+            Order::class,
+            $response->json('result.nextPageCursor'),
+        );
 
-        $collection = new CursorCollection($response->json('result.list'))
-            ->map(fn (array $data) => Order::init($data))
-            ->setCursor($cursor);
-
-        return ! empty($this->orderId) || ! empty($this->orderLinkId) ? $collection->first() : $collection;
+        return !empty($this->orderId) || !empty($this->orderLinkId) ? $collection->first() : $collection;
     }
 }

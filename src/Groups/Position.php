@@ -3,17 +3,29 @@
 namespace BybitApi\Groups;
 
 
+use BackedEnum;
+use BybitApi\CursorCollection;
+use BybitApi\Enums\Category;
 use BybitApi\Exceptions\NotImplementedYetException;
+use BybitApi\Http\Integrations\Bybit\Requests\Position\GetPositionInfo;
 
 class Position extends Group
 {
     /**
+     * @return \BybitApi\CursorCollection<int, \BybitApi\DTOs\Position\Info>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/position
      */
-    public function getPositionInfo(): mixed
+    public function getPositionInfo(
+        Category $category,
+        null|BackedEnum|string $symbol = null,
+        null|BackedEnum|string $baseCoin = null,
+        null|BackedEnum|string $settleCoin = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): CursorCollection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetPositionInfo($category, $symbol, $baseCoin, $settleCoin, $limit, $cursor))->dto();
     }
 
     /**

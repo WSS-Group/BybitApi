@@ -34,11 +34,10 @@ it('can cache', function () {
     MockClient::global([
         GetBybitServerTime::class => OkFixture::call(),
     ]);
-    $connector = MarketFacade::actingAs($this->defaultActor())->withCache(10)->connector();
-    $result = $connector->send(new GetBybitServerTime);
+    $result = MarketFacade::actingAs($this->defaultActor())->withCache(10)->send(new GetBybitServerTime);
     expect($result->isCached())
         ->toBeFalse();
-    $result = $connector->send(new GetBybitServerTime);
+    $result = MarketFacade::actingAs($this->defaultActor())->withCache(10)->send(new GetBybitServerTime);
     expect($result->isCached())
         ->toBeTrue();
 });

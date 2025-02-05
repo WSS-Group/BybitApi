@@ -1,23 +1,24 @@
 <?php
 
-namespace BybitApi\Http\Integrations\Bybit\Requests\Trade;
+namespace BybitApi\Http\Integrations\Bybit\Requests\Position;
 
 use BackedEnum;
+use BybitApi\Attributes\AtLeastOneParameterRequired;
 use BybitApi\Conditional;
 use BybitApi\CursorCollection;
-use BybitApi\DTOs\Trade\TradeHistoryOrder;
+use BybitApi\DTOs\Position\Info;
 use BybitApi\Enums\Category;
-use BybitApi\Enums\ExecType;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
-use Illuminate\Support\Carbon;
 use Saloon\Enums\Method;
 use Saloon\Http\Response;
 
 /**
- * @link https://bybit-exchange.github.io/docs/v5/order/execution
+ * @link https://bybit-exchange.github.io/docs/v5/position
  */
-class GetTradeHistory extends Request
+#[AtLeastOneParameterRequired('symbol', 'baseCoin', 'settleCoin')]
+class GetPositionInfo extends Request
 {
+
     /**
      * The HTTP method of the request
      */
@@ -26,12 +27,8 @@ class GetTradeHistory extends Request
     public function __construct(
         public Category $category,
         public null|BackedEnum|string $symbol = null,
-        public ?string $orderId = null,
-        public ?string $orderLinkId = null,
         public null|BackedEnum|string $baseCoin = null,
-        public ?Carbon $startTime = null,
-        public ?Carbon $endTime = null,
-        public ?ExecType $execType = null,
+        public null|BackedEnum|string $settleCoin = null,
         public ?int $limit = null,
         public ?string $cursor = null,
     ) {
@@ -43,7 +40,7 @@ class GetTradeHistory extends Request
      */
     public function resolveEndpoint(): string
     {
-        return '/v5/execution/list';
+        return '/v5/position/list';
     }
 
     protected function defaultQuery(): array
@@ -51,23 +48,19 @@ class GetTradeHistory extends Request
         return Conditional::array([
             'category' => $this->category,
             'symbol' => Conditional::ifNotEmpty($this->symbol),
-            'orderId' => Conditional::ifNotEmpty($this->orderId),
-            'orderLinkId' => Conditional::ifNotEmpty($this->orderLinkId),
             'baseCoin' => Conditional::ifNotEmpty($this->baseCoin),
-            'startTime' => Conditional::ifNotNull($this->startTime),
-            'endTime' => Conditional::ifNotNull($this->endTime),
-            'execType' => Conditional::ifNotNull($this->execType),
+            'settleCoin' => Conditional::ifNotEmpty($this->settleCoin),
             'limit' => Conditional::ifNotNull($this->limit),
             'cursor' => Conditional::ifNotNull($this->cursor),
         ]);
     }
 
-    public function createDtoFromResponse(Response $response): ?CursorCollection
+    public function createDtoFromResponse(Response $response): CursorCollection
     {
         return CursorCollection::init(
             $response->json('result.list'),
-            TradeHistoryOrder::class,
-            $response->json('result.nextPageCursor'),
+            Info::class,
+            $response->json('result.nextPageCursor')
         );
     }
 }
