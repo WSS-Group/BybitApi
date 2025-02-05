@@ -5,10 +5,15 @@ namespace BybitApi\Groups;
 use BackedEnum;
 use BybitApi\CursorCollection;
 use BybitApi\Enums\Category;
+use BybitApi\Enums\OrderType;
+use BybitApi\Enums\PositionIndex;
 use BybitApi\Enums\PositionMode;
+use BybitApi\Enums\TakeProfitStopLossMode;
+use BybitApi\Enums\TriggerBy;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\GetPositionInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SetLeverage;
+use BybitApi\Http\Integrations\Bybit\Requests\Position\SetTradingStop;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SwitchPositionMode;
 
 class Position extends Group
@@ -65,10 +70,29 @@ class Position extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/position/trading-stop
      */
-    public function setTradingStop(): mixed
+    public function setTradingStop(
+        Category $category,
+        BackedEnum|string $symbol,
+        TakeProfitStopLossMode $tpslMode,
+        PositionIndex $positionIdx,
+        ?string $takeProfit = null,
+        ?string $stopLoss = null,
+        ?string $trailingStop = null,
+        ?TriggerBy $tpTriggerBy = null,
+        ?TriggerBy $slTriggerBy = null,
+        ?string $activePrice = null,
+        ?string $tpSize = null,
+        ?string $slSize = null,
+        ?string $tpLimitPrice = null,
+        ?string $slLimitPrice = null,
+        ?OrderType $tpOrderType = null,
+        ?OrderType $slOrderType = null,
+    ): true
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new SetTradingStop(
+            $category, $symbol, $tpslMode, $positionIdx, $takeProfit, $stopLoss, $trailingStop, $tpTriggerBy,
+            $slTriggerBy, $activePrice, $tpSize, $slSize, $tpLimitPrice, $slLimitPrice, $tpOrderType, $slOrderType
+        ))->dto();
     }
 
     /**
