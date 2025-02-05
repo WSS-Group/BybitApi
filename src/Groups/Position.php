@@ -8,6 +8,7 @@ use BybitApi\Enums\Category;
 use BybitApi\Enums\PositionMode;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\GetPositionInfo;
+use BybitApi\Http\Integrations\Bybit\Requests\Position\SetLeverage;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SwitchPositionMode;
 
 class Position extends Group
@@ -31,10 +32,13 @@ class Position extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/position/leverage
      */
-    public function setLeverage(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function setLeverage(
+        Category $category,
+        BackedEnum|string $symbol,
+        float $buyLeverage,
+        float $sellLeverage
+    ): true {
+        return $this->send(new SetLeverage($category, $symbol, $buyLeverage, $sellLeverage))->dto();
     }
 
     /**
