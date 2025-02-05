@@ -31,9 +31,7 @@ class Market extends Group
      */
     public function getBybitServerTime(): Carbon
     {
-        return $this->connector()
-            ->send(new GetBybitServerTime)
-            ->dto();
+        return $this->send(new GetBybitServerTime)->dto();
     }
 
     /**
@@ -49,9 +47,7 @@ class Market extends Group
         ?Carbon $end = null,
         ?int $limit = null,
     ): Collection {
-        return $this->connector()
-            ->send(new GetKline($symbol, $interval, $category, $start, $end, $limit))
-            ->dto();
+        return $this->send(new GetKline($symbol, $interval, $category, $start, $end, $limit))->dto();
     }
 
     /**
@@ -67,9 +63,7 @@ class Market extends Group
         ?Carbon $end = null,
         ?int $limit = null,
     ): Collection {
-        return $this->connector()
-            ->send(new GetMarkPriceKline($symbol, $interval, $category, $start, $end, $limit))
-            ->dto();
+        return $this->send(new GetMarkPriceKline($symbol, $interval, $category, $start, $end, $limit))->dto();
     }
 
     /**
@@ -85,9 +79,7 @@ class Market extends Group
         ?Carbon $end = null,
         ?int $limit = null,
     ): Collection {
-        return $this->connector()
-            ->send(new GetIndexPriceKline($symbol, $interval, $category, $start, $end, $limit))
-            ->dto();
+        return $this->send(new GetIndexPriceKline($symbol, $interval, $category, $start, $end, $limit))->dto();
     }
 
     /**
@@ -103,9 +95,7 @@ class Market extends Group
         ?Carbon $end = null,
         ?int $limit = null,
     ): Collection {
-        return $this->connector()
-            ->send(new GetPremiumIndexPriceKline($symbol, $interval, $category, $start, $end, $limit))
-            ->dto();
+        return $this->send(new GetPremiumIndexPriceKline($symbol, $interval, $category, $start, $end, $limit))->dto();
     }
 
     /**
@@ -121,9 +111,7 @@ class Market extends Group
         ?int $limit = null,
         ?string $cursor = null,
     ): CursorCollection|LinearInverse|Option|Spot {
-        return $this->connector()
-            ->send(new GetInstrumentsInfo($category, $symbol, $status, $baseCoin, $limit, $cursor))
-            ->dto();
+        return $this->send(new GetInstrumentsInfo($category, $symbol, $status, $baseCoin, $limit, $cursor))->dto();
     }
 
     /**
@@ -146,9 +134,7 @@ class Market extends Group
         BackedEnum|string|null $baseCoin = null,
         ?string $expDate = null,
     ): Collection|TickerLinearInverse|TickerOption|TickerSpot {
-        return $this->connector()
-            ->send(new GetTickers($category, $symbol, $baseCoin, $expDate))
-            ->dto();
+        return $this->send(new GetTickers($category, $symbol, $baseCoin, $expDate))->dto();
     }
 
     /**

@@ -1,8 +1,8 @@
 <?php
 
 use BybitApi\Enums\Category;
-use BybitApi\Enums\OrderSide;
 use BybitApi\Enums\OrderType;
+use BybitApi\Enums\Side;
 use BybitApi\Facades\Trade;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\PlaceIntent;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchPlaceOrder;
@@ -19,8 +19,8 @@ it('can place two orders, one success and one invalid', function () {
 
     $result = Trade::actingAs($this->defaultActor())->batchPlaceOrder(
         Category::SPOT,
-        new PlaceIntent('BTCUSDT', OrderSide::BUY, OrderType::MARKET, '0.001'),
-        new PlaceIntent('BTCUSDT', OrderSide::BUY, OrderType::MARKET, '20'),
+        new PlaceIntent('BTCUSDT', Side::BUY, OrderType::MARKET, '0.001'),
+        new PlaceIntent('BTCUSDT', Side::BUY, OrderType::MARKET, '20'),
     );
     expect($result)
         ->toBeInstanceOf(Collection::class)

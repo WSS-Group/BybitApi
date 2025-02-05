@@ -3,10 +3,14 @@
 namespace BybitApi\Groups;
 
 use BybitApi\ActorSupplier;
+use BybitApi\Attributes\AtLeastOneParameterRequired;
 use BybitApi\BybitActor;
 use BybitApi\Exceptions\ActorNotProvidedException;
 use BybitApi\Exceptions\InvalidCacheTTLException;
 use BybitApi\Http\Integrations\Bybit\BybitConnector;
+use BybitApi\Http\Integrations\Bybit\Requests\Request;
+use ReflectionClass;
+use Saloon\Http\Response;
 
 abstract class Group
 {
@@ -18,7 +22,7 @@ abstract class Group
     {
         throw_if(empty($this->bybitParams), ActorNotProvidedException::class);
 
-        return new BybitConnector($this->bybitParams, $this->cacheTTL());
+        return new BybitConnector($this->bybitParams);
     }
 
     public function actingAs(BybitActor|ActorSupplier $entity): self
@@ -28,12 +32,20 @@ abstract class Group
         return $this;
     }
 
-    protected function cacheTTL(): int|false
+    /**
+     * @throws \Saloon\Exceptions\Request\FatalRequestException
+     * @throws \Saloon\Exceptions\Request\RequestException
+     */
+    public function send(Request $request): Response
     {
-        $ttl = $this->cacheTTL;
-        $this->withoutCache();
+        $reflection = new ReflectionClass($request);
+        foreach ($reflection->getAttributes() as $attribute) {
+            if ($attribute->getName() === AtLeastOneParameterRequired::class) {
+                $attribute->newInstance()($request);
+            }
+        }
 
-        return $ttl;
+        return $this->connector()->send($request->setCache($this->cacheTTL));
     }
 
     public function withCache(int $ttl): self

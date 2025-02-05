@@ -30,10 +30,6 @@ return [
         '1_week' => '1 semana',
         '1_month' => '1 mês',
     ],
-    'order_sides' => [
-        'buy' => 'compra',
-        'sell' => 'venda',
-    ],
     'order_statuses' => [
         'new' => 'nova',
         'partially_filled' => 'parcialmente preenchida',
@@ -54,6 +50,10 @@ return [
         'options' => 'opções',
         'derivatives' => 'derivativos',
         'spot' => 'spot',
+    ],
+    'sides' => [
+        'buy' => 'compra',
+        'sell' => 'venda',
     ],
     'stop_order_types' => [
         'take_profit' => 'obter lucro',

@@ -5,7 +5,7 @@ namespace BybitApi\Http\Integrations\Bybit\Requests\Trade;
 use BackedEnum;
 use BybitApi\DTOs\Trade\BorrowQuota;
 use BybitApi\Enums\Category;
-use BybitApi\Enums\OrderSide;
+use BybitApi\Enums\Side;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use Saloon\Enums\Method;
 use Saloon\Http\Response;
@@ -23,7 +23,7 @@ class GetBorrowQuota extends Request
     public function __construct(
         public Category $category,
         public BackedEnum|string $symbol,
-        public OrderSide $side,
+        public Side $side,
     ) {
         //
     }

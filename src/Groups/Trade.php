@@ -13,9 +13,9 @@ use BybitApi\DTOs\Trade\TradeHistoryOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\ExecType;
 use BybitApi\Enums\OrderFilter;
-use BybitApi\Enums\OrderSide;
 use BybitApi\Enums\OrderStatus;
 use BybitApi\Enums\Product;
+use BybitApi\Enums\Side;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\AmendIntent;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\CancelIntent;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\PlaceIntent;
@@ -41,7 +41,7 @@ class Trade extends Group
      */
     public function placeOrder(Category $category, PlaceIntent $order): PlacedOrder
     {
-        return $this->connector()->send(new PlaceOrder($category, $order))->dto();
+        return $this->send(new PlaceOrder($category, $order))->dto();
     }
 
     /**
@@ -49,7 +49,7 @@ class Trade extends Group
      */
     public function amendOrder(Category $category, AmendIntent $order): AmendedOrder
     {
-        return $this->connector()->send(new AmendOrder($category, $order))->dto();
+        return $this->send(new AmendOrder($category, $order))->dto();
     }
 
     /**
@@ -60,9 +60,7 @@ class Trade extends Group
         CancelIntent $orderToCancel,
         ?OrderFilter $orderFilter = null
     ): CanceledOrder {
-        return $this->connector()
-            ->send(new CancelOrder($category, $orderToCancel, $orderFilter))
-            ->dto();
+        return $this->send(new CancelOrder($category, $orderToCancel, $orderFilter))->dto();
     }
 
     /**
@@ -82,11 +80,10 @@ class Trade extends Group
         ?int $limit = null,
         ?string $cursor = null,
     ): null|CursorCollection|Order {
-        return $this->connector()
-            ->send(new GetRealTimeOrders(
-                $category, $symbol, $baseCoin, $settleCoin, $orderId, $orderLinkId,
-                $openOnly, $orderFilter, $limit, $cursor
-            ))
+        return $this->send(new GetRealTimeOrders(
+            $category, $symbol, $baseCoin, $settleCoin, $orderId, $orderLinkId,
+            $openOnly, $orderFilter, $limit, $cursor
+        ))
             ->dto();
     }
 
@@ -101,8 +98,7 @@ class Trade extends Group
         ?OrderFilter $orderFilter = null,
         ?StopOrderType $stopOrderType = null,
     ): Collection {
-        return $this->connector()
-            ->send(new CancelAllOrders($category, $symbol, $baseCoin, $settleCoin, $orderFilter, $stopOrderType))
+        return $this->send(new CancelAllOrders($category, $symbol, $baseCoin, $settleCoin, $orderFilter, $stopOrderType))
             ->dto();
     }
 
@@ -125,11 +121,10 @@ class Trade extends Group
         ?int $limit = null,
         ?string $cursor = null,
     ): null|CursorCollection|Order {
-        return $this->connector()
-            ->send(new GetOrderHistory(
-                $category, $symbol, $baseCoin, $settleCoin, $orderId, $orderLinkId,
-                $orderFilter, $orderStatus, $startTime, $endTime, $limit, $cursor
-            ))
+        return $this->send(new GetOrderHistory(
+            $category, $symbol, $baseCoin, $settleCoin, $orderId, $orderLinkId,
+            $orderFilter, $orderStatus, $startTime, $endTime, $limit, $cursor
+        ))
             ->dto();
     }
 
@@ -150,11 +145,10 @@ class Trade extends Group
         ?int $limit = null,
         ?string $cursor = null,
     ): ?CursorCollection {
-        return $this->connector()
-            ->send(new GetTradeHistory(
-                $category, $symbol, $orderId, $orderLinkId, $baseCoin,
-                $startTime, $endTime, $execType, $limit, $cursor
-            ))
+        return $this->send(new GetTradeHistory(
+            $category, $symbol, $orderId, $orderLinkId, $baseCoin,
+            $startTime, $endTime, $execType, $limit, $cursor
+        ))
             ->dto();
     }
 
@@ -165,7 +159,7 @@ class Trade extends Group
      */
     public function batchPlaceOrder(Category $category, PlaceIntent ...$orders): Collection
     {
-        return $this->connector()->send(new BatchPlaceOrder($category, ...$orders))->dto();
+        return $this->send(new BatchPlaceOrder($category, ...$orders))->dto();
     }
 
     /**
@@ -175,7 +169,7 @@ class Trade extends Group
      */
     public function batchAmendOrder(Category $category, AmendIntent ...$orders): Collection
     {
-        return $this->connector()->send(new BatchAmendOrder($category, ...$orders))->dto();
+        return $this->send(new BatchAmendOrder($category, ...$orders))->dto();
     }
 
     /**
@@ -185,15 +179,15 @@ class Trade extends Group
      */
     public function batchCancelOrder(Category $category, CancelIntent ...$orders): Collection
     {
-        return $this->connector()->send(new BatchCancelOrder($category, ...$orders))->dto();
+        return $this->send(new BatchCancelOrder($category, ...$orders))->dto();
     }
 
     /**
      * @link https://bybit-exchange.github.io/docs/v5/order/spot-borrow-quota
      */
-    public function getBorrowQuota(Category $category, BackedEnum|string $symbol, OrderSide $side): BorrowQuota
+    public function getBorrowQuota(Category $category, BackedEnum|string $symbol, Side $side): BorrowQuota
     {
-        return $this->connector()->send(new GetBorrowQuota($category, $symbol, $side))->dto();
+        return $this->send(new GetBorrowQuota($category, $symbol, $side))->dto();
     }
 
     /**
@@ -201,6 +195,6 @@ class Trade extends Group
      */
     public function setDisconnectCancelAll(int $timeWindow, ?Product $product = null): bool
     {
-        return $this->connector()->send(new SetDisconnectCancelAll($timeWindow, $product))->dto();
+        return $this->send(new SetDisconnectCancelAll($timeWindow, $product))->dto();
     }
 }

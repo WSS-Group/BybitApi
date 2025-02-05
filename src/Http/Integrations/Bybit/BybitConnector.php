@@ -8,9 +8,7 @@ use BybitApi\Http\Integrations\Bybit\Middleware\CheckResultMiddleware;
 use BybitApi\Http\Integrations\Bybit\Plugins\HasFormattedParams;
 use Saloon\Contracts\Authenticator;
 use Saloon\Http\Connector;
-use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Request;
-use Saloon\Http\Response;
 use Saloon\Traits\Plugins\AcceptsJson;
 
 class BybitConnector extends Connector
@@ -20,7 +18,6 @@ class BybitConnector extends Connector
 
     public function __construct(
         public BybitActor $bybitParams,
-        private false|int $cacheTTL = false,
     ) {
         $this->middleware()->onResponse(new CheckResultMiddleware);
     }
@@ -52,10 +49,5 @@ class BybitConnector extends Connector
     protected function defaultAuth(): Authenticator
     {
         return new SignedAuthenticator;
-    }
-
-    public function send(Request $request, ?MockClient $mockClient = null, ?callable $handleRetry = null): Response
-    {
-        return parent::send($request->setCache($this->cacheTTL), $mockClient, $handleRetry);
     }
 }

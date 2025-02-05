@@ -2,7 +2,7 @@
 
 use BybitApi\DTOs\Trade\BorrowQuota;
 use BybitApi\Enums\Category;
-use BybitApi\Enums\OrderSide;
+use BybitApi\Enums\Side;
 use BybitApi\Facades\Trade;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\GetBorrowQuota;
 use BybitApi\Tests\Fixtures\Bybit\Trade\GetBorrowQuota\OkFixture;
@@ -15,7 +15,7 @@ it('can get borrow quota', function () {
     $result = Trade::actingAs($this->defaultActor())->getBorrowQuota(
         Category::SPOT,
         'BTCUSDT',
-        OrderSide::BUY
+        Side::BUY
     );
     expect($result)
         ->toBeInstanceOf(BorrowQuota::class)

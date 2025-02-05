@@ -64,11 +64,10 @@ class GetTradeHistory extends Request
 
     public function createDtoFromResponse(Response $response): ?CursorCollection
     {
-        $cursor = $response->json('result.nextPageCursor');
-        $cursor = ! empty($cursor) ? $cursor : null;
-
-        return new CursorCollection($response->json('result.list'))
-            ->map(fn (array $data) => TradeHistoryOrder::init($data))
-            ->setCursor($cursor);
+        return CursorCollection::init(
+            $response->json('result.list'),
+            TradeHistoryOrder::class,
+            $response->json('result.nextPageCursor'),
+        );
     }
 }

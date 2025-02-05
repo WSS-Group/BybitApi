@@ -2,10 +2,10 @@
 
 use BybitApi\Enums\Category;
 use BybitApi\Enums\Interval;
-use BybitApi\Enums\OrderSide;
 use BybitApi\Enums\OrderStatus;
 use BybitApi\Enums\OrderType;
 use BybitApi\Enums\Product;
+use BybitApi\Enums\Side;
 use BybitApi\Enums\StopOrderType;
 use BybitApi\Enums\SymbolStatus;
 
@@ -19,10 +19,10 @@ it('test category labels', function (Category $category) {
         ->toBeString();
 })->with(Category::cases());
 
-it('test order side labels', function (OrderSide $side) {
+it('test order side labels', function (Side $side) {
     expect($side->label())
         ->toBeString();
-})->with(OrderSide::cases());
+})->with(Side::cases());
 
 it('test order status labels and other methods', function (OrderStatus $side) {
     expect($side->label())

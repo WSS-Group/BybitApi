@@ -10,12 +10,12 @@ use BybitApi\DTOs\Casts\TimestampCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\CancelType;
 use BybitApi\Enums\CreateType;
-use BybitApi\Enums\OrderSide;
 use BybitApi\Enums\OrderStatus;
 use BybitApi\Enums\OrderType;
 use BybitApi\Enums\PositionIndex;
 use BybitApi\Enums\RejectReason;
 use BybitApi\Enums\SelfMatchPreventionType;
+use BybitApi\Enums\Side;
 use BybitApi\Enums\StopOrderType;
 use BybitApi\Enums\TakeProfitStopLossMode;
 use BybitApi\Enums\TimeInForce;
@@ -29,7 +29,7 @@ use BybitApi\Enums\TriggerDirection;
  * @property null|string $symbol
  * @property null|float $price
  * @property null|float $qty
- * @property null|OrderSide $side
+ * @property null|Side $side
  * @property null|bool $isLeverage
  * @property null|PositionIndex $positionIdx
  * @property null|OrderStatus $orderStatus
@@ -79,7 +79,7 @@ class Order extends DTO
             'symbol' => StringCast::class,
             'price' => FloatCast::class,
             'qty' => FloatCast::class,
-            'side' => new EnumCast(OrderSide::class),
+            'side' => new EnumCast(Side::class),
             'isLeverage' => BooleanCast::class,
             'positionIdx' => new EnumCast(PositionIndex::class),
             'orderStatus' => new EnumCast(OrderStatus::class),

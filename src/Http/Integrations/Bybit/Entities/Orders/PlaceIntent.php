@@ -6,10 +6,10 @@ use BackedEnum;
 use BybitApi\Conditional;
 use BybitApi\Enums\MarketUnit;
 use BybitApi\Enums\OrderFilter;
-use BybitApi\Enums\OrderSide;
 use BybitApi\Enums\OrderType;
 use BybitApi\Enums\PositionIndex;
 use BybitApi\Enums\SelfMatchPreventionType;
+use BybitApi\Enums\Side;
 use BybitApi\Enums\TakeProfitStopLossMode;
 use BybitApi\Enums\TimeInForce;
 use BybitApi\Enums\TriggerBy;
@@ -20,7 +20,7 @@ readonly class PlaceIntent implements Arrayable
 {
     public function __construct(
         public BackedEnum|string $symbol,
-        public OrderSide $side,
+        public Side $side,
         public OrderType $orderType,
         public string $qty,
         public ?bool $isLeverage = null,

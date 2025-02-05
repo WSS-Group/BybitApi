@@ -1,21 +1,22 @@
 <?php
 
-namespace BybitApi\Http\Integrations\Bybit\Requests\Trade;
+namespace BybitApi\Http\Integrations\Bybit\Requests\Position;
 
 use BackedEnum;
+use BybitApi\Attributes\AtLeastOneParameterRequired;
 use BybitApi\Conditional;
 use BybitApi\CursorCollection;
-use BybitApi\DTOs\Trade\Order;
+use BybitApi\DTOs\Position\Info;
 use BybitApi\Enums\Category;
-use BybitApi\Enums\OrderFilter;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use Saloon\Enums\Method;
 use Saloon\Http\Response;
 
 /**
- * @link https://bybit-exchange.github.io/docs/v5/order/open-order
+ * @link https://bybit-exchange.github.io/docs/v5/position
  */
-class GetRealTimeOrders extends Request
+#[AtLeastOneParameterRequired('symbol', 'baseCoin', 'settleCoin')]
+class GetPositionInfo extends Request
 {
     /**
      * The HTTP method of the request
@@ -27,10 +28,6 @@ class GetRealTimeOrders extends Request
         public null|BackedEnum|string $symbol = null,
         public null|BackedEnum|string $baseCoin = null,
         public null|BackedEnum|string $settleCoin = null,
-        public ?string $orderId = null,
-        public ?string $orderLinkId = null,
-        public ?bool $openOnly = null,
-        public ?OrderFilter $orderFilter = null,
         public ?int $limit = null,
         public ?string $cursor = null,
     ) {
@@ -42,7 +39,7 @@ class GetRealTimeOrders extends Request
      */
     public function resolveEndpoint(): string
     {
-        return '/v5/order/realtime';
+        return '/v5/position/list';
     }
 
     protected function defaultQuery(): array
@@ -52,23 +49,17 @@ class GetRealTimeOrders extends Request
             'symbol' => Conditional::ifNotEmpty($this->symbol),
             'baseCoin' => Conditional::ifNotEmpty($this->baseCoin),
             'settleCoin' => Conditional::ifNotEmpty($this->settleCoin),
-            'orderId' => Conditional::ifNotEmpty($this->orderId),
-            'orderLinkId' => Conditional::ifNotEmpty($this->orderLinkId),
-            'openOnly' => Conditional::ifNotNull($this->openOnly),
-            'orderFilter' => Conditional::ifNotNull($this->orderFilter),
             'limit' => Conditional::ifNotNull($this->limit),
             'cursor' => Conditional::ifNotNull($this->cursor),
         ]);
     }
 
-    public function createDtoFromResponse(Response $response): null|CursorCollection|Order
+    public function createDtoFromResponse(Response $response): CursorCollection
     {
-        $collection = CursorCollection::init(
+        return CursorCollection::init(
             $response->json('result.list'),
-            Order::class,
-            $response->json('result.nextPageCursor'),
+            Info::class,
+            $response->json('result.nextPageCursor')
         );
-
-        return ! empty($this->orderId) || ! empty($this->orderLinkId) ? $collection->first() : $collection;
     }
 }

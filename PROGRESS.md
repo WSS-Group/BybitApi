@@ -155,8 +155,8 @@
         <tr>
             <td rowspan="13">Position</td>
             <td><a href="https://bybit-exchange.github.io/docs/v5/position">Get Position Info</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/position/leverage">Set Leverage</a></td>
@@ -170,8 +170,8 @@
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/position/position-mode">Switch Position Mode</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/position/trading-stop">Set Trading Stop</a></td>

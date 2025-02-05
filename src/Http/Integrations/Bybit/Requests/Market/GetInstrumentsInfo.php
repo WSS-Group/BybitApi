@@ -11,7 +11,6 @@ use BybitApi\DTOs\Market\InstrumentInfo\Spot;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\SymbolStatus;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
-use Illuminate\Support\Arr;
 use Saloon\Enums\Method;
 use Saloon\Http\Response;
 
@@ -58,19 +57,15 @@ class GetInstrumentsInfo extends Request
 
     public function createDtoFromResponse(Response $response): CursorCollection|LinearInverse|Option|Spot
     {
-        $category = Category::from($response->json('result.category'));
-        $cursor = $response->json('result.nextPageCursor');
-        $cursor = ! empty($cursor) ? $cursor : null;
-
-        $collection = new CursorCollection($response->json('result.list'))
-            ->mapWithKeys(fn (array $data) => [
-                Arr::get($data, 'symbol') => match ($category) {
-                    Category::INVERSE, Category::LINEAR => LinearInverse::init($data),
-                    Category::OPTION => Option::init($data),
-                    Category::SPOT => Spot::init($data),
-                },
-            ])
-            ->setCursor($cursor);
+        $collection = CursorCollection::init(
+            $response->json('result.list'),
+            match (Category::from($response->json('result.category'))) {
+                Category::INVERSE, Category::LINEAR => LinearInverse::class,
+                Category::OPTION => Option::class,
+                Category::SPOT => Spot::class,
+            },
+            $response->json('result.nextPageCursor')
+        );
 
         return ! empty($this->symbol) ? $collection->first() : $collection;
     }
