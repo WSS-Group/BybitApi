@@ -69,6 +69,6 @@ class GetRealTimeOrders extends Request
             $response->json('result.nextPageCursor'),
         );
 
-        return !empty($this->orderId) || !empty($this->orderLinkId) ? $collection->first() : $collection;
+        return ! empty($this->orderId) || ! empty($this->orderLinkId) ? $collection->first() : $collection;
     }
 }

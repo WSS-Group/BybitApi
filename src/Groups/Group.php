@@ -44,6 +44,7 @@ abstract class Group
                 $attribute->newInstance()($request);
             }
         }
+
         return $this->connector()->send($request->setCache($this->cacheTTL));
     }
 

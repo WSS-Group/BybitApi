@@ -29,6 +29,6 @@ it('throw exception on missing parameters', function () {
         GetPositionInfo::class => OkFixture::call(),
     ]);
 
-    expect(fn() => Position::actingAs($this->defaultActor())->getPositionInfo(Category::LINEAR))
+    expect(fn () => Position::actingAs($this->defaultActor())->getPositionInfo(Category::LINEAR))
         ->toThrow("On request 'BybitApi\Http\Integrations\Bybit\Requests\Position\GetPositionInfo' 'symbol', 'baseCoin' or 'settleCoin' must be filled.");
 });

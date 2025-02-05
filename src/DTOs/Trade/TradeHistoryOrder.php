@@ -11,8 +11,8 @@ use BybitApi\DTOs\Casts\TimestampCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\CreateType;
 use BybitApi\Enums\ExecType;
-use BybitApi\Enums\Side;
 use BybitApi\Enums\OrderType;
+use BybitApi\Enums\Side;
 use BybitApi\Enums\StopOrderType;
 
 /**

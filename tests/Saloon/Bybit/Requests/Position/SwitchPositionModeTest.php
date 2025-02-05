@@ -37,7 +37,7 @@ it('throw exception on missing parameters', function () {
         SwitchPositionMode::class => OkFixture::call(),
     ]);
 
-    expect(fn() => Position::actingAs($this->defaultActor())
+    expect(fn () => Position::actingAs($this->defaultActor())
         ->switchPositionMode(Category::LINEAR, PositionMode::BOTH_SIDES))
         ->toThrow("On request 'BybitApi\Http\Integrations\Bybit\Requests\Position\SwitchPositionMode' 'symbol' or 'coin' must be filled.");
 });

@@ -9,10 +9,9 @@ use BybitApi\Http\Integrations\Bybit\Requests\Request;
 #[Attribute]
 class AtLeastOneParameterRequired
 {
-
     public array $parameters;
 
-    public function __construct(string ... $parameters)
+    public function __construct(string ...$parameters)
     {
         $this->parameters = $parameters;
     }

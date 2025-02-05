@@ -1,8 +1,8 @@
 <?php
 
 use BybitApi\Enums\Category;
-use BybitApi\Enums\Side;
 use BybitApi\Enums\OrderType;
+use BybitApi\Enums\Side;
 use BybitApi\Facades\Trade;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\PlaceIntent;
 use BybitApi\Http\Integrations\Bybit\Requests\Trade\BatchPlaceOrder;

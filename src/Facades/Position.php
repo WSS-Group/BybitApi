@@ -9,7 +9,6 @@ use BybitApi\Enums\Category;
 use BybitApi\Enums\PositionMode;
 
 /**
- *
  * @method CursorCollection<int, Info> getPositionInfo(Category $category, null|BackedEnum|string $symbol = null, null|BackedEnum|string $baseCoin = null, null|BackedEnum|string $settleCoin = null, ?int $limit = null, ?string $cursor = null)
  * @method true switchPositionMode(Category $category, PositionMode $mode, null|BackedEnum|string $symbol = null, null|BackedEnum|string $coin = null)
  *
