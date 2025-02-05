@@ -2,9 +2,13 @@
 
 namespace BybitApi\Http\Integrations\Bybit\Requests\Position;
 
+use BackedEnum;
+use BybitApi\Attributes\AtLeastOneParameterRequired;
+use BybitApi\Conditional;
 use BybitApi\DTOs\Trade\AmendedOrder;
 use BybitApi\Enums\Category;
-use BybitApi\Http\Integrations\Bybit\Entities\Orders\AmendIntent;
+use BybitApi\Enums\PositionMode;
+use BybitApi\Http\Integrations\Bybit\Requests\BypassCodes;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
@@ -14,7 +18,8 @@ use Saloon\Traits\Body\HasJsonBody;
 /**
  * @link https://bybit-exchange.github.io/docs/v5/position/position-mode
  */
-class SwitchPositionMode extends Request implements HasBody
+#[AtLeastOneParameterRequired('symbol', 'coin')]
+class SwitchPositionMode extends Request implements HasBody, BypassCodes
 {
     use HasJsonBody;
 
@@ -25,7 +30,9 @@ class SwitchPositionMode extends Request implements HasBody
 
     public function __construct(
         public Category $category,
-        public AmendIntent $order,
+        public PositionMode $mode,
+        public null|BackedEnum|string $symbol = null,
+        public null|BackedEnum|string $coin = null,
     ) {
         //
     }
@@ -40,14 +47,21 @@ class SwitchPositionMode extends Request implements HasBody
 
     protected function defaultBody(): array
     {
-        return [
+        return Conditional::array([
             'category' => $this->category,
-            ...$this->order->toArray(),
-        ];
+            'mode' => $this->mode,
+            'symbol' => Conditional::ifNotEmpty($this->symbol),
+            'coin' => Conditional::ifNotEmpty($this->coin),
+        ]);
     }
 
-    public function createDtoFromResponse(Response $response): AmendedOrder
+    public function createDtoFromResponse(Response $response): true
     {
-        return AmendedOrder::init($response->json('result'));
+        return in_array($response->json('retCode'), [0, 110025]);
+    }
+
+    public function bypassCodes(): array
+    {
+        return [110025];
     }
 }

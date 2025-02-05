@@ -11,8 +11,6 @@ it('check if all not implemented tests throw exception', function () {
         ->toThrow(NotImplementedYetException::class, "{$commonError}setLeverage'.")
         ->and(fn () => $market->switchCrossIsolatedMargin())
         ->toThrow(NotImplementedYetException::class, "{$commonError}switchCrossIsolatedMargin'.")
-        ->and(fn () => $market->switchPositionMode())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}switchPositionMode'.")
         ->and(fn () => $market->setTradingStop())
         ->toThrow(NotImplementedYetException::class, "{$commonError}setTradingStop'.")
         ->and(fn () => $market->setAutoAddMargin())

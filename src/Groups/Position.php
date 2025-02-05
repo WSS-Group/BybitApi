@@ -6,8 +6,10 @@ namespace BybitApi\Groups;
 use BackedEnum;
 use BybitApi\CursorCollection;
 use BybitApi\Enums\Category;
+use BybitApi\Enums\PositionMode;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\GetPositionInfo;
+use BybitApi\Http\Integrations\Bybit\Requests\Position\SwitchPositionMode;
 
 class Position extends Group
 {
@@ -49,10 +51,14 @@ class Position extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/position/position-mode
      */
-    public function switchPositionMode(): mixed
+    public function switchPositionMode(
+        Category $category,
+        PositionMode $mode,
+        null|BackedEnum|string $symbol = null,
+        null|BackedEnum|string $coin = null,
+    ): true
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new SwitchPositionMode($category, $mode, $symbol, $coin))->dto();
     }
 
     /**
