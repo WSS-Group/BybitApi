@@ -11,7 +11,7 @@ use BybitApi\DTOs\Casts\TimestampCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\CreateType;
 use BybitApi\Enums\ExecType;
-use BybitApi\Enums\OrderSide;
+use BybitApi\Enums\Side;
 use BybitApi\Enums\OrderType;
 use BybitApi\Enums\StopOrderType;
 
@@ -19,7 +19,7 @@ use BybitApi\Enums\StopOrderType;
  * @property null|string $symbol
  * @property null|string $orderId
  * @property null|string $orderLinkId
- * @property null|OrderSide $side
+ * @property null|Side $side
  * @property null|float $orderPrice
  * @property null|float $orderQty
  * @property null|float $leavesQty
@@ -54,7 +54,7 @@ class TradeHistoryOrder extends DTO
             'symbol' => StringCast::class,
             'orderId' => StringCast::class,
             'orderLinkId' => StringCast::class,
-            'side' => new EnumCast(OrderSide::class),
+            'side' => new EnumCast(Side::class),
             'orderPrice' => FloatCast::class,
             'orderQty' => FloatCast::class,
             'leavesQty' => FloatCast::class,

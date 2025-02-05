@@ -13,7 +13,7 @@ use BybitApi\DTOs\Trade\TradeHistoryOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\ExecType;
 use BybitApi\Enums\OrderFilter;
-use BybitApi\Enums\OrderSide;
+use BybitApi\Enums\Side;
 use BybitApi\Enums\OrderStatus;
 use BybitApi\Enums\Product;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\AmendIntent;
@@ -185,7 +185,7 @@ class Trade extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/order/spot-borrow-quota
      */
-    public function getBorrowQuota(Category $category, BackedEnum|string $symbol, OrderSide $side): BorrowQuota
+    public function getBorrowQuota(Category $category, BackedEnum|string $symbol, Side $side): BorrowQuota
     {
         return $this->send(new GetBorrowQuota($category, $symbol, $side))->dto();
     }

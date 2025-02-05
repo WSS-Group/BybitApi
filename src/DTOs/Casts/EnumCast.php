@@ -16,7 +16,7 @@ readonly class EnumCast implements Castable
 
     public function __invoke(mixed $input): ?BackedEnum
     {
-        if (is_string($input) && $input !== '') {
+        if ((is_string($input) || is_int($input)) && $input !== '') {
             return $this->enumFQN::tryFrom($input) ?? $this->fallback;
         }
 

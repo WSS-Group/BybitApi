@@ -6,11 +6,11 @@ use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\StringCast;
 use BybitApi\DTOs\DTO;
-use BybitApi\Enums\OrderSide;
+use BybitApi\Enums\Side;
 
 /**
  * @property null|string $symbol
- * @property null|OrderSide $side
+ * @property null|Side $side
  * @property null|float $maxTradeQty
  * @property null|float $maxTradeAmount
  * @property null|float $spotMaxTradeQty
@@ -23,7 +23,7 @@ class BorrowQuota extends DTO
     {
         return [
             'symbol' => StringCast::class,
-            'side' => new EnumCast(OrderSide::class),
+            'side' => new EnumCast(Side::class),
             'maxTradeQty' => FloatCast::class,
             'maxTradeAmount' => FloatCast::class,
             'spotMaxTradeQty' => FloatCast::class,

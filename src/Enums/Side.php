@@ -2,7 +2,7 @@
 
 namespace BybitApi\Enums;
 
-enum OrderSide: string
+enum Side: string
 {
     case BUY = 'Buy';
     case SELL = 'Sell';
@@ -10,8 +10,8 @@ enum OrderSide: string
     public function label(): string
     {
         return match ($this) {
-            self::BUY => __('bybit_api::enums.order_sides.buy'),
-            self::SELL => __('bybit_api::enums.order_sides.sell'),
+            self::BUY => __('bybit_api::enums.sides.buy'),
+            self::SELL => __('bybit_api::enums.sides.sell'),
         };
     }
 }

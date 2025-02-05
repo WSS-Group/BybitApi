@@ -2,7 +2,7 @@
 
 use BybitApi\DTOs\Trade\PlacedOrder;
 use BybitApi\Enums\Category;
-use BybitApi\Enums\OrderSide;
+use BybitApi\Enums\Side;
 use BybitApi\Enums\OrderType;
 use BybitApi\Facades\Trade;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\PlaceIntent;
@@ -19,7 +19,7 @@ it('can place a single order', function () {
         Category::SPOT,
         new PlaceIntent(
             'BTCUSDT',
-            OrderSide::BUY,
+            Side::BUY,
             OrderType::MARKET,
             '20'
         )

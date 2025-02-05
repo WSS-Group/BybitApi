@@ -16,7 +16,7 @@ use BybitApi\DTOs\Trade\TradeHistoryOrder;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\ExecType;
 use BybitApi\Enums\OrderFilter;
-use BybitApi\Enums\OrderSide;
+use BybitApi\Enums\Side;
 use BybitApi\Enums\OrderStatus;
 use BybitApi\Enums\Product;
 use BybitApi\Http\Integrations\Bybit\Entities\Orders\AmendIntent;
@@ -36,7 +36,7 @@ use Illuminate\Support\Collection;
  * @method Collection<int, BatchAmendedOrder> batchAmendOrder(Category $category, AmendIntent ...$orders)
  * @method Collection<int, BatchCanceledOrder> batchCancelOrder(Category $category, CancelIntent ...$orders)
  * @method bool setDisconnectCancelAll(int $timeWindow, ?Product $product = null)
- * @method BorrowQuota getBorrowQuota(Category $category, BackedEnum|string $symbol, OrderSide $side)
+ * @method BorrowQuota getBorrowQuota(Category $category, BackedEnum|string $symbol, Side $side)
  *
  * @see \BybitApi\Groups\Trade
  */
