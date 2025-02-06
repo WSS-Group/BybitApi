@@ -9,12 +9,15 @@ use BybitApi\Enums\OrderType;
 use BybitApi\Enums\PositionIndex;
 use BybitApi\Enums\PositionMode;
 use BybitApi\Enums\TakeProfitStopLossMode;
+use BybitApi\Enums\TradeMode;
 use BybitApi\Enums\TriggerBy;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\ConfirmNewRiskLimit;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\GetPositionInfo;
+use BybitApi\Http\Integrations\Bybit\Requests\Position\SetAutoAddMargin;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SetLeverage;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SetTradingStop;
+use BybitApi\Http\Integrations\Bybit\Requests\Position\SwitchCrossIsolatedMargin;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SwitchPositionMode;
 
 class Position extends Group
@@ -50,10 +53,15 @@ class Position extends Group
     /**
      * @link  https://bybit-exchange.github.io/docs/v5/position/cross-isolate
      */
-    public function switchCrossIsolatedMargin(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function switchCrossIsolatedMargin(
+        Category $category,
+        BackedEnum|string $symbol,
+        TradeMode $tradeMode,
+        string $buyLeverage,
+        string $sellLeverage,
+    ): true {
+        return $this->send(new SwitchCrossIsolatedMargin($category, $symbol, $tradeMode, $buyLeverage, $sellLeverage))
+            ->dto();
     }
 
     /**
@@ -98,10 +106,13 @@ class Position extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/position/auto-add-margin
      */
-    public function setAutoAddMargin(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function setAutoAddMargin(
+        Category $category,
+        BackedEnum|string $symbol,
+        bool $autoAddMargin,
+        ?PositionIndex $positionIdx = null,
+    ): true {
+        return $this->send(new SetAutoAddMargin($category, $symbol, $autoAddMargin, $positionIdx))->dto();
     }
 
     /**

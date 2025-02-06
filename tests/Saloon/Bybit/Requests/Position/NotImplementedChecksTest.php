@@ -7,11 +7,7 @@ it('check if all not implemented tests throw exception', function () {
     $market = Position::actingAs($this->defaultActor());
     $commonError = "Endpoint not implemented yet on 'BybitApi\Groups\Position::";
 
-    expect(fn () => $market->switchCrossIsolatedMargin())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}switchCrossIsolatedMargin'.")
-        ->and(fn () => $market->setAutoAddMargin())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}setAutoAddMargin'.")
-        ->and(fn () => $market->addOrReduceMargin())
+    expect(fn () => $market->addOrReduceMargin())
         ->toThrow(NotImplementedYetException::class, "{$commonError}addOrReduceMargin'.")
         ->and(fn () => $market->getClosedPnL())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getClosedPnL'.")
