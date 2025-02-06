@@ -4,6 +4,7 @@ namespace BybitApi\Groups;
 
 use BackedEnum;
 use BybitApi\CursorCollection;
+use BybitApi\DTOs\Position\AddOrReduceMarginInfo;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\OrderType;
 use BybitApi\Enums\PositionIndex;
@@ -12,6 +13,7 @@ use BybitApi\Enums\TakeProfitStopLossMode;
 use BybitApi\Enums\TradeMode;
 use BybitApi\Enums\TriggerBy;
 use BybitApi\Exceptions\NotImplementedYetException;
+use BybitApi\Http\Integrations\Bybit\Requests\Position\AddOrReduceMargin;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\ConfirmNewRiskLimit;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\GetPositionInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SetAutoAddMargin;
@@ -118,10 +120,13 @@ class Position extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/position/manual-add-margin
      */
-    public function addOrReduceMargin(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function addOrReduceMargin(
+        Category $category,
+        BackedEnum|string $symbol,
+        string $margin,
+        ?PositionIndex $positionIdx = null,
+    ): AddOrReduceMarginInfo {
+        return $this->send(new AddOrReduceMargin($category, $symbol, $margin, $positionIdx))->dto();
     }
 
     /**
