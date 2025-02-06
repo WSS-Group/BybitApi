@@ -11,6 +11,7 @@ use BybitApi\Enums\PositionMode;
 use BybitApi\Enums\TakeProfitStopLossMode;
 use BybitApi\Enums\TriggerBy;
 use BybitApi\Exceptions\NotImplementedYetException;
+use BybitApi\Http\Integrations\Bybit\Requests\Position\ConfirmNewRiskLimit;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\GetPositionInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SetLeverage;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SetTradingStop;
@@ -142,10 +143,9 @@ class Position extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/position/confirm-mmr
      */
-    public function confirmNewRiskLimit(): mixed
+    public function confirmNewRiskLimit(Category $category, BackedEnum|string $symbol): true
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new ConfirmNewRiskLimit($category, $symbol))->dto();
     }
 
     /**

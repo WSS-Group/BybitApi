@@ -19,8 +19,6 @@ it('check if all not implemented tests throw exception', function () {
         ->toThrow(NotImplementedYetException::class, "{$commonError}movePosition'.")
         ->and(fn () => $market->getMovePositionHistory())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getMovePositionHistory'.")
-        ->and(fn () => $market->confirmNewRiskLimit())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}confirmNewRiskLimit'.")
         ->and(fn () => $market->setTakeProfitStopLossMode())
         ->toThrow(NotImplementedYetException::class, "{$commonError}setTakeProfitStopLossMode'.")
         ->and(fn () => $market->setRiskLimit())

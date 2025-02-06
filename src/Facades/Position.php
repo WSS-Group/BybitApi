@@ -17,6 +17,7 @@ use BybitApi\Enums\TriggerBy;
  * @method true setLeverage( Category $category, BackedEnum|string $symbol, float $buyLeverage, float $sellLeverage)
  * @method true switchPositionMode(Category $category, PositionMode $mode, null|BackedEnum|string $symbol = null, null|BackedEnum|string $coin = null)
  * @method true setTradingStop(Category $category, BackedEnum|string $symbol, TakeProfitStopLossMode $tpslMode, PositionIndex $positionIdx, ?string $takeProfit = null, ?string $stopLoss = null, ?string $trailingStop = null, ?TriggerBy $tpTriggerBy = null, ?TriggerBy $slTriggerBy = null, ?string $activePrice = null, ?string $tpSize = null, ?string $slSize = null, ?string $tpLimitPrice = null, ?string $slLimitPrice = null, ?OrderType $tpOrderType = null, ?OrderType $slOrderType = null)
+ * @method true confirmNewRiskLimit(Category $category, BackedEnum|string $symbol)
  *
  * @see \BybitApi\Groups\Position
  */
