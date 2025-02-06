@@ -87,8 +87,7 @@ class Position extends Group
         ?string $slLimitPrice = null,
         ?OrderType $tpOrderType = null,
         ?OrderType $slOrderType = null,
-    ): true
-    {
+    ): true {
         return $this->send(new SetTradingStop(
             $category, $symbol, $tpslMode, $positionIdx, $takeProfit, $stopLoss, $trailingStop, $tpTriggerBy,
             $slTriggerBy, $activePrice, $tpSize, $slSize, $tpLimitPrice, $slLimitPrice, $tpOrderType, $slOrderType

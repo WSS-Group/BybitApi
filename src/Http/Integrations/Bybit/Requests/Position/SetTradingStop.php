@@ -3,12 +3,14 @@
 namespace BybitApi\Http\Integrations\Bybit\Requests\Position;
 
 use BackedEnum;
+use BybitApi\Attributes\AtLeastOneParameterRequired;
 use BybitApi\Conditional;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\OrderType;
 use BybitApi\Enums\PositionIndex;
 use BybitApi\Enums\TakeProfitStopLossMode;
 use BybitApi\Enums\TriggerBy;
+use BybitApi\Http\Integrations\Bybit\Requests\BypassCodes;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
@@ -18,7 +20,8 @@ use Saloon\Traits\Body\HasJsonBody;
 /**
  * @link https://bybit-exchange.github.io/docs/v5/position/trading-stop
  */
-class SetTradingStop extends Request implements HasBody
+#[AtLeastOneParameterRequired('takeProfit', 'stopLoss', 'trailingStop')]
+class SetTradingStop extends Request implements BypassCodes, HasBody
 {
     use HasJsonBody;
 
@@ -63,9 +66,9 @@ class SetTradingStop extends Request implements HasBody
             'symbol' => $this->symbol,
             'tpslMode' => $this->tpslMode,
             'positionIdx' => $this->positionIdx,
-            'takeProfit' => Conditional::ifNotEmpty($this->takeProfit),
-            'stopLoss' => Conditional::ifNotEmpty($this->stopLoss),
-            'trailingStop' => Conditional::ifNotEmpty($this->trailingStop),
+            'takeProfit' => Conditional::ifNotNull($this->takeProfit),
+            'stopLoss' => Conditional::ifNotNull($this->stopLoss),
+            'trailingStop' => Conditional::ifNotNull($this->trailingStop),
             'tpTriggerBy' => Conditional::ifNotNull($this->tpTriggerBy),
             'slTriggerBy' => Conditional::ifNotNull($this->slTriggerBy),
             'activePrice' => Conditional::ifNotEmpty($this->activePrice),
@@ -80,6 +83,11 @@ class SetTradingStop extends Request implements HasBody
 
     public function createDtoFromResponse(Response $response): true
     {
-        return in_array($response->json('retCode'), [0, 110043]);
+        return in_array($response->json('retCode'), [0, 34040]);
+    }
+
+    public function bypassCodes(): array
+    {
+        return [34040];
     }
 }
