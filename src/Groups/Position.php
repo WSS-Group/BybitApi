@@ -15,12 +15,14 @@ use BybitApi\Enums\TriggerBy;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\AddOrReduceMargin;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\ConfirmNewRiskLimit;
+use BybitApi\Http\Integrations\Bybit\Requests\Position\GetClosedPNL;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\GetPositionInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SetAutoAddMargin;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SetLeverage;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SetTradingStop;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SwitchCrossIsolatedMargin;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SwitchPositionMode;
+use Illuminate\Support\Carbon;
 
 class Position extends Group
 {
@@ -130,12 +132,19 @@ class Position extends Group
     }
 
     /**
+     * @return \BybitApi\CursorCollection<int, \BybitApi\DTOs\Position\ClosePNL>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/position/close-pnl
      */
-    public function getClosedPnL(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getClosedPnL(
+        Category $category,
+        null|BackedEnum|string $symbol = null,
+        ?Carbon $startTime = null,
+        ?Carbon $endTime = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): CursorCollection {
+        return $this->send(new GetClosedPNL($category, $symbol, $startTime, $endTime, $limit, $cursor))->dto();
     }
 
     /**
