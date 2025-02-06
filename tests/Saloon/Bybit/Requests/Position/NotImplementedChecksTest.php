@@ -7,20 +7,10 @@ it('check if all not implemented tests throw exception', function () {
     $market = Position::actingAs($this->defaultActor());
     $commonError = "Endpoint not implemented yet on 'BybitApi\Groups\Position::";
 
-    expect(fn () => $market->switchCrossIsolatedMargin())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}switchCrossIsolatedMargin'.")
-        ->and(fn () => $market->setAutoAddMargin())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}setAutoAddMargin'.")
-        ->and(fn () => $market->addOrReduceMargin())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}addOrReduceMargin'.")
-        ->and(fn () => $market->getClosedPnL())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}getClosedPnL'.")
-        ->and(fn () => $market->movePosition())
+    expect(fn () => $market->movePosition())
         ->toThrow(NotImplementedYetException::class, "{$commonError}movePosition'.")
         ->and(fn () => $market->getMovePositionHistory())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getMovePositionHistory'.")
-        ->and(fn () => $market->confirmNewRiskLimit())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}confirmNewRiskLimit'.")
         ->and(fn () => $market->setTakeProfitStopLossMode())
         ->toThrow(NotImplementedYetException::class, "{$commonError}setTakeProfitStopLossMode'.")
         ->and(fn () => $market->setRiskLimit())

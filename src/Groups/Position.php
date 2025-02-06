@@ -4,17 +4,25 @@ namespace BybitApi\Groups;
 
 use BackedEnum;
 use BybitApi\CursorCollection;
+use BybitApi\DTOs\Position\AddOrReduceMarginInfo;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\OrderType;
 use BybitApi\Enums\PositionIndex;
 use BybitApi\Enums\PositionMode;
 use BybitApi\Enums\TakeProfitStopLossMode;
+use BybitApi\Enums\TradeMode;
 use BybitApi\Enums\TriggerBy;
 use BybitApi\Exceptions\NotImplementedYetException;
+use BybitApi\Http\Integrations\Bybit\Requests\Position\AddOrReduceMargin;
+use BybitApi\Http\Integrations\Bybit\Requests\Position\ConfirmNewRiskLimit;
+use BybitApi\Http\Integrations\Bybit\Requests\Position\GetClosedPNL;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\GetPositionInfo;
+use BybitApi\Http\Integrations\Bybit\Requests\Position\SetAutoAddMargin;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SetLeverage;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SetTradingStop;
+use BybitApi\Http\Integrations\Bybit\Requests\Position\SwitchCrossIsolatedMargin;
 use BybitApi\Http\Integrations\Bybit\Requests\Position\SwitchPositionMode;
+use Illuminate\Support\Carbon;
 
 class Position extends Group
 {
@@ -49,10 +57,15 @@ class Position extends Group
     /**
      * @link  https://bybit-exchange.github.io/docs/v5/position/cross-isolate
      */
-    public function switchCrossIsolatedMargin(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function switchCrossIsolatedMargin(
+        Category $category,
+        BackedEnum|string $symbol,
+        TradeMode $tradeMode,
+        string $buyLeverage,
+        string $sellLeverage,
+    ): true {
+        return $this->send(new SwitchCrossIsolatedMargin($category, $symbol, $tradeMode, $buyLeverage, $sellLeverage))
+            ->dto();
     }
 
     /**
@@ -97,28 +110,41 @@ class Position extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/position/auto-add-margin
      */
-    public function setAutoAddMargin(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function setAutoAddMargin(
+        Category $category,
+        BackedEnum|string $symbol,
+        bool $autoAddMargin,
+        ?PositionIndex $positionIdx = null,
+    ): true {
+        return $this->send(new SetAutoAddMargin($category, $symbol, $autoAddMargin, $positionIdx))->dto();
     }
 
     /**
      * @link https://bybit-exchange.github.io/docs/v5/position/manual-add-margin
      */
-    public function addOrReduceMargin(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function addOrReduceMargin(
+        Category $category,
+        BackedEnum|string $symbol,
+        string $margin,
+        ?PositionIndex $positionIdx = null,
+    ): AddOrReduceMarginInfo {
+        return $this->send(new AddOrReduceMargin($category, $symbol, $margin, $positionIdx))->dto();
     }
 
     /**
+     * @return \BybitApi\CursorCollection<int, \BybitApi\DTOs\Position\ClosePNL>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/position/close-pnl
      */
-    public function getClosedPnL(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getClosedPnL(
+        Category $category,
+        null|BackedEnum|string $symbol = null,
+        ?Carbon $startTime = null,
+        ?Carbon $endTime = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): CursorCollection {
+        return $this->send(new GetClosedPNL($category, $symbol, $startTime, $endTime, $limit, $cursor))->dto();
     }
 
     /**
@@ -142,10 +168,9 @@ class Position extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/position/confirm-mmr
      */
-    public function confirmNewRiskLimit(): mixed
+    public function confirmNewRiskLimit(Category $category, BackedEnum|string $symbol): true
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new ConfirmNewRiskLimit($category, $symbol))->dto();
     }
 
     /**
