@@ -6,7 +6,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSubUID;
 use BybitApi\Tests\Fixtures\Bybit\Asset\GetSubUID\OkFixture;
 use Saloon\Http\Faking\MockClient;
 
-it('return a list of coins', function () {
+it('return a list of sub accounts', function () {
     MockClient::global([
         GetSubUID::class => OkFixture::call(),
     ]);

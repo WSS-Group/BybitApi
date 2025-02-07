@@ -10,9 +10,11 @@ use BybitApi\DTOs\Asset\WithdrawableAmount;
 use BybitApi\Enums\AccountType;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSingleCoinBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetWithdrawableAmount;
+use Illuminate\Support\Collection;
 
 class Asset extends Group
 {
@@ -44,12 +46,13 @@ class Asset extends Group
     }
 
     /**
+     * @return Collection<string, \BybitApi\DTOs\Asset\CoinInfo>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/asset/coin-info
      */
-    public function getCoinInfo(): never
+    public function getCoinInfo(null|BackedEnum|string $coin = null): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetCoinInfo)->dto();
     }
 
     /**
