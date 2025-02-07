@@ -9,8 +9,6 @@ it('check if all not implemented tests throw exception', function () {
 
     expect(fn () => $asset->getUSDCSessionSettlement())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getUSDCSessionSettlement'.")
-        ->and(fn () => $asset->getCoinExchangeRecords())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}getCoinExchangeRecords'.")
         ->and(fn () => $asset->getAssetInfo())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getAssetInfo'.")
         ->and(fn () => $asset->getTransferableCoin())

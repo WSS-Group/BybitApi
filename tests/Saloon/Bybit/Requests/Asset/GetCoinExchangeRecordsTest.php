@@ -15,8 +15,6 @@ it('return a list of records', function () {
 
     $result = Asset::actingAs($this->defaultActor())->getCoinExchangeRecords();
 
-    dd($result->first()->createdTime);
-
     expect($result)
         ->toBeInstanceOf(CursorCollection::class)
         ->and($result->first())
@@ -33,6 +31,8 @@ it('return a list of records', function () {
         ->toBeFloat()
         ->and($result->first()->createdTime)
         ->toBeInstanceOf(Carbon::class)
+        ->and($result->first()->createdTime->yearIso)
+        ->toBe(2025)
         ->and($result->first()->exchangeTxId)
         ->toBeString();
 });

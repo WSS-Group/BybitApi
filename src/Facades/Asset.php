@@ -5,6 +5,7 @@ namespace BybitApi\Facades;
 use BackedEnum;
 use BybitApi\CursorCollection;
 use BybitApi\DTOs\Asset\AllCoinsBalance;
+use BybitApi\DTOs\Asset\CoinExchange;
 use BybitApi\DTOs\Asset\CoinInfo;
 use BybitApi\DTOs\Asset\DeliveryRecord;
 use BybitApi\DTOs\Asset\SingleCoinBalance;
@@ -17,6 +18,7 @@ use Illuminate\Support\Collection;
 
 /**
  * @method CursorCollection<int, DeliveryRecord> getDeliveryRecord(Category $category, null|BackedEnum|string $symbol = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?string $expDate = null, ?int $limit = null, ?string $cursor = null)
+ * @method CursorCollection<int, CoinExchange> getCoinExchangeRecords(null|BackedEnum|string $fromCoin = null, null|BackedEnum|string $toCoin = null, ?int $limit = null, ?string $cursor = null)
  * @method Collection<string, CoinInfo> getCoinInfo(null|BackedEnum|string $coin = null)
  * @method SubUID getSubUID()
  * @method AllCoinsBalance getAllCoinsBalance(AccountType $accountType, null|BackedEnum|string $coin = null, ?string $memberId = null, ?bool $withBonus = null)

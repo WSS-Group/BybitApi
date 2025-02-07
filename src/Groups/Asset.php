@@ -12,6 +12,7 @@ use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinExchangeRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetDeliveryRecord;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSingleCoinBalance;
@@ -23,7 +24,7 @@ use Illuminate\Support\Collection;
 class Asset extends Group
 {
     /**
-     * @return Collection<string, \BybitApi\DTOs\Asset\DeliveryRecord>
+     * @return CursorCollection<string, \BybitApi\DTOs\Asset\DeliveryRecord>
      *
      * @link https://bybit-exchange.github.io/docs/v5/asset/delivery
      */
@@ -50,12 +51,17 @@ class Asset extends Group
     }
 
     /**
+     * @return CursorCollection<string, \BybitApi\DTOs\Asset\CoinExchange>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/asset/exchange
      */
-    public function getCoinExchangeRecords(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getCoinExchangeRecords(
+        null|BackedEnum|string $fromCoin = null,
+        null|BackedEnum|string $toCoin = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): CursorCollection {
+        return $this->send(new GetCoinExchangeRecords($fromCoin, $toCoin, $limit, $cursor))->dto();
     }
 
     /**
