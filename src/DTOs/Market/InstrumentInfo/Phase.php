@@ -3,7 +3,7 @@
 namespace BybitApi\DTOs\Market\InstrumentInfo;
 
 use BybitApi\DTOs\Casts\EnumCast;
-use BybitApi\DTOs\Casts\TimestampCast;
+use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\CurAuctionPhase;
 
@@ -18,8 +18,8 @@ class Phase extends DTO
     {
         return [
             'phase' => new EnumCast(CurAuctionPhase::class, CurAuctionPhase::OTHER),
-            'startTime' => TimestampCast::class,
-            'endTime' => TimestampCast::class,
+            'startTime' => TimestampMsCast::class,
+            'endTime' => TimestampMsCast::class,
         ];
     }
 }

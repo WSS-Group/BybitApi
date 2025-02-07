@@ -6,7 +6,7 @@ use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\IntCast;
 use BybitApi\DTOs\Casts\StringCast;
-use BybitApi\DTOs\Casts\TimestampCast;
+use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\ExecType;
 use BybitApi\Enums\OrderType;
@@ -51,8 +51,8 @@ class ClosePNL extends DTO
             'closedPnl' => FloatCast::class,
             'fillCount' => IntCast::class,
             'leverage' => FloatCast::class,
-            'createdTime' => TimestampCast::class,
-            'updatedTime' => TimestampCast::class,
+            'createdTime' => TimestampMsCast::class,
+            'updatedTime' => TimestampMsCast::class,
         ];
     }
 }

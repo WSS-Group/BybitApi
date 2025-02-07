@@ -4,7 +4,7 @@ namespace BybitApi\DTOs\Casts;
 
 use Illuminate\Support\Carbon;
 
-class TimestampCast implements Castable
+class TimestampMsCast implements Castable
 {
     public function __invoke(mixed $input): ?Carbon
     {

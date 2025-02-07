@@ -7,7 +7,7 @@ use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\IntCast;
 use BybitApi\DTOs\Casts\StringCast;
-use BybitApi\DTOs\Casts\TimestampCast;
+use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\ContractType;
 use BybitApi\Enums\CopyTrading;
@@ -46,8 +46,8 @@ class LinearInverse extends DTO
             'status' => new EnumCast(SymbolStatus::class),
             'baseCoin' => StringCast::class,
             'quoteCoin' => StringCast::class,
-            'launchTime' => TimestampCast::class,
-            'deliveryTime' => TimestampCast::class,
+            'launchTime' => TimestampMsCast::class,
+            'deliveryTime' => TimestampMsCast::class,
             'deliveryFeeRate' => FloatCast::class,
             'priceScale' => IntCast::class,
             'leverageFilter' => LeverageFilter::class,

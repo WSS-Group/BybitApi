@@ -5,7 +5,7 @@ namespace BybitApi\DTOs\Market\Ticker;
 use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\StringCast;
-use BybitApi\DTOs\Casts\TimestampCast;
+use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\CurAuctionPhase;
 use Illuminate\Support\Carbon;
@@ -58,12 +58,12 @@ class LinearInverse extends DTO
             'turnover24h' => FloatCast::class,
             'volume24h' => FloatCast::class,
             'fundingRate' => FloatCast::class,
-            'nextFundingTime' => TimestampCast::class,
+            'nextFundingTime' => TimestampMsCast::class,
             'predictedDeliveryPrice' => FloatCast::class,
             'basisRate' => FloatCast::class,
             'basis' => FloatCast::class,
             'deliveryFeeRate' => FloatCast::class,
-            'deliveryTime' => TimestampCast::class,
+            'deliveryTime' => TimestampMsCast::class,
             'ask1Size' => FloatCast::class,
             'bid1Price' => FloatCast::class,
             'ask1Price' => FloatCast::class,

@@ -5,7 +5,7 @@ namespace BybitApi\DTOs\Market\InstrumentInfo;
 use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\StringCast;
-use BybitApi\DTOs\Casts\TimestampCast;
+use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\SymbolStatus;
 
@@ -31,8 +31,8 @@ class Option extends DTO
             'baseCoin' => StringCast::class,
             'quoteCoin' => StringCast::class,
             'settleCoin' => StringCast::class,
-            'launchTime' => TimestampCast::class,
-            'deliveryTime' => TimestampCast::class,
+            'launchTime' => TimestampMsCast::class,
+            'deliveryTime' => TimestampMsCast::class,
             'deliveryFeeRate' => FloatCast::class,
             'priceFilter' => PriceFilter::class,
             'lotSizeFilter' => LotSizeFilter::class,

@@ -5,7 +5,7 @@ namespace BybitApi\DTOs\Asset;
 use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\StringCast;
-use BybitApi\DTOs\Casts\TimestampCast;
+use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\Side;
 
@@ -24,7 +24,7 @@ class DeliveryRecord extends DTO
     public function casts(): array
     {
         return [
-            'deliveryTime' => TimestampCast::class,
+            'deliveryTime' => TimestampMsCast::class,
             'symbol' => StringCast::class,
             'side' => new EnumCast(Side::class),
             'position' => FloatCast::class,

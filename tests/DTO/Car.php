@@ -8,7 +8,7 @@ use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\IntCast;
 use BybitApi\DTOs\Casts\StringCast;
-use BybitApi\DTOs\Casts\TimestampCast;
+use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\Category;
 
@@ -39,7 +39,7 @@ class Car extends DTO
             'year' => IntCast::class,
             'cost' => FloatCast::class,
             'category' => new EnumCast(Category::class),
-            'boughtAt' => TimestampCast::class,
+            'boughtAt' => TimestampMsCast::class,
             'inspiration' => Car::class,
             'children' => new DTOCollectionCast(Car::class),
             'parameters' => new DTOArrayCast(Parameter::class),

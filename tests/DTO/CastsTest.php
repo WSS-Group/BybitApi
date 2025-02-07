@@ -7,7 +7,7 @@ use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\IntCast;
 use BybitApi\DTOs\Casts\StringArrayCast;
 use BybitApi\DTOs\Casts\StringCast;
-use BybitApi\DTOs\Casts\TimestampCast;
+use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\Enums\Category;
 use BybitApi\Tests\DTO\Car;
 
@@ -127,7 +127,7 @@ it('cast string', function () {
 });
 
 it('cast timestamp', function () {
-    $cast = new TimestampCast;
+    $cast = new TimestampMsCast;
 
     expect($cast(today()->getTimestampMs()))
         ->toEqual(today())

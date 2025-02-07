@@ -6,7 +6,7 @@ use BybitApi\DTOs\Casts\BooleanCast;
 use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\StringCast;
-use BybitApi\DTOs\Casts\TimestampCast;
+use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\CancelType;
 use BybitApi\Enums\CreateType;
@@ -115,8 +115,8 @@ class Order extends DTO
             'smpType' => new EnumCast(SelfMatchPreventionType::class),
             'smpGroup' => StringCast::class,
             'smpOrderId' => StringCast::class,
-            'createdTime' => TimestampCast::class,
-            'updatedTime' => TimestampCast::class,
+            'createdTime' => TimestampMsCast::class,
+            'updatedTime' => TimestampMsCast::class,
         ];
     }
 }
