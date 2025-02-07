@@ -5,10 +5,12 @@ namespace BybitApi\Groups;
 use BackedEnum;
 use BybitApi\DTOs\Asset\AllCoinsBalance;
 use BybitApi\DTOs\Asset\SingleCoinBalance;
+use BybitApi\DTOs\Asset\WithdrawableAmount;
 use BybitApi\Enums\AccountType;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSingleCoinBalance;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetWithdrawableAmount;
 
 class Asset extends Group
 {
@@ -100,10 +102,9 @@ class Asset extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/asset/balance/delay-amount
      */
-    public function getWithdrawableAmount(): never
+    public function getWithdrawableAmount(BackedEnum|string $coin): WithdrawableAmount
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetWithdrawableAmount($coin))->dto();
     }
 
     /**
