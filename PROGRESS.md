@@ -353,8 +353,8 @@
         <tr>
             <td rowspan="30">Asset</td>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/delivery">Get Delivery Record (2 years)</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/settlement">Get USDC Session Settlement (2 years)</a></td>

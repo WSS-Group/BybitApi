@@ -5,7 +5,7 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/wss-group/bybitapi/run-tests.yml?branch=5.x&label=tests&style=flat-square)](https://github.com/wss-group/bybitapi/actions?query=workflow%3Arun-tests+branch%3A5.x)
 [![Fix Code Style](https://github.com/WSS-Group/BybitApi/actions/workflows/lint.yml/badge.svg)](https://github.com/WSS-Group/BybitApi/actions/workflows/lint.yml)
 [![codecov](https://codecov.io/gh/WSS-Group/BybitApi/graph/badge.svg?token=OFDCnGWLEC)](https://codecov.io/gh/WSS-Group/BybitApi)
-[![Static Badge](https://img.shields.io/badge/Progress-19.3%25%20(33%2F145)-blue)](PROGRESS.md)
+[![Static Badge](https://img.shields.io/badge/Progress-19.3%25%20(34%2F145)-blue)](PROGRESS.md)
 
 
 A PHP package that implement [Bybit API](https://bybit-exchange.github.io/docs/v5/intro) (Current implementation v5)

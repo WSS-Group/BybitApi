@@ -7,9 +7,7 @@ it('check if all not implemented tests throw exception', function () {
     $asset = Asset::actingAs($this->defaultActor());
     $commonError = "Endpoint not implemented yet on 'BybitApi\Groups\Asset::";
 
-    expect(fn () => $asset->getDeliveryRecord())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}getDeliveryRecord'.")
-        ->and(fn () => $asset->getUSDCSessionSettlement())
+    expect(fn () => $asset->getUSDCSessionSettlement())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getUSDCSessionSettlement'.")
         ->and(fn () => $asset->getCoinExchangeRecords())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getCoinExchangeRecords'.")

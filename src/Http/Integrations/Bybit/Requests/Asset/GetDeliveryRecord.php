@@ -1,0 +1,64 @@
+<?php
+
+namespace BybitApi\Http\Integrations\Bybit\Requests\Asset;
+
+use BackedEnum;
+use BybitApi\Conditional;
+use BybitApi\CursorCollection;
+use BybitApi\DTOs\Asset\DeliveryRecord;
+use BybitApi\Enums\Category;
+use BybitApi\Http\Integrations\Bybit\Requests\Request;
+use Illuminate\Support\Carbon;
+use Saloon\Enums\Method;
+use Saloon\Http\Response;
+
+/**
+ * @link https://bybit-exchange.github.io/docs/v5/asset/delivery
+ */
+class GetDeliveryRecord extends Request
+{
+    /**
+     * The HTTP method of the request
+     */
+    protected Method $method = Method::GET;
+
+    public function __construct(
+        public Category $category,
+        public null|BackedEnum|string $symbol = null,
+        public ?Carbon $startTime = null,
+        public ?Carbon $endTime = null,
+        public ?string $expDate = null,
+        public ?int $limit = null,
+        public ?string $cursor = null,
+    ) {}
+
+    /**
+     * The endpoint for the request
+     */
+    public function resolveEndpoint(): string
+    {
+        return '/v5/asset/delivery-record';
+    }
+
+    protected function defaultQuery(): array
+    {
+        return Conditional::array([
+            'category' => $this->category,
+            'symbol' => Conditional::ifNotEmpty($this->symbol),
+            'startTime' => Conditional::ifNotNull($this->startTime),
+            'endTime' => Conditional::ifNotNull($this->endTime),
+            'expDate' => Conditional::ifNotEmpty($this->expDate),
+            'limit' => Conditional::ifNotNull($this->limit),
+            'cursor' => Conditional::ifNotNull($this->cursor),
+        ]);
+    }
+
+    public function createDtoFromResponse(Response $response): CursorCollection
+    {
+        return CursorCollection::init(
+            $response->json('result.list'),
+            DeliveryRecord::class,
+            $response->json('result.nextPageCursor')
+        );
+    }
+}

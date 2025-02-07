@@ -3,28 +3,41 @@
 namespace BybitApi\Groups;
 
 use BackedEnum;
+use BybitApi\CursorCollection;
 use BybitApi\DTOs\Asset\AllCoinsBalance;
 use BybitApi\DTOs\Asset\SingleCoinBalance;
 use BybitApi\DTOs\Asset\SubUID;
 use BybitApi\DTOs\Asset\WithdrawableAmount;
 use BybitApi\Enums\AccountType;
+use BybitApi\Enums\Category;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinInfo;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetDeliveryRecord;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSingleCoinBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetWithdrawableAmount;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 class Asset extends Group
 {
     /**
+     * @return Collection<string, \BybitApi\DTOs\Asset\DeliveryRecord>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/asset/delivery
      */
-    public function getDeliveryRecord(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getDeliveryRecord(
+        Category $category,
+        null|BackedEnum|string $symbol = null,
+        ?Carbon $startTime = null,
+        ?Carbon $endTime = null,
+        ?string $expDate = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): CursorCollection {
+        return $this->send(new GetDeliveryRecord($category, $symbol, $startTime, $endTime, $expDate, $limit, $cursor))
+            ->dto();
     }
 
     /**
