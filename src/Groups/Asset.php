@@ -2,7 +2,11 @@
 
 namespace BybitApi\Groups;
 
+use BackedEnum;
+use BybitApi\DTOs\Asset\AllCoinsBalance;
+use BybitApi\Enums\AccountType;
 use BybitApi\Exceptions\NotImplementedYetException;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
 
 class Asset extends Group
 {
@@ -63,10 +67,13 @@ class Asset extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/asset/balance/all-balance
      */
-    public function getAllCoinsBalance(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getAllCoinsBalance(
+        AccountType $accountType,
+        null|BackedEnum|string $coin = null,
+        ?string $memberId = null,
+        ?bool $withBonus = null,
+    ): AllCoinsBalance {
+        return $this->send(new GetAllCoinsBalance($accountType, $coin, $memberId, $withBonus))->dto();
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 use BybitApi\DTOs\Casts\BooleanCast;
-use BybitApi\DTOs\Casts\DTOArrayCast;
+use BybitApi\DTOs\Casts\DTOCollectionCast;
 use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\IntCast;
@@ -28,8 +28,8 @@ it('cast enum', function () {
         ->toBeNull();
 });
 
-it('cast dto array', function () {
-    $cast = new DTOArrayCast(Car::class);
+it('cast dto collection', function () {
+    $cast = new DTOCollectionCast(Car::class);
 
     $casted = $cast([
         [
@@ -51,7 +51,7 @@ it('cast dto array', function () {
     ]);
 
     expect($casted)
-        ->toBeArray()
+        ->toBeInstanceOf(ArrayAccess::class)
         ->toHaveCount(2)
         ->each
         ->toBeInstanceOf(Car::class)

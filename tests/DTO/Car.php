@@ -3,6 +3,7 @@
 namespace BybitApi\Tests\DTO;
 
 use BybitApi\DTOs\Casts\DTOArrayCast;
+use BybitApi\DTOs\Casts\DTOCollectionCast;
 use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\IntCast;
@@ -19,7 +20,8 @@ use BybitApi\Enums\Category;
  * @property \BybitApi\Enums\Category $category
  * @property \Illuminate\Support\Carbon $boughtAt
  * @property null|\BybitApi\Tests\DTO\Car $inspiration
- * @property null|Car[] $children
+ * @property null|\Illuminate\Support\Collection<int, Car> $children
+ * @property null|\BybitApi\Tests\DTO\Parameter[] $parameters
  */
 class Car extends DTO
 {
@@ -39,7 +41,8 @@ class Car extends DTO
             'category' => new EnumCast(Category::class),
             'boughtAt' => TimestampCast::class,
             'inspiration' => Car::class,
-            'children' => new DTOArrayCast(Car::class),
+            'children' => new DTOCollectionCast(Car::class),
+            'parameters' => new DTOArrayCast(Parameter::class),
         ];
     }
 }

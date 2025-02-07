@@ -4,6 +4,9 @@ namespace BybitApi\DTOs\Casts;
 
 readonly class DTOArrayCast implements Castable
 {
+    /**
+     * @param  class-string<\BybitApi\DTOs\DTO>  $dtoFQN
+     */
     public function __construct(
         public string $dtoFQN
     ) {
@@ -15,11 +18,9 @@ readonly class DTOArrayCast implements Castable
         if (! is_array($input)) {
             return null;
         }
-        $data = [];
-        foreach ($input as $item) {
-            $data[] = $this->dtoFQN::init($item);
-        }
 
-        return $data;
+        return array_map(function ($item) {
+            return $this->dtoFQN::init($item);
+        }, $input);
     }
 }
