@@ -11,6 +11,8 @@ use BybitApi\DTOs\DTO;
  * @property null|float $walletBalance
  * @property null|float $transferBalance
  * @property null|float $bonus
+ * @property null|float $transferSafeAmount
+ * @property null|float $ltvTransferSafeAmount
  */
 class Balance extends DTO
 {
@@ -21,6 +23,8 @@ class Balance extends DTO
             'walletBalance' => FloatCast::class,
             'transferBalance' => FloatCast::class,
             'bonus' => FloatCast::class,
+            'transferSafeAmount' => FloatCast::class,
+            'ltvTransferSafeAmount' => FloatCast::class,
         ];
     }
 }

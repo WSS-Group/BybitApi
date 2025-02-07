@@ -388,8 +388,8 @@
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/balance/account-coin-balance">Balances - Get Single Coin Balance</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/balance/delay-amount">Balances - Get Withdrawable Amount</a></td>

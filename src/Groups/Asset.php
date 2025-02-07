@@ -4,9 +4,11 @@ namespace BybitApi\Groups;
 
 use BackedEnum;
 use BybitApi\DTOs\Asset\AllCoinsBalance;
+use BybitApi\DTOs\Asset\SingleCoinBalance;
 use BybitApi\Enums\AccountType;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSingleCoinBalance;
 
 class Asset extends Group
 {
@@ -79,10 +81,20 @@ class Asset extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/asset/balance/account-coin-balance
      */
-    public function getSingleCoinBalance(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getSingleCoinBalance(
+        AccountType $accountType,
+        BackedEnum|string $coin,
+        ?string $memberId = null,
+        ?AccountType $toAccountType = null,
+        ?string $toMemberId = null,
+        ?bool $withBonus = null,
+        ?bool $withTransferSafeAmount = null,
+        ?bool $withLtvTransferSafeAmount = null,
+    ): SingleCoinBalance {
+        return $this->send(new GetSingleCoinBalance(
+            $accountType, $coin, $memberId, $toAccountType, $toMemberId,
+            $withBonus, $withTransferSafeAmount, $withLtvTransferSafeAmount
+        ))->dto();
     }
 
     /**
