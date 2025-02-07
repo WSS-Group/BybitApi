@@ -3,7 +3,7 @@
 namespace BybitApi\DTOs\Market;
 
 use BybitApi\DTOs\Casts\FloatCast;
-use BybitApi\DTOs\Casts\TimestampCast;
+use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\DTOs\DTO;
 
 /**
@@ -33,7 +33,7 @@ class Kline extends DTO
     public function casts(): array
     {
         return [
-            'startTime' => TimestampCast::class,
+            'startTime' => TimestampMsCast::class,
             'openPrice' => FloatCast::class,
             'highPrice' => FloatCast::class,
             'lowPrice' => FloatCast::class,

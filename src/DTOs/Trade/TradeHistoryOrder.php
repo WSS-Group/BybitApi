@@ -7,7 +7,7 @@ use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\IntCast;
 use BybitApi\DTOs\Casts\StringCast;
-use BybitApi\DTOs\Casts\TimestampCast;
+use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\CreateType;
 use BybitApi\Enums\ExecType;
@@ -67,7 +67,7 @@ class TradeHistoryOrder extends DTO
             'execQty' => FloatCast::class,
             'execType' => new EnumCast(ExecType::class),
             'execValue' => FloatCast::class,
-            'execTime' => TimestampCast::class,
+            'execTime' => TimestampMsCast::class,
             'feeCurrency' => StringCast::class,
             'isMaker' => BooleanCast::class,
             'feeRate' => FloatCast::class,

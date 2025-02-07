@@ -7,7 +7,7 @@ use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\IntCast;
 use BybitApi\DTOs\Casts\StringCast;
-use BybitApi\DTOs\Casts\TimestampCast;
+use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\PositionIndex;
@@ -64,8 +64,8 @@ class AddOrReduceMarginInfo extends DTO
             'trailingStop' => FloatCast::class,
             'unrealisedPnl' => FloatCast::class,
             'cumRealisedPnl' => FloatCast::class,
-            'createdTime' => TimestampCast::class,
-            'updatedTime' => TimestampCast::class,
+            'createdTime' => TimestampMsCast::class,
+            'updatedTime' => TimestampMsCast::class,
         ];
     }
 }

@@ -1,12 +1,14 @@
 <?php
 
 use BybitApi\DTOs\Casts\BooleanCast;
-use BybitApi\DTOs\Casts\DTOArrayCast;
+use BybitApi\DTOs\Casts\DTOCollectionCast;
 use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\IntCast;
+use BybitApi\DTOs\Casts\StringArrayCast;
 use BybitApi\DTOs\Casts\StringCast;
 use BybitApi\DTOs\Casts\TimestampCast;
+use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\Enums\Category;
 use BybitApi\Tests\DTO\Car;
 
@@ -28,8 +30,8 @@ it('cast enum', function () {
         ->toBeNull();
 });
 
-it('cast dto array', function () {
-    $cast = new DTOArrayCast(Car::class);
+it('cast dto collection', function () {
+    $cast = new DTOCollectionCast(Car::class);
 
     $casted = $cast([
         [
@@ -51,7 +53,7 @@ it('cast dto array', function () {
     ]);
 
     expect($casted)
-        ->toBeArray()
+        ->toBeInstanceOf(ArrayAccess::class)
         ->toHaveCount(2)
         ->each
         ->toBeInstanceOf(Car::class)
@@ -125,11 +127,35 @@ it('cast string', function () {
         ->toBeNull();
 });
 
-it('cast timestamp', function () {
-    $cast = new TimestampCast;
+it('cast timestamp ms', function () {
+    $cast = new TimestampMsCast;
 
     expect($cast(today()->getTimestampMs()))
         ->toEqual(today())
+        ->and($cast(''))
+        ->toBeNull()
+        ->and($cast(null))
+        ->toBeNull();
+});
+
+it('cast timestamp', function () {
+    $cast = new TimestampCast;
+
+    expect($cast(today()->getTimestamp()))
+        ->toEqual(today())
+        ->and($cast(''))
+        ->toBeNull()
+        ->and($cast(null))
+        ->toBeNull();
+});
+
+it('cast string array', function () {
+    $cast = new StringArrayCast;
+
+    expect($cast([123, '456']))
+        ->toBeArray()
+        ->each
+        ->toBeString()
         ->and($cast(''))
         ->toBeNull()
         ->and($cast(null))

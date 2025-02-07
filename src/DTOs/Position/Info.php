@@ -7,7 +7,7 @@ use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\IntCast;
 use BybitApi\DTOs\Casts\StringCast;
-use BybitApi\DTOs\Casts\TimestampCast;
+use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\PositionIndex;
 use BybitApi\Enums\PositionStatus;
@@ -87,12 +87,12 @@ class Info extends DTO
             'curRealisedPnl' => FloatCast::class,
             'cumRealisedPnl' => FloatCast::class,
             'adlRankIndicator' => IntCast::class,
-            'createdTime' => TimestampCast::class,
-            'updatedTime' => TimestampCast::class,
+            'createdTime' => TimestampMsCast::class,
+            'updatedTime' => TimestampMsCast::class,
             'seq' => IntCast::class,
             'isReduceOnly' => BooleanCast::class,
-            'mmrSysUpdatedTime' => TimestampCast::class,
-            'leverageSysUpdatedTime' => TimestampCast::class,
+            'mmrSysUpdatedTime' => TimestampMsCast::class,
+            'leverageSysUpdatedTime' => TimestampMsCast::class,
         ];
     }
 }

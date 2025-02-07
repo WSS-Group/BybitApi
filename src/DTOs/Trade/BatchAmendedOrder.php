@@ -5,7 +5,7 @@ namespace BybitApi\DTOs\Trade;
 use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\IntCast;
 use BybitApi\DTOs\Casts\StringCast;
-use BybitApi\DTOs\Casts\TimestampCast;
+use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\Category;
 
@@ -29,7 +29,7 @@ class BatchAmendedOrder extends DTO
             'symbol' => StringCast::class,
             'orderId' => StringCast::class,
             'orderLinkId' => StringCast::class,
-            'createAt' => TimestampCast::class,
+            'createAt' => TimestampMsCast::class,
         ];
     }
 }

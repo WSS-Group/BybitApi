@@ -7,6 +7,7 @@ use ErrorException;
 use Exception;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable;
 
 abstract class DTO implements Arrayable
@@ -55,6 +56,7 @@ abstract class DTO implements Arrayable
         foreach (array_keys($this->dtoPayload) as $key) {
             $data[$key] = match (true) {
                 $this->{$key} instanceof DTO => $this->{$key}->toArray(),
+                is_array($this->{$key}) || $this->{$key} instanceof Collection => $this->arrayParse($this->{$key}),
                 is_array($this->{$key}) => $this->arrayParse($this->{$key}),
                 default => $this->{$key}
             };
@@ -63,8 +65,9 @@ abstract class DTO implements Arrayable
         return $data;
     }
 
-    private function arrayParse(array $items): array
+    private function arrayParse(array|Collection $items): array
     {
+        $items = $items instanceof Collection ? $items->toArray() : $items;
         foreach ($items as $key => $data) {
             if ($data instanceof DTO) {
                 $items[$key] = $data->toArray();
@@ -89,7 +92,8 @@ abstract class DTO implements Arrayable
                     throw_if(! class_exists($castFqn), Exception::class, "class '$castFqn' not found");
                     $cast = new $castFqn;
                 }
-                throw_if(! $cast instanceof Castable, Exception::class, "class '$castFqn' must be a implementation of ".Castable::class);
+                throw_if(! $cast instanceof Castable, Exception::class,
+                    "class '$castFqn' must be a implementation of ".Castable::class);
 
                 return $cast($input);
             }

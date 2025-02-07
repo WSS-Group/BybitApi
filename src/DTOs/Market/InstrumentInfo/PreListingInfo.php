@@ -2,7 +2,7 @@
 
 namespace BybitApi\DTOs\Market\InstrumentInfo;
 
-use BybitApi\DTOs\Casts\DTOArrayCast;
+use BybitApi\DTOs\Casts\DTOCollectionCast;
 use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\DTO;
 use BybitApi\Enums\CurAuctionPhase;
@@ -18,7 +18,7 @@ class PreListingInfo extends DTO
     {
         return [
             'curAuctionPhase' => new EnumCast(CurAuctionPhase::class, CurAuctionPhase::OTHER),
-            'phases' => new DTOArrayCast(Phase::class),
+            'phases' => new DTOCollectionCast(Phase::class),
             'auctionFeeInfo' => AuctionFeeInfo::class,
         ];
     }
