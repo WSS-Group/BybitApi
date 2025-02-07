@@ -5,6 +5,7 @@ use BybitApi\DTOs\Casts\DTOCollectionCast;
 use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\IntCast;
+use BybitApi\DTOs\Casts\StringArrayCast;
 use BybitApi\DTOs\Casts\StringCast;
 use BybitApi\DTOs\Casts\TimestampCast;
 use BybitApi\Enums\Category;
@@ -130,6 +131,19 @@ it('cast timestamp', function () {
 
     expect($cast(today()->getTimestampMs()))
         ->toEqual(today())
+        ->and($cast(''))
+        ->toBeNull()
+        ->and($cast(null))
+        ->toBeNull();
+});
+
+it('cast string array', function () {
+    $cast = new StringArrayCast;
+
+    expect($cast([123, '456']))
+        ->toBeArray()
+        ->each
+        ->toBeString()
         ->and($cast(''))
         ->toBeNull()
         ->and($cast(null))
