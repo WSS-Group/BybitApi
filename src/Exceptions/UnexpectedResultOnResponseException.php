@@ -7,12 +7,19 @@ use Saloon\Http\Response;
 
 class UnexpectedResultOnResponseException extends Error
 {
+    public readonly int $retCode;
+
+    public readonly string $retMsg;
+
     public function __construct(
         public Response $response
     ) {
-        $code = $response->json('retCode');
-        $msg = $response->json('retMsg');
-        parent::__construct("Unexpected result on response. Code: $code; Message: $msg", 500);
+        $this->retCode = $response->json('retCode');
+        $this->retMsg = $response->json('retMsg');
+        parent::__construct(
+            sprintf('Unexpected result on response. Code: %s; Message: %s', $this->retCode, $this->retMsg),
+            500
+        );
     }
 
     /**
