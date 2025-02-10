@@ -12,6 +12,7 @@ use BybitApi\DTOs\Asset\SingleCoinBalance;
 use BybitApi\DTOs\Asset\SubUID;
 use BybitApi\DTOs\Asset\Transfer;
 use BybitApi\DTOs\Asset\TransferRecord;
+use BybitApi\DTOs\Asset\UniversalTransferRecord;
 use BybitApi\DTOs\Asset\WithdrawableAmount;
 use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
@@ -31,6 +32,7 @@ use Illuminate\Support\Collection;
  * @method Transfer createInternalTransfer(BackedEnum|string $coin, string $amount, AccountType $fromAccountType, AccountType $toAccountType, ?string $transferId = null)
  * @method CursorCollection<int, TransferRecord> getInternalTransferRecords(?string $transferId = null, null|BackedEnum|string $coin = null, ?TransferStatus $status = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
  * @method Transfer createUniversalTransfer(BackedEnum|string $coin, string $amount, int $fromMemberId, AccountType $fromAccountType, int $toMemberId, AccountType $toAccountType, ?string $transferId = null)
+ * @method CursorCollection<int, UniversalTransferRecord> getUniversalTransferRecords(?string $transferId = null, null|BackedEnum|string $coin = null, ?TransferStatus $status = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
  *
  * @see \BybitApi\Groups\Asset
  */

@@ -418,8 +418,8 @@
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/transfer/unitransfer-list">Transfer - Get Universal Transfer Records</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/deposit/deposit-coin-spec">Deposit - Get Allowed Deposit Coin Info</a></td>

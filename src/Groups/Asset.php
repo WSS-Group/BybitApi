@@ -23,6 +23,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetInternalTransferRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSingleCoinBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetTransferableCoin;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetUniversalTransferRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetWithdrawableAmount;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -197,12 +198,22 @@ class Asset extends Group
     }
 
     /**
+     * @return CursorCollection<int, \BybitApi\DTOs\Asset\UniversalTransferRecord>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/asset/transfer/unitransfer-list
      */
-    public function getUniversalTransferRecords(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getUniversalTransferRecords(
+        ?string $transferId = null,
+        null|BackedEnum|string $coin = null,
+        ?TransferStatus $status = null,
+        ?Carbon $startTime = null,
+        ?Carbon $endTime = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): CursorCollection {
+        return $this->send(
+            new GetUniversalTransferRecords($transferId, $coin, $status, $startTime, $endTime, $limit, $cursor)
+        )->dto();
     }
 
     /**
