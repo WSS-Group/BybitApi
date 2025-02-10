@@ -8,7 +8,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSingleCoinBalance;
 use BybitApi\Tests\Fixtures\Bybit\Asset\GetSingleCoinBalance\OkFixture;
 use Saloon\Http\Faking\MockClient;
 
-it('return a single coin', function () {
+it('return a single coin balance', function () {
     MockClient::global([
         GetSingleCoinBalance::class => OkFixture::call(),
     ]);

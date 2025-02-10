@@ -458,8 +458,8 @@
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/withdraw/withdraw-record">Withdraw - Get Withdrawal Records</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/withdraw/vasp-list">Withdraw - Get Exchange Entity List</a></td>

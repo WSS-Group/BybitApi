@@ -14,10 +14,12 @@ use BybitApi\DTOs\Asset\Transfer;
 use BybitApi\DTOs\Asset\TransferRecord;
 use BybitApi\DTOs\Asset\UniversalTransferRecord;
 use BybitApi\DTOs\Asset\WithdrawableAmount;
+use BybitApi\DTOs\Asset\WithdrawalRecord;
 use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\FeeType;
 use BybitApi\Enums\TransferStatus;
+use BybitApi\Enums\WithdrawType;
 use BybitApi\Http\Integrations\Bybit\Entities\Assets\Beneficiary;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -35,6 +37,7 @@ use Illuminate\Support\Collection;
  * @method CursorCollection<int, TransferRecord> getInternalTransferRecords(?string $transferId = null, null|BackedEnum|string $coin = null, ?TransferStatus $status = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
  * @method Transfer createUniversalTransfer(BackedEnum|string $coin, string $amount, int $fromMemberId, AccountType $fromAccountType, int $toMemberId, AccountType $toAccountType, ?string $transferId = null)
  * @method CursorCollection<int, UniversalTransferRecord> getUniversalTransferRecords(?string $transferId = null, null|BackedEnum|string $coin = null, ?TransferStatus $status = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
+ * @method CursorCollection<int, WithdrawalRecord> getWithdrawalRecords(?string $withdrawID = null, ?string $txID = null, null|BackedEnum|string $coin = null, ?WithdrawType $withdrawType = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
  * @method string withdraw(BackedEnum|string $coin, string $address, string $amount, Carbon $timestamp, ?string $chain = null, ?string $tag = null, ?int $forceChain = null, ?AccountType $accountType = null, ?FeeType $feeType = null, ?string $requestId = null, ?Beneficiary $beneficiary = null)
  * @method bool cancelWithdrawal(string $id)
  *

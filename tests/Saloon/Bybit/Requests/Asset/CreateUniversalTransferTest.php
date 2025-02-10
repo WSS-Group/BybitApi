@@ -8,7 +8,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Asset\CreateUniversalTransfer;
 use BybitApi\Tests\Fixtures\Bybit\Asset\CreateUniversalTransfer\OkFixture;
 use Saloon\Http\Faking\MockClient;
 
-it('can create an internal transfer', function () {
+it('can create an universal transfer', function () {
     MockClient::global([
         CreateUniversalTransfer::class => OkFixture::call(),
     ]);

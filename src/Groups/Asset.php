@@ -13,6 +13,7 @@ use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\FeeType;
 use BybitApi\Enums\TransferStatus;
+use BybitApi\Enums\WithdrawType;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Entities\Assets\Beneficiary;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\CancelWithdrawal;
@@ -28,6 +29,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetTransferableCoin;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetUniversalTransferRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetWithdrawableAmount;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetWithdrawalRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\Withdraw;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -284,12 +286,23 @@ class Asset extends Group
     }
 
     /**
+     * @return CursorCollection<int, \BybitApi\DTOs\Asset\WithdrawalRecord>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/asset/withdraw/withdraw-record
      */
-    public function getWithdrawalRecords(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getWithdrawalRecords(
+        ?string $withdrawID = null,
+        ?string $txID = null,
+        null|BackedEnum|string $coin = null,
+        ?WithdrawType $withdrawType = null,
+        ?Carbon $startTime = null,
+        ?Carbon $endTime = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): CursorCollection {
+        return $this->send(new GetWithdrawalRecords(
+            $withdrawID, $txID, $coin, $withdrawType, $startTime, $endTime, $limit, $cursor
+        ))->dto();
     }
 
     /**

@@ -7,7 +7,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
 use BybitApi\Tests\Fixtures\Bybit\Asset\GetAllCoinsBalance\OkFixture;
 use Saloon\Http\Faking\MockClient;
 
-it('return a list of coins', function () {
+it('return a list of coins balance', function () {
     MockClient::global([
         GetAllCoinsBalance::class => OkFixture::call(),
     ]);

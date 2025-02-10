@@ -7,7 +7,7 @@ use BybitApi\Tests\Fixtures\Bybit\Asset\GetTransferableCoin\OkFixture;
 use Illuminate\Support\Collection;
 use Saloon\Http\Faking\MockClient;
 
-it('return a list of coins', function () {
+it('return a list of transferable coins', function () {
     MockClient::global([
         GetTransferableCoin::class => OkFixture::call(),
     ]);

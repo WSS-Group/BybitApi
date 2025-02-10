@@ -11,7 +11,7 @@ use Illuminate\Support\Carbon;
 use Pest\Expectation;
 use Saloon\Http\Faking\MockClient;
 
-it('return a list of coins info', function () {
+it('return a list of transfers', function () {
     MockClient::global([
         GetInternalTransferRecords::class => OkFixture::call(),
     ]);
