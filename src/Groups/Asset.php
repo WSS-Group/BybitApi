@@ -11,6 +11,8 @@ use BybitApi\DTOs\Asset\Transfer;
 use BybitApi\DTOs\Asset\WithdrawableAmount;
 use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
+use BybitApi\Enums\ConvertAccountType;
+use BybitApi\Enums\ConvertSide;
 use BybitApi\Enums\FeeType;
 use BybitApi\Enums\TransferStatus;
 use BybitApi\Enums\WithdrawType;
@@ -22,6 +24,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Asset\CreateUniversalTransfer;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinExchangeRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinInfo;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetConvertCoinList;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetDeliveryRecord;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetInternalTransferRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSingleCoinBalance;
@@ -345,12 +348,16 @@ class Asset extends Group
     }
 
     /**
+     * @return Collection<string, \BybitApi\DTOs\Asset\ConvertCoin>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/asset/convert/convert-coin-list
      */
-    public function getConvertCoinList(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getConvertCoinList(
+        ConvertAccountType $accountType,
+        null|BackedEnum|string $coin = null,
+        ?ConvertSide $side = null,
+    ): Collection {
+        return $this->send(new GetConvertCoinList($accountType, $coin, $side))->dto();
     }
 
     /**

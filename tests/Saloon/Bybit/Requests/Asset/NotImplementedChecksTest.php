@@ -27,8 +27,6 @@ it('check if all not implemented tests throw exception', function () {
         ->toThrow(NotImplementedYetException::class, "{$commonError}getSubDepositAddress'.")
         ->and(fn () => $asset->getExchangeEntityList())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getExchangeEntityList'.")
-        ->and(fn () => $asset->getConvertCoinList())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}getConvertCoinList'.")
         ->and(fn () => $asset->requestAQuote())
         ->toThrow(NotImplementedYetException::class, "{$commonError}requestAQuote'.")
         ->and(fn () => $asset->confirmAQuote())
