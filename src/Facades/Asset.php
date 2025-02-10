@@ -24,6 +24,7 @@ use Illuminate\Support\Collection;
  * @method AllCoinsBalance getAllCoinsBalance(AccountType $accountType, null|BackedEnum|string $coin = null, ?string $memberId = null, ?bool $withBonus = null)
  * @method SingleCoinBalance getSingleCoinBalance(AccountType $accountType, BackedEnum|string $coin, ?string $memberId = null, ?AccountType $toAccountType = null, ?string $toMemberId = null, ?bool $withBonus = null, ?bool $withTransferSafeAmount = null, ?bool $withLtvTransferSafeAmount = null)
  * @method WithdrawableAmount getWithdrawableAmount(BackedEnum|string $coin)
+ * @method Collection<int, string> getTransferableCoin(AccountType $fromAccountType, AccountType $toAccountType)
  *
  * @see \BybitApi\Groups\Asset
  */

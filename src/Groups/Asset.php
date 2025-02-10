@@ -17,6 +17,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetDeliveryRecord;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSingleCoinBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSubUID;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetTransferableCoin;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetWithdrawableAmount;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -131,12 +132,13 @@ class Asset extends Group
     }
 
     /**
+     * @return Collection<int, string>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/asset/transfer/transferable-coin
      */
-    public function getTransferableCoin(): never
+    public function getTransferableCoin(AccountType $fromAccountType, AccountType $toAccountType): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetTransferableCoin($fromAccountType, $toAccountType))->dto();
     }
 
     /**
