@@ -7,10 +7,12 @@ use BybitApi\CursorCollection;
 use BybitApi\DTOs\Asset\AllCoinsBalance;
 use BybitApi\DTOs\Asset\SingleCoinBalance;
 use BybitApi\DTOs\Asset\SubUID;
+use BybitApi\DTOs\Asset\Transfer;
 use BybitApi\DTOs\Asset\WithdrawableAmount;
 use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
 use BybitApi\Exceptions\NotImplementedYetException;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\CreateInternalTransfer;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinExchangeRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinInfo;
@@ -144,10 +146,15 @@ class Asset extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/asset/transfer/create-inter-transfer
      */
-    public function createInternalTransfer(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function createInternalTransfer(
+        BackedEnum|string $coin,
+        string $amount,
+        AccountType $fromAccountType,
+        AccountType $toAccountType,
+        ?string $transferId = null,
+    ): Transfer {
+        return $this->send(new CreateInternalTransfer($coin, $amount, $fromAccountType, $toAccountType, $transferId))
+            ->dto();
     }
 
     /**

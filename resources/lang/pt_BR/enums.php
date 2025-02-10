@@ -73,4 +73,10 @@ return [
         'delivering' => 'entregando',
         'closed' => 'fechado',
     ],
+    'transfer_statuses' => [
+        'unknown' => 'desconhecido',
+        'success' => 'sucesso',
+        'pending' => 'pendente',
+        'failed' => 'falhou',
+    ],
 ];

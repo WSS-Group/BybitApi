@@ -8,6 +8,7 @@ use BybitApi\Enums\Product;
 use BybitApi\Enums\Side;
 use BybitApi\Enums\StopOrderType;
 use BybitApi\Enums\SymbolStatus;
+use BybitApi\Enums\TransferStatus;
 
 it('test interval labels', function (Interval $interval) {
     expect($interval->label())
@@ -52,3 +53,8 @@ it('test symbols status labels', function (SymbolStatus $status) {
     expect($status->label())
         ->toBeString();
 })->with(SymbolStatus::cases());
+
+it('test transfer statuses status labels', function (TransferStatus $status) {
+    expect($status->label())
+        ->toBeString();
+})->with(TransferStatus::cases());

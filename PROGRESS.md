@@ -403,8 +403,8 @@
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/transfer/create-inter-transfer">Transfer - Create Internal Transfer</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/transfer/inter-transfer-list">Transfer - Get Internal Transfer Records</a></td>
