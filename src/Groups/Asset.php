@@ -11,12 +11,14 @@ use BybitApi\DTOs\Asset\Transfer;
 use BybitApi\DTOs\Asset\WithdrawableAmount;
 use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
+use BybitApi\Enums\TransferStatus;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\CreateInternalTransfer;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinExchangeRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetDeliveryRecord;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetInternalTransferRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSingleCoinBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetTransferableCoin;
@@ -158,12 +160,22 @@ class Asset extends Group
     }
 
     /**
+     * @return CursorCollection<int, \BybitApi\DTOs\Asset\TransferRecord>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/asset/transfer/inter-transfer-list
      */
-    public function getInternalTransferRecords(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getInternalTransferRecords(
+        ?string $transferId = null,
+        null|BackedEnum|string $coin = null,
+        ?TransferStatus $status = null,
+        ?Carbon $startTime = null,
+        ?Carbon $endTime = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): CursorCollection {
+        return $this->send(
+            new GetInternalTransferRecords($transferId, $coin, $status, $startTime, $endTime, $limit, $cursor)
+        )->dto();
     }
 
     /**

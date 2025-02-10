@@ -11,9 +11,11 @@ use BybitApi\DTOs\Asset\DeliveryRecord;
 use BybitApi\DTOs\Asset\SingleCoinBalance;
 use BybitApi\DTOs\Asset\SubUID;
 use BybitApi\DTOs\Asset\Transfer;
+use BybitApi\DTOs\Asset\TransferRecord;
 use BybitApi\DTOs\Asset\WithdrawableAmount;
 use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
+use BybitApi\Enums\TransferStatus;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
@@ -27,6 +29,7 @@ use Illuminate\Support\Collection;
  * @method WithdrawableAmount getWithdrawableAmount(BackedEnum|string $coin)
  * @method Collection<int, string> getTransferableCoin(AccountType $fromAccountType, AccountType $toAccountType)
  * @method Transfer createInternalTransfer(BackedEnum|string $coin, string $amount, AccountType $fromAccountType, AccountType $toAccountType, ?string $transferId = null)
+ * @method CursorCollection<int, TransferRecord> getInternalTransferRecords(?string $transferId = null, null|BackedEnum|string $coin = null, ?TransferStatus $status = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
  *
  * @see \BybitApi\Groups\Asset
  */
