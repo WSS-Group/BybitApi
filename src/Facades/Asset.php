@@ -51,6 +51,7 @@ use Illuminate\Support\Collection;
  * @method ConvertQuote requestAQuote(ConvertAccountType $accountType, BackedEnum|string $fromCoin, BackedEnum|string $toCoin, BackedEnum|string $requestCoin, string $requestAmount, ?CoinType $fromCoinType = null, ?CoinType $toCoinType = null, ?string $paramType = null, ?string $paramValue = null, ?string $requestId = null)
  * @method Convert confirmAQuote(string $quoteTxId)
  * @method ConvertStatus getConvertStatus(string $quoteTxId, ConvertAccountType $accountType)
+ * @method Collection<int, ConvertStatus> getConvertHistory(?ConvertAccountType $accountType = null, ?int $index = null, ?int $limit = null)
  *
  * @see \BybitApi\Groups\Asset
  */

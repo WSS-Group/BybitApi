@@ -22,6 +22,7 @@ use BybitApi\Enums\ExchangeStatus;
  * @property null|float $fromAmount
  * @property null|float $toAmount
  * @property null|ExchangeStatus $exchangeStatus
+ * @property null|\BybitApi\DTOs\Asset\ConvertExtInfo $extInfo
  * @property null|float $convertRate
  * @property null|\Illuminate\Support\Carbon $createdAt
  */
@@ -40,6 +41,7 @@ class ConvertStatus extends DTO
             'fromAmount' => FloatCast::class,
             'toAmount' => FloatCast::class,
             'exchangeStatus' => new EnumCast(ExchangeStatus::class, ExchangeStatus::OTHER),
+            'extInfo' => ConvertExtInfo::class,
             'convertRate' => FloatCast::class,
             'createdAt' => TimestampMsCast::class,
         ];

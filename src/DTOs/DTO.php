@@ -87,7 +87,7 @@ abstract class DTO implements Arrayable
                     $cast = $castFqn;
                     $castFqn = $cast::class;
                 } elseif (is_subclass_of($castFqn, DTO::class)) {
-                    return is_array($input) ? $castFqn::init($input) : $input;
+                    return is_array($input) ? (! empty($input) ? $castFqn::init($input) : null) : $input;
                 } else {
                     throw_if(! class_exists($castFqn), Exception::class, "class '$castFqn' not found");
                     $cast = new $castFqn;

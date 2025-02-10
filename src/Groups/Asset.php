@@ -30,6 +30,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinExchangeRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetConvertCoinList;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetConvertHistory;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetConvertStatus;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetDeliveryRecord;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetInternalTransferRecords;
@@ -406,11 +407,15 @@ class Asset extends Group
     }
 
     /**
+     * @return Collection<int, \BybitApi\DTOs\Asset\ConvertStatus>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/asset/convert/get-convert-history
      */
-    public function getConvertHistory(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getConvertHistory(
+        ?ConvertAccountType $accountType = null,
+        ?int $index = null,
+        ?int $limit = null,
+    ): Collection {
+        return $this->send(new GetConvertHistory($accountType, $index, $limit))->dto();
     }
 }
