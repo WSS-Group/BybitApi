@@ -7,6 +7,7 @@ use BybitApi\CursorCollection;
 use BybitApi\DTOs\Asset\AllCoinsBalance;
 use BybitApi\DTOs\Asset\Convert;
 use BybitApi\DTOs\Asset\ConvertQuote;
+use BybitApi\DTOs\Asset\ConvertStatus;
 use BybitApi\DTOs\Asset\SingleCoinBalance;
 use BybitApi\DTOs\Asset\SubUID;
 use BybitApi\DTOs\Asset\Transfer;
@@ -29,6 +30,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinExchangeRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetConvertCoinList;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetConvertStatus;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetDeliveryRecord;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetInternalTransferRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSingleCoinBalance;
@@ -398,10 +400,9 @@ class Asset extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/asset/convert/get-convert-result
      */
-    public function getConvertStatus(): never
+    public function getConvertStatus(string $quoteTxId, ConvertAccountType $accountType): ConvertStatus
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetConvertStatus($quoteTxId, $accountType))->dto();
     }
 
     /**

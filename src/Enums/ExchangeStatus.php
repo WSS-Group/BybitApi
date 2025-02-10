@@ -8,4 +8,5 @@ enum ExchangeStatus: string
     case PROCESSING = 'processing';
     case SUCCESS = 'success';
     case FAILURE = 'failure';
+    case OTHER = 'OTHER';
 }
