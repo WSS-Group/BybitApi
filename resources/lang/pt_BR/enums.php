@@ -73,4 +73,21 @@ return [
         'delivering' => 'entregando',
         'closed' => 'fechado',
     ],
+    'transfer_statuses' => [
+        'unknown' => 'desconhecido',
+        'success' => 'sucesso',
+        'pending' => 'pendente',
+        'failed' => 'falhou',
+    ],
+    'withdraw_statuses' => [
+        'security_check' => 'verificação de segurança',
+        'pending' => 'pending',
+        'success' => 'success',
+        'cancel_by_user' => 'canceled by user',
+        'reject' => 'reject',
+        'fail' => 'fail',
+        'blockchain_confirmed' => 'blockchain confirmed',
+        'more_information_required' => 'more information required',
+        'unknown' => 'unknown',
+    ],
 ];

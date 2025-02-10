@@ -398,28 +398,28 @@
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/transfer/transferable-coin">Transfer - Get Transferable Coin</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/transfer/create-inter-transfer">Transfer - Create Internal Transfer</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/transfer/inter-transfer-list">Transfer - Get Internal Transfer Records</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/transfer/unitransfer">Transfer - Create Universal Transfer</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/transfer/unitransfer-list">Transfer - Get Universal Transfer Records</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/deposit/deposit-coin-spec">Deposit - Get Allowed Deposit Coin Info</a></td>
@@ -458,8 +458,8 @@
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/withdraw/withdraw-record">Withdraw - Get Withdrawal Records</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/withdraw/vasp-list">Withdraw - Get Exchange Entity List</a></td>
@@ -468,38 +468,38 @@
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/withdraw">Withdraw - Withdraw</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/withdraw/cancel-withdraw">Withdraw - Cancel Withdrawal</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/convert/convert-coin-list">Convert - Get Convert Coin List</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/convert/apply-quote">Convert - Request a Quote</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/convert/confirm-quote">Convert - Confirm a Quote</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/convert/get-convert-result">Convert - Get Convert Status</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/convert/get-convert-history">Convert - Get Convert history</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td rowspan="13">User</td>

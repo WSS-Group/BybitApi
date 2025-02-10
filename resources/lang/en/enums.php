@@ -73,4 +73,21 @@ return [
         'delivering' => 'delivering',
         'closed' => 'closed',
     ],
+    'transfer_statuses' => [
+        'unknown' => 'unknown',
+        'success' => 'success',
+        'pending' => 'pending',
+        'failed' => 'failed',
+    ],
+    'withdraw_statuses' => [
+        'security_check' => 'security check',
+        'pending' => 'pending',
+        'success' => 'success',
+        'cancel_by_user' => 'canceled by user',
+        'reject' => 'reject',
+        'fail' => 'fail',
+        'blockchain_confirmed' => 'blockchain confirmed',
+        'more_information_required' => 'more information required',
+        'unknown' => 'unknown',
+    ],
 ];
