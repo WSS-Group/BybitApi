@@ -14,6 +14,7 @@ use BybitApi\Enums\Category;
 use BybitApi\Enums\TransferStatus;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\CreateInternalTransfer;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\CreateUniversalTransfer;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinExchangeRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetCoinInfo;
@@ -181,10 +182,18 @@ class Asset extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/asset/transfer/unitransfer
      */
-    public function createUniversalTransfer(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function createUniversalTransfer(
+        BackedEnum|string $coin,
+        string $amount,
+        int $fromMemberId,
+        AccountType $fromAccountType,
+        int $toMemberId,
+        AccountType $toAccountType,
+        ?string $transferId = null,
+    ): Transfer {
+        return $this->send(new CreateUniversalTransfer(
+            $coin, $amount, $fromMemberId, $fromAccountType, $toMemberId, $toAccountType, $transferId
+        ))->dto();
     }
 
     /**

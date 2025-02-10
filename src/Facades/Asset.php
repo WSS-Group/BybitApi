@@ -30,6 +30,7 @@ use Illuminate\Support\Collection;
  * @method Collection<int, string> getTransferableCoin(AccountType $fromAccountType, AccountType $toAccountType)
  * @method Transfer createInternalTransfer(BackedEnum|string $coin, string $amount, AccountType $fromAccountType, AccountType $toAccountType, ?string $transferId = null)
  * @method CursorCollection<int, TransferRecord> getInternalTransferRecords(?string $transferId = null, null|BackedEnum|string $coin = null, ?TransferStatus $status = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
+ * @method Transfer createUniversalTransfer(BackedEnum|string $coin, string $amount, int $fromMemberId, AccountType $fromAccountType, int $toMemberId, AccountType $toAccountType, ?string $transferId = null)
  *
  * @see \BybitApi\Groups\Asset
  */
