@@ -36,6 +36,7 @@ use Illuminate\Support\Collection;
  * @method Transfer createUniversalTransfer(BackedEnum|string $coin, string $amount, int $fromMemberId, AccountType $fromAccountType, int $toMemberId, AccountType $toAccountType, ?string $transferId = null)
  * @method CursorCollection<int, UniversalTransferRecord> getUniversalTransferRecords(?string $transferId = null, null|BackedEnum|string $coin = null, ?TransferStatus $status = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
  * @method string withdraw(BackedEnum|string $coin, string $address, string $amount, Carbon $timestamp, ?string $chain = null, ?string $tag = null, ?int $forceChain = null, ?AccountType $accountType = null, ?FeeType $feeType = null, ?string $requestId = null, ?Beneficiary $beneficiary = null)
+ * @method bool cancelWithdrawal(string $id)
  *
  * @see \BybitApi\Groups\Asset
  */

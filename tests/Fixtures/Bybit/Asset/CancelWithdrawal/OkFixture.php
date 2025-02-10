@@ -1,6 +1,6 @@
 <?php
 
-namespace BybitApi\Tests\Fixtures\Bybit\Asset\Withdraw;
+namespace BybitApi\Tests\Fixtures\Bybit\Asset\CancelWithdrawal;
 
 use BybitApi\Tests\Fixtures\Fixture;
 use Saloon\Http\PendingRequest;
@@ -15,7 +15,7 @@ class OkFixture extends Fixture
             'retCode' => 0,
             'retMsg' => 'success',
             'result' => [
-                'id' => rand(10000, 99999),
+                'status' => 1,
             ],
             'retExtInfo' => [],
             'time' => $current->getTimestampMs(),

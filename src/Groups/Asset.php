@@ -15,6 +15,7 @@ use BybitApi\Enums\FeeType;
 use BybitApi\Enums\TransferStatus;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Entities\Assets\Beneficiary;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\CancelWithdrawal;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\CreateInternalTransfer;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\CreateUniversalTransfer;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
@@ -325,10 +326,9 @@ class Asset extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/asset/withdraw/cancel-withdraw
      */
-    public function cancelWithdrawal(): never
+    public function cancelWithdrawal(string $id): bool
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new CancelWithdrawal($id))->dto();
     }
 
     /**
