@@ -8,6 +8,7 @@ use BybitApi\DTOs\Asset\AllCoinsBalance;
 use BybitApi\DTOs\Asset\CoinExchange;
 use BybitApi\DTOs\Asset\CoinInfo;
 use BybitApi\DTOs\Asset\ConvertCoin;
+use BybitApi\DTOs\Asset\ConvertQuote;
 use BybitApi\DTOs\Asset\DeliveryRecord;
 use BybitApi\DTOs\Asset\SingleCoinBalance;
 use BybitApi\DTOs\Asset\SubUID;
@@ -18,6 +19,7 @@ use BybitApi\DTOs\Asset\WithdrawableAmount;
 use BybitApi\DTOs\Asset\WithdrawalRecord;
 use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
+use BybitApi\Enums\CoinType;
 use BybitApi\Enums\ConvertAccountType;
 use BybitApi\Enums\ConvertSide;
 use BybitApi\Enums\FeeType;
@@ -44,6 +46,7 @@ use Illuminate\Support\Collection;
  * @method string withdraw(BackedEnum|string $coin, string $address, string $amount, Carbon $timestamp, ?string $chain = null, ?string $tag = null, ?int $forceChain = null, ?AccountType $accountType = null, ?FeeType $feeType = null, ?string $requestId = null, ?Beneficiary $beneficiary = null)
  * @method bool cancelWithdrawal(string $id)
  * @method Collection<string, ConvertCoin> getConvertCoinList(ConvertAccountType $accountType, null|BackedEnum|string $coin = null, ?ConvertSide $side = null)
+ * @method ConvertQuote requestAQuote(ConvertAccountType $accountType, BackedEnum|string $fromCoin, BackedEnum|string $toCoin, BackedEnum|string $requestCoin, string $requestAmount, ?CoinType $fromCoinType = null, ?CoinType $toCoinType = null, ?string $paramType = null, ?string $paramValue = null, ?string $requestId = null)
  *
  * @see \BybitApi\Groups\Asset
  */

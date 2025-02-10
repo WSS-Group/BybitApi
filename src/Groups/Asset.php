@@ -5,12 +5,14 @@ namespace BybitApi\Groups;
 use BackedEnum;
 use BybitApi\CursorCollection;
 use BybitApi\DTOs\Asset\AllCoinsBalance;
+use BybitApi\DTOs\Asset\ConvertQuote;
 use BybitApi\DTOs\Asset\SingleCoinBalance;
 use BybitApi\DTOs\Asset\SubUID;
 use BybitApi\DTOs\Asset\Transfer;
 use BybitApi\DTOs\Asset\WithdrawableAmount;
 use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
+use BybitApi\Enums\CoinType;
 use BybitApi\Enums\ConvertAccountType;
 use BybitApi\Enums\ConvertSide;
 use BybitApi\Enums\FeeType;
@@ -33,6 +35,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetTransferableCoin;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetUniversalTransferRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetWithdrawableAmount;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetWithdrawalRecords;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\RequestAQuote;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\Withdraw;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -363,10 +366,22 @@ class Asset extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/asset/convert/apply-quote
      */
-    public function requestAQuote(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function requestAQuote(
+        ConvertAccountType $accountType,
+        BackedEnum|string $fromCoin,
+        BackedEnum|string $toCoin,
+        BackedEnum|string $requestCoin,
+        string $requestAmount,
+        ?CoinType $fromCoinType = null,
+        ?CoinType $toCoinType = null,
+        ?string $paramType = null,
+        ?string $paramValue = null,
+        ?string $requestId = null,
+    ): ConvertQuote {
+        return $this->send(new RequestAQuote(
+            $accountType, $fromCoin, $toCoin, $requestCoin, $requestAmount,
+            $fromCoinType, $toCoinType, $paramType, $paramValue, $requestId
+        ))->dto();
     }
 
     /**
