@@ -468,8 +468,8 @@
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/withdraw">Withdraw - Withdraw</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/asset/withdraw/cancel-withdraw">Withdraw - Cancel Withdrawal</a></td>

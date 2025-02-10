@@ -11,8 +11,10 @@ use BybitApi\DTOs\Asset\Transfer;
 use BybitApi\DTOs\Asset\WithdrawableAmount;
 use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
+use BybitApi\Enums\FeeType;
 use BybitApi\Enums\TransferStatus;
 use BybitApi\Exceptions\NotImplementedYetException;
+use BybitApi\Http\Integrations\Bybit\Entities\Assets\Beneficiary;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\CreateInternalTransfer;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\CreateUniversalTransfer;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
@@ -25,6 +27,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetTransferableCoin;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetUniversalTransferRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetWithdrawableAmount;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\Withdraw;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
@@ -300,10 +303,23 @@ class Asset extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/asset/withdraw
      */
-    public function withdraw(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function withdraw(
+        BackedEnum|string $coin,
+        string $address,
+        string $amount,
+        Carbon $timestamp,
+        ?string $chain = null,
+        ?string $tag = null,
+        ?int $forceChain = null,
+        ?AccountType $accountType = null,
+        ?FeeType $feeType = null,
+        ?string $requestId = null,
+        ?Beneficiary $beneficiary = null,
+    ): string {
+        return $this->send(new Withdraw(
+            $coin, $address, $amount, $timestamp, $chain, $tag, $forceChain,
+            $accountType, $feeType, $requestId, $beneficiary
+        ))->dto();
     }
 
     /**
