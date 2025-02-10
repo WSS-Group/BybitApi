@@ -5,6 +5,7 @@ namespace BybitApi\Groups;
 use BackedEnum;
 use BybitApi\CursorCollection;
 use BybitApi\DTOs\Asset\AllCoinsBalance;
+use BybitApi\DTOs\Asset\Convert;
 use BybitApi\DTOs\Asset\ConvertQuote;
 use BybitApi\DTOs\Asset\SingleCoinBalance;
 use BybitApi\DTOs\Asset\SubUID;
@@ -21,6 +22,7 @@ use BybitApi\Enums\WithdrawType;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Entities\Assets\Beneficiary;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\CancelWithdrawal;
+use BybitApi\Http\Integrations\Bybit\Requests\Asset\ConfirmAQuote;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\CreateInternalTransfer;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\CreateUniversalTransfer;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetAllCoinsBalance;
@@ -37,6 +39,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetWithdrawableAmount;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\GetWithdrawalRecords;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\RequestAQuote;
 use BybitApi\Http\Integrations\Bybit\Requests\Asset\Withdraw;
+use Illuminate\Console\View\Components\Confirm;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
@@ -387,10 +390,9 @@ class Asset extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/asset/convert/confirm-quote
      */
-    public function confirmAQuote(): never
+    public function confirmAQuote(string $quoteTxId): Convert
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new ConfirmAQuote($quoteTxId))->dto();
     }
 
     /**

@@ -7,6 +7,7 @@ use BybitApi\CursorCollection;
 use BybitApi\DTOs\Asset\AllCoinsBalance;
 use BybitApi\DTOs\Asset\CoinExchange;
 use BybitApi\DTOs\Asset\CoinInfo;
+use BybitApi\DTOs\Asset\Convert;
 use BybitApi\DTOs\Asset\ConvertCoin;
 use BybitApi\DTOs\Asset\ConvertQuote;
 use BybitApi\DTOs\Asset\DeliveryRecord;
@@ -47,6 +48,7 @@ use Illuminate\Support\Collection;
  * @method bool cancelWithdrawal(string $id)
  * @method Collection<string, ConvertCoin> getConvertCoinList(ConvertAccountType $accountType, null|BackedEnum|string $coin = null, ?ConvertSide $side = null)
  * @method ConvertQuote requestAQuote(ConvertAccountType $accountType, BackedEnum|string $fromCoin, BackedEnum|string $toCoin, BackedEnum|string $requestCoin, string $requestAmount, ?CoinType $fromCoinType = null, ?CoinType $toCoinType = null, ?string $paramType = null, ?string $paramValue = null, ?string $requestId = null)
+ * @method Convert confirmAQuote(string $quoteTxId)
  *
  * @see \BybitApi\Groups\Asset
  */
