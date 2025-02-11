@@ -504,8 +504,8 @@
         <tr>
             <td rowspan="13">User</td>
             <td><a href="https://bybit-exchange.github.io/docs/v5/user/create-subuid">Create Sub UID</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/user/create-subuid-apikey">Create Sub UID API Key</a></td>

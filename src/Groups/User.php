@@ -3,7 +3,10 @@
 namespace BybitApi\Groups;
 
 use BybitApi\CursorCollection;
+use BybitApi\DTOs\User\UID;
+use BybitApi\Enums\MemberType;
 use BybitApi\Exceptions\NotImplementedYetException;
+use BybitApi\Http\Integrations\Bybit\Requests\User\CreateSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\User\FreezeSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetLimitedUIDList;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetUnlimitedUIDList;
@@ -14,10 +17,14 @@ class User extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/user/create-subuid
      */
-    public function createSubUid(): mixed
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function createSubUID(
+        string $username,
+        MemberType $memberType,
+        ?string $password = null,
+        ?bool $switch = null,
+        ?string $note = null,
+    ): UID {
+        return $this->send(new CreateSubUID($username, $memberType, $password, $switch, $note))->dto();
     }
 
     /**
