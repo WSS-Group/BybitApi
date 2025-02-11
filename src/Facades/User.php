@@ -12,6 +12,7 @@ use Illuminate\Support\Collection;
  * @method Collection<int, UID> getLimitedSubUidList()
  * @method CursorCollection<int, UID> getUnlimitedSubUidList(?int $pageSize = null, ?string $nextCursor = null)
  * @method bool freezeSubUid(string $subuid, bool $frozen)
+ * @method bool deleteSubUid(string $subuid)
  *
  * @see \BybitApi\Groups\User
  */

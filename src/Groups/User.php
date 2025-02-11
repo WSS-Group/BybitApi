@@ -7,6 +7,7 @@ use BybitApi\DTOs\User\UID;
 use BybitApi\Enums\MemberType;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\User\CreateSubUID;
+use BybitApi\Http\Integrations\Bybit\Requests\User\DeleteSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\User\FreezeSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetLimitedUIDList;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetUnlimitedUIDList;
@@ -112,10 +113,9 @@ class User extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/user/rm-subuid
      */
-    public function deleteSubUid(): mixed
+    public function deleteSubUid(string $subuid): bool
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new DeleteSubUID($subuid))->dto();
     }
 
     /**

@@ -19,8 +19,6 @@ it('check if all not implemented tests throw exception', function () {
         ->toThrow(NotImplementedYetException::class, "{$commonError}modifyMasterApiKey'.")
         ->and(fn () => $user->modifySubApiKey())
         ->toThrow(NotImplementedYetException::class, "{$commonError}modifySubApiKey'.")
-        ->and(fn () => $user->deleteSubUid())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}deleteSubUid'.")
         ->and(fn () => $user->deleteMasterApiKey())
         ->toThrow(NotImplementedYetException::class, "{$commonError}deleteMasterApiKey'.")
         ->and(fn () => $user->deleteSubApiKey())
