@@ -11,8 +11,6 @@ it('check if all not implemented tests throw exception', function () {
         ->toThrow(NotImplementedYetException::class, "{$commonError}createSubUid'.")
         ->and(fn () => $user->createSubUidApiKey())
         ->toThrow(NotImplementedYetException::class, "{$commonError}createSubUidApiKey'.")
-        ->and(fn () => $user->getUnlimitedSubUidList())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}getUnlimitedSubUidList'.")
         ->and(fn () => $user->freezeSubUid())
         ->toThrow(NotImplementedYetException::class, "{$commonError}freezeSubUid'.")
         ->and(fn () => $user->getApiKeyInformation())

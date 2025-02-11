@@ -2,8 +2,10 @@
 
 namespace BybitApi\Groups;
 
+use BybitApi\CursorCollection;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetLimitedUIDList;
+use BybitApi\Http\Integrations\Bybit\Requests\User\GetUnlimitedUIDList;
 use Illuminate\Support\Collection;
 
 class User extends Group
@@ -37,12 +39,13 @@ class User extends Group
     }
 
     /**
+     * @return CursorCollection<int, \BybitApi\DTOs\User\UID>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/user/page-subuid
      */
-    public function getUnlimitedSubUidList(): mixed
+    public function getUnlimitedSubUidList(?int $pageSize = null, ?string $nextCursor = null): CursorCollection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetUnlimitedUIDList($pageSize, $nextCursor))->dto();
     }
 
     /**
