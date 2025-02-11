@@ -4,6 +4,7 @@ namespace BybitApi\Groups;
 
 use BybitApi\CursorCollection;
 use BybitApi\Exceptions\NotImplementedYetException;
+use BybitApi\Http\Integrations\Bybit\Requests\User\FreezeSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetLimitedUIDList;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetUnlimitedUIDList;
 use Illuminate\Support\Collection;
@@ -51,10 +52,9 @@ class User extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/user/froze-subuid
      */
-    public function freezeSubUid(): mixed
+    public function freezeSubUid(string $subuid, bool $frozen): bool
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new FreezeSubUID($subuid, $frozen))->dto();
     }
 
     /**
