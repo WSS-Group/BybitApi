@@ -3,6 +3,8 @@
 namespace BybitApi\Groups;
 
 use BybitApi\Exceptions\NotImplementedYetException;
+use BybitApi\Http\Integrations\Bybit\Requests\User\GetLimitedUIDList;
+use Illuminate\Support\Collection;
 
 class User extends Group
 {
@@ -25,18 +27,19 @@ class User extends Group
     }
 
     /**
+     * @return Collection<int, \BybitApi\DTOs\User\UID>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/user/subuid-list
      */
-    public function getLimitedSubUidList(): mixed
+    public function getLimitedSubUidList(): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetLimitedUIDList)->dto();
     }
 
     /**
      * @link https://bybit-exchange.github.io/docs/v5/user/page-subuid
      */
-    public function getPaginatedSubUidList(): mixed
+    public function getUnlimitedSubUidList(): mixed
     {
         // TODO
         throw new NotImplementedYetException;
