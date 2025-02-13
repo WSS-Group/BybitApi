@@ -16,6 +16,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\User\FreezeSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetApiKeyInformation;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetLimitedUIDList;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetSubAccountAllApiKeys;
+use BybitApi\Http\Integrations\Bybit\Requests\User\GetUIDWalletType;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetUnlimitedUIDList;
 use Illuminate\Support\Collection;
 
@@ -97,12 +98,13 @@ class User extends Group
     }
 
     /**
+     * @return Collection<int, \BybitApi\DTOs\User\WalletType>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/user/wallet-type
      */
-    public function getUidWalletType(): never
+    public function getUIDWalletType(?array $memberIds = null): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetUIDWalletType($memberIds))->dto();
     }
 
     /**

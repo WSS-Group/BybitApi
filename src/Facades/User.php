@@ -7,6 +7,7 @@ use BybitApi\DTOs\User\ApiKey;
 use BybitApi\DTOs\User\CreatedSubApiKey;
 use BybitApi\DTOs\User\SubApiKey;
 use BybitApi\DTOs\User\UID;
+use BybitApi\DTOs\User\WalletType;
 use BybitApi\Enums\MemberType;
 use BybitApi\Http\Integrations\Bybit\Entities\Users\SubPermissions;
 use Illuminate\Support\Collection;
@@ -19,6 +20,7 @@ use Illuminate\Support\Collection;
  * @method bool freezeSubUid(string $subuid, bool $frozen)
  * @method ApiKey getApiKeyInformation()
  * @method CursorCollection<int, SubApiKey> getSubAccountAllApiKeys(string $subMemberId, ?int $limit = null, ?string $cursor = null)
+ * @method Collection<int, WalletType> getUIDWalletType(?array $memberIds = null)
  * @method bool deleteSubUid(string $subuid)
  *
  * @see \BybitApi\Groups\User

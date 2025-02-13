@@ -2,6 +2,7 @@
 
 use BybitApi\DTOs\Casts\BooleanCast;
 use BybitApi\DTOs\Casts\DTOCollectionCast;
+use BybitApi\DTOs\Casts\EnumArrayCast;
 use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\IntCast;
@@ -10,6 +11,7 @@ use BybitApi\DTOs\Casts\StringArrayCast;
 use BybitApi\DTOs\Casts\StringCast;
 use BybitApi\DTOs\Casts\TimestampCast;
 use BybitApi\DTOs\Casts\TimestampMsCast;
+use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
 use BybitApi\Tests\DTO\Car;
 
@@ -172,4 +174,14 @@ it('cast string array', function () {
         ->toBeNull()
         ->and($cast(null))
         ->toBeNull();
+});
+
+it('cast enum array', function () {
+    $cast = new EnumArrayCast(AccountType::class);
+
+    expect($cast(['UNIFIED', 'FUND']))
+        ->toBeArray()
+        ->toHaveCount(2)
+        ->each
+        ->toBeInstanceOf(AccountType::class);
 });
