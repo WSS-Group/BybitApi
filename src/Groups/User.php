@@ -7,10 +7,11 @@ use BybitApi\DTOs\User\ApiKey;
 use BybitApi\DTOs\User\ChangedApiKey;
 use BybitApi\DTOs\User\UID;
 use BybitApi\Enums\MemberType;
-use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Entities\Users\Permissions;
 use BybitApi\Http\Integrations\Bybit\Requests\User\CreateSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\User\CreateSubUIDApiKey;
+use BybitApi\Http\Integrations\Bybit\Requests\User\DeleteMasterAPIKey;
+use BybitApi\Http\Integrations\Bybit\Requests\User\DeleteSubAPIKey;
 use BybitApi\Http\Integrations\Bybit\Requests\User\DeleteSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\User\FreezeSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetApiKeyInformation;
@@ -143,18 +144,16 @@ class User extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/user/rm-master-apikey
      */
-    public function deleteMasterApiKey(): never
+    public function deleteMasterApiKey(): bool
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new DeleteMasterAPIKey)->dto();
     }
 
     /**
      * @link https://bybit-exchange.github.io/docs/v5/user/rm-sub-apikey
      */
-    public function deleteSubApiKey(): never
+    public function deleteSubApiKey(?string $apikey = null): bool
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new DeleteSubAPIKey($apikey))->dto();
     }
 }

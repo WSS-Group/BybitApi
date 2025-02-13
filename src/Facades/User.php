@@ -24,6 +24,8 @@ use Illuminate\Support\Collection;
  * @method ChangedApiKey modifyMasterApiKey(?bool $readOnly = null, ?Permissions $permissions = null, ?array $ips = null)
  * @method ChangedApiKey modifySubApiKey(?string $apikey = null, ?bool $readOnly = null, ?Permissions $permissions = null, ?array $ips = null)
  * @method bool deleteSubUid(string $subuid)
+ * @method bool deleteMasterApiKey()
+ * @method bool deleteSubApiKey(?string $apikey = null)
  *
  * @see \BybitApi\Groups\User
  */
