@@ -22,6 +22,7 @@ use Illuminate\Support\Collection;
  * @method CursorCollection<int, SubApiKey> getSubAccountAllApiKeys(string $subMemberId, ?int $limit = null, ?string $cursor = null)
  * @method Collection<int, WalletType> getUIDWalletType(?array $memberIds = null)
  * @method ChangedApiKey modifyMasterApiKey(?bool $readOnly = null, ?Permissions $permissions = null, ?array $ips = null)
+ * @method ChangedApiKey modifySubApiKey(?string $apikey = null, ?bool $readOnly = null, ?Permissions $permissions = null, ?array $ips = null)
  * @method bool deleteSubUid(string $subuid)
  *
  * @see \BybitApi\Groups\User

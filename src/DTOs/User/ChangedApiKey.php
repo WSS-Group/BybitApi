@@ -3,6 +3,7 @@
 namespace BybitApi\DTOs\User;
 
 use BybitApi\DTOs\Casts\BooleanCast;
+use BybitApi\DTOs\Casts\StringArrayCast;
 use BybitApi\DTOs\Casts\StringCast;
 use BybitApi\DTOs\DTO;
 
@@ -13,6 +14,7 @@ use BybitApi\DTOs\DTO;
  * @property null|bool $readOnly
  * @property null|bool $secret
  * @property null|\BybitApi\DTOs\User\Permissions $permissions
+ * @property null|string[] $ips
  */
 class ChangedApiKey extends DTO
 {
@@ -25,6 +27,7 @@ class ChangedApiKey extends DTO
             'readOnly' => BooleanCast::class,
             'secret' => StringCast::class,
             'permissions' => Permissions::class,
+            'ips' => StringArrayCast::class,
         ];
     }
 }

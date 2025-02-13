@@ -19,6 +19,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\User\GetSubAccountAllApiKeys;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetUIDWalletType;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetUnlimitedUIDList;
 use BybitApi\Http\Integrations\Bybit\Requests\User\ModifyMasterApiKey;
+use BybitApi\Http\Integrations\Bybit\Requests\User\ModifySubApiKey;
 use Illuminate\Support\Collection;
 
 class User extends Group
@@ -122,10 +123,13 @@ class User extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/user/modify-sub-apikey
      */
-    public function modifySubApiKey(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function modifySubApiKey(
+        ?string $apikey = null,
+        ?bool $readOnly = null,
+        ?Permissions $permissions = null,
+        ?array $ips = null,
+    ): ChangedApiKey {
+        return $this->send(new ModifySubApiKey($apikey, $readOnly, $permissions, $ips))->dto();
     }
 
     /**
