@@ -33,7 +33,7 @@ it('can get about current api key', function () {
         ->and($result->permissions)
         ->toBeInstanceOf(Permissions::class)
         ->and($result->permissions->BlockTrade)
-        ->toBeInstanceOf(Permissions\BlockTrade::class)
+        ->toBeArray()
         ->and($result->ips)
         ->toBeArray()
         ->and($result->type)
@@ -68,4 +68,19 @@ it('can get about current api key', function () {
         ->toBeInstanceOf(KycLevel::class)
         ->and($result->kycRegion)
         ->toBeNull();
+});
+
+it('test has method', function () {
+    MockClient::global([
+        GetApiKeyInformation::class => OkFixture::call(),
+    ]);
+
+    $result = User::actingAs($this->defaultActor())->getApiKeyInformation();
+
+    expect($result->permissions->has('ContractTrade.foo'))
+        ->toBeFalse()
+        ->and(fn () => $result->permissions->has('ContractTrade'))
+        ->toThrow('Invalid permission format.')
+        ->and($result->permissions->has('ContractTrade.Order'))
+        ->toBeTrue();
 });
