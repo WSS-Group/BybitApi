@@ -117,7 +117,7 @@ class Market extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/orderbook
      */
-    public function getOrderBook(): mixed
+    public function getOrderBook(): never
     {
         // TODO
         throw new NotImplementedYetException;
@@ -140,7 +140,7 @@ class Market extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/history-fund-rate
      */
-    public function getFundingRateHistory(): mixed
+    public function getFundingRateHistory(): never
     {
         // TODO
         throw new NotImplementedYetException;
@@ -149,7 +149,7 @@ class Market extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/recent-trade
      */
-    public function getPublicRecentTradingHistory(): mixed
+    public function getPublicRecentTradingHistory(): never
     {
         // TODO
         throw new NotImplementedYetException;
@@ -158,7 +158,7 @@ class Market extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/open-interest
      */
-    public function getOpenInterest(): mixed
+    public function getOpenInterest(): never
     {
         // TODO
         throw new NotImplementedYetException;
@@ -167,7 +167,7 @@ class Market extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/iv
      */
-    public function getHistoricalVolatility(): mixed
+    public function getHistoricalVolatility(): never
     {
         // TODO
         throw new NotImplementedYetException;
@@ -176,7 +176,7 @@ class Market extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/insurance
      */
-    public function getInsurance(): mixed
+    public function getInsurance(): never
     {
         // TODO
         throw new NotImplementedYetException;
@@ -185,7 +185,7 @@ class Market extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/risk-limit
      */
-    public function getRiskLimit(): mixed
+    public function getRiskLimit(): never
     {
         // TODO
         throw new NotImplementedYetException;
@@ -194,7 +194,7 @@ class Market extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/delivery-price
      */
-    public function getDeliveryPrice(): mixed
+    public function getDeliveryPrice(): never
     {
         // TODO
         throw new NotImplementedYetException;
@@ -203,7 +203,7 @@ class Market extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/long-short-ratio
      */
-    public function getLongShortRatio(): mixed
+    public function getLongShortRatio(): never
     {
         // TODO
         throw new NotImplementedYetException;

@@ -150,7 +150,7 @@ class Position extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/position/move-position
      */
-    public function movePosition(): mixed
+    public function movePosition(): never
     {
         // TODO
         throw new NotImplementedYetException;
@@ -159,7 +159,7 @@ class Position extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/position/move-position-history
      */
-    public function getMovePositionHistory(): mixed
+    public function getMovePositionHistory(): never
     {
         // TODO
         throw new NotImplementedYetException;
@@ -177,7 +177,7 @@ class Position extends Group
      * @link https://bybit-exchange.github.io/docs/v5/position/tpsl-mode
      * @deprecated
      */
-    public function setTakeProfitStopLossMode(): mixed
+    public function setTakeProfitStopLossMode(): never
     {
         // TODO
         throw new NotImplementedYetException;
@@ -187,7 +187,7 @@ class Position extends Group
      * @link https://bybit-exchange.github.io/docs/v5/position/set-risk-limit
      * @deprecated
      */
-    public function setRiskLimit(): mixed
+    public function setRiskLimit(): never
     {
         // TODO
         throw new NotImplementedYetException;
