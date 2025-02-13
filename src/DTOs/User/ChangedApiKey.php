@@ -14,7 +14,7 @@ use BybitApi\DTOs\DTO;
  * @property null|bool $secret
  * @property null|\BybitApi\DTOs\User\Permissions $permissions
  */
-class CreatedSubApiKey extends DTO
+class ChangedApiKey extends DTO
 {
     public function casts(): array
     {

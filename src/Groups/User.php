@@ -4,11 +4,11 @@ namespace BybitApi\Groups;
 
 use BybitApi\CursorCollection;
 use BybitApi\DTOs\User\ApiKey;
-use BybitApi\DTOs\User\CreatedSubApiKey;
+use BybitApi\DTOs\User\ChangedApiKey;
 use BybitApi\DTOs\User\UID;
 use BybitApi\Enums\MemberType;
 use BybitApi\Exceptions\NotImplementedYetException;
-use BybitApi\Http\Integrations\Bybit\Entities\Users\SubPermissions;
+use BybitApi\Http\Integrations\Bybit\Entities\Users\Permissions;
 use BybitApi\Http\Integrations\Bybit\Requests\User\CreateSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\User\CreateSubUIDApiKey;
 use BybitApi\Http\Integrations\Bybit\Requests\User\DeleteSubUID;
@@ -18,6 +18,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\User\GetLimitedUIDList;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetSubAccountAllApiKeys;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetUIDWalletType;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetUnlimitedUIDList;
+use BybitApi\Http\Integrations\Bybit\Requests\User\ModifyMasterApiKey;
 use Illuminate\Support\Collection;
 
 class User extends Group
@@ -41,10 +42,10 @@ class User extends Group
     public function createSubUidApiKey(
         int $subuid,
         bool $readOnly,
-        SubPermissions $permissions,
+        Permissions $permissions,
         ?string $note = null,
         ?array $ips = null
-    ): CreatedSubApiKey {
+    ): ChangedApiKey {
         return $this->send(new CreateSubUIDApiKey($subuid, $readOnly, $permissions, $note, $ips))->dto();
     }
 
@@ -110,10 +111,12 @@ class User extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/user/modify-master-apikey
      */
-    public function modifyMasterApiKey(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function modifyMasterApiKey(
+        ?bool $readOnly = null,
+        ?Permissions $permissions = null,
+        ?array $ips = null,
+    ): ChangedApiKey {
+        return $this->send(new ModifyMasterApiKey($readOnly, $permissions, $ips))->dto();
     }
 
     /**

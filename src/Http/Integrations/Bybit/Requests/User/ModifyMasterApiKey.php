@@ -12,9 +12,9 @@ use Saloon\Http\Response;
 use Saloon\Traits\Body\HasJsonBody;
 
 /**
- * @link https://bybit-exchange.github.io/docs/v5/user/create-subuid-apikey
+ * @link https://bybit-exchange.github.io/docs/v5/user/modify-master-apikey
  */
-class CreateSubUIDApiKey extends Request implements HasBody
+class ModifyMasterApiKey extends Request implements HasBody
 {
     use HasJsonBody;
 
@@ -23,15 +23,17 @@ class CreateSubUIDApiKey extends Request implements HasBody
      */
     protected Method $method = Method::POST;
 
+    public ?string $readOnlyInt {
+        get => ($this->readOnly === null ? null : ($this->readOnly ? 1 : 0));
+    }
+
     public ?string $ipsString {
         get => ($this->ips === null ? null : implode(',', $this->ips));
     }
 
     public function __construct(
-        public int $subuid,
-        public bool $readOnly,
-        public Permissions $permissions,
-        public ?string $note = null,
+        public ?bool $readOnly = null,
+        public ?Permissions $permissions = null,
         public ?array $ips = null,
     ) {}
 
@@ -40,17 +42,15 @@ class CreateSubUIDApiKey extends Request implements HasBody
      */
     public function resolveEndpoint(): string
     {
-        return '/v5/user/create-sub-api';
+        return '/v5/user/update-api';
     }
 
     protected function defaultBody(): array
     {
         return Conditional::array([
-            'subuid' => $this->subuid,
-            'readOnly' => $this->readOnly ? 1 : 0,
-            'note' => Conditional::ifNotEmpty($this->note),
-            'ips' => Conditional::ifNotEmpty($this->ipsString),
-            'permissions' => $this->permissions->toArray(),
+            'readOnly' => Conditional::ifNotNull($this->readOnlyInt),
+            'permissions' => Conditional::ifNotNull($this->permissions?->toArray()),
+            'ips' => Conditional::ifNotNull($this->ipsString),
         ]);
     }
 
