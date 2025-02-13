@@ -56,6 +56,7 @@ abstract class DTO implements Arrayable
         foreach (array_keys($this->dtoPayload) as $key) {
             $data[$key] = match (true) {
                 $this->{$key} instanceof DTO => $this->{$key}->toArray(),
+                $this->{$key} instanceof Arrayable => $this->{$key}->toArray(),
                 is_array($this->{$key}) || $this->{$key} instanceof Collection => $this->arrayParse($this->{$key}),
                 is_array($this->{$key}) => $this->arrayParse($this->{$key}),
                 default => $this->{$key}

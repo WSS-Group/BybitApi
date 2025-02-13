@@ -3,6 +3,7 @@
 namespace BybitApi\Facades;
 
 use BybitApi\CursorCollection;
+use BybitApi\DTOs\User\ApiKey;
 use BybitApi\DTOs\User\UID;
 use BybitApi\Enums\MemberType;
 use Illuminate\Support\Collection;
@@ -12,6 +13,7 @@ use Illuminate\Support\Collection;
  * @method Collection<int, UID> getLimitedSubUidList()
  * @method CursorCollection<int, UID> getUnlimitedSubUidList(?int $pageSize = null, ?string $nextCursor = null)
  * @method bool freezeSubUid(string $subuid, bool $frozen)
+ * @method ApiKey getApiKeyInformation()
  * @method bool deleteSubUid(string $subuid)
  *
  * @see \BybitApi\Groups\User
