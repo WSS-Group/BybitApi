@@ -9,6 +9,7 @@ use BybitApi\DTOs\User\Permissions\BlockTrade;
 use BybitApi\DTOs\User\Permissions\ContractTrade;
 use BybitApi\DTOs\User\Permissions\CopyTrading;
 use BybitApi\DTOs\User\Permissions\Derivatives;
+use BybitApi\DTOs\User\Permissions\Earn;
 use BybitApi\DTOs\User\Permissions\Exchange;
 use BybitApi\DTOs\User\Permissions\NFT;
 use BybitApi\DTOs\User\Permissions\Options;
@@ -26,6 +27,7 @@ use BybitApi\DTOs\User\Permissions\Wallet;
  * @property null|Exchange $Exchange
  * @property null|NFT $NFT
  * @property null|Affiliate $Affiliate
+ * @property null|Earn $Earn
  */
 class Permissions extends DTO
 {
@@ -45,6 +47,7 @@ class Permissions extends DTO
             'Exchange' => new PermissionsCast(Exchange::class, ['ExchangeHistory']),
             'NFT' => new PermissionsCast(NFT::class, ['NFTQueryProductList']),
             'Affiliate' => new PermissionsCast(Affiliate::class, []),
+            'Earn' => new PermissionsCast(Earn::class, []),
         ];
     }
 }

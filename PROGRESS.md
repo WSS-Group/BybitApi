@@ -529,13 +529,13 @@
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/user/apikey-info">Get API Key Information</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/user/list-sub-apikeys">Get Sub Account All API Keys</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/user/wallet-type">Get UID Wallet Type</a></td>

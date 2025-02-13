@@ -16,6 +16,7 @@ use BybitApi\DTOs\User\Permissions\BlockTrade;
 use BybitApi\DTOs\User\Permissions\ContractTrade;
 use BybitApi\DTOs\User\Permissions\CopyTrading;
 use BybitApi\DTOs\User\Permissions\Derivatives;
+use BybitApi\DTOs\User\Permissions\Earn;
 use BybitApi\DTOs\User\Permissions\Exchange;
 use BybitApi\DTOs\User\Permissions\NFT;
 use BybitApi\DTOs\User\Permissions\Options;
@@ -230,6 +231,13 @@ it('cast permissions', function () {
         ->and($cast->toArray())
         ->toBeArray()
         ->not
+        ->toBeEmpty();
+
+    $cast = new PermissionsCast(Earn::class, [])([]);
+    expect($cast)
+        ->toBeInstanceOf(Earn::class)
+        ->and($cast->toArray())
+        ->toBeArray()
         ->toBeEmpty();
 
     $cast = new PermissionsCast(Exchange::class, ['ExchangeHistory'])(['ExchangeHistory']);

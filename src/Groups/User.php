@@ -12,6 +12,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\User\DeleteSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\User\FreezeSubUID;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetApiKeyInformation;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetLimitedUIDList;
+use BybitApi\Http\Integrations\Bybit\Requests\User\GetSubAccountAllApiKeys;
 use BybitApi\Http\Integrations\Bybit\Requests\User\GetUnlimitedUIDList;
 use Illuminate\Support\Collection;
 
@@ -76,12 +77,16 @@ class User extends Group
     }
 
     /**
+     * @return CursorCollection<int, \BybitApi\DTOs\User\SubApiKey>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/user/list-sub-apikeys
      */
-    public function getSubAccountAllApiKeys(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getSubAccountAllApiKeys(
+        string $subMemberId,
+        ?int $limit = null,
+        ?string $cursor = null
+    ): CursorCollection {
+        return $this->send(new GetSubAccountAllApiKeys($subMemberId, $limit, $cursor))->dto();
     }
 
     /**

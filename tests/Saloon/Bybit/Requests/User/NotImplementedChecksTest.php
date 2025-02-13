@@ -9,8 +9,6 @@ it('check if all not implemented tests throw exception', function () {
 
     expect(fn () => $user->createSubUidApiKey())
         ->toThrow(NotImplementedYetException::class, "{$commonError}createSubUidApiKey'.")
-        ->and(fn () => $user->getSubAccountAllApiKeys())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}getSubAccountAllApiKeys'.")
         ->and(fn () => $user->getUidWalletType())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getUidWalletType'.")
         ->and(fn () => $user->modifyMasterApiKey())
