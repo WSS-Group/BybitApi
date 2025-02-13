@@ -544,13 +544,13 @@
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/user/modify-master-apikey">Modify Master API Key</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/user/modify-sub-apikey">Modify Sub API Key</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/user/rm-subuid">Delete Sub UID</a></td>
