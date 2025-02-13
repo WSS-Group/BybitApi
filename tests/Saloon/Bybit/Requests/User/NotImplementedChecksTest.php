@@ -7,9 +7,7 @@ it('check if all not implemented tests throw exception', function () {
     $user = User::actingAs($this->defaultActor());
     $commonError = "Endpoint not implemented yet on 'BybitApi\Groups\User::";
 
-    expect(fn () => $user->createSubUidApiKey())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}createSubUidApiKey'.")
-        ->and(fn () => $user->getUidWalletType())
+    expect(fn () => $user->getUidWalletType())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getUidWalletType'.")
         ->and(fn () => $user->modifyMasterApiKey())
         ->toThrow(NotImplementedYetException::class, "{$commonError}modifyMasterApiKey'.")

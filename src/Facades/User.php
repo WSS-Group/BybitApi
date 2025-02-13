@@ -4,13 +4,16 @@ namespace BybitApi\Facades;
 
 use BybitApi\CursorCollection;
 use BybitApi\DTOs\User\ApiKey;
+use BybitApi\DTOs\User\CreatedSubApiKey;
 use BybitApi\DTOs\User\SubApiKey;
 use BybitApi\DTOs\User\UID;
 use BybitApi\Enums\MemberType;
+use BybitApi\Http\Integrations\Bybit\Entities\Users\SubPermissions;
 use Illuminate\Support\Collection;
 
 /**
  * @method UID createSubUID(string $username, MemberType $memberType, ?string $password = null, ?bool $switch = null, ?string $note = null)
+ * @method CreatedSubApiKey createSubUidApiKey(int $subuid, bool $readOnly, SubPermissions $permissions, ?string $note = null, ?array $ips = null)
  * @method Collection<int, UID> getLimitedSubUidList()
  * @method CursorCollection<int, UID> getUnlimitedSubUidList(?int $pageSize = null, ?string $nextCursor = null)
  * @method bool freezeSubUid(string $subuid, bool $frozen)
