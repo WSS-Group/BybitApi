@@ -38,8 +38,23 @@ Please see [PROGRESS](PROGRESS.md) for more information about current implementa
 ## Usage
 
 ```php
+// Account group
+\BybitApi\Facades\Account::actingAs($entity)->getCollateralInfo('BTC');
+
+// Asset group
+\BybitApi\Facades\Asset::actingAs($entity)->getSubUID();
+
 // Market group
 \BybitApi\Facades\Market::actingAs($entity)->getBybitServerTime();
+
+// Position group
+\BybitApi\Facades\Position::actingAs($entity)->confirmNewRiskLimit(\BybitApi\Enums\Category::INVERSE, 'BTCUSDT');
+
+// Trade group
+\BybitApi\Facades\Trade::actingAs($entity)->cancelAllOrders(\BybitApi\Enums\Category::INVERSE);
+
+// Trade group
+\BybitApi\Facades\User::actingAs($entity)->getApiKeyInformation();
 ```
 
 ## Testing
