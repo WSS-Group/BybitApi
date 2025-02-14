@@ -16,7 +16,7 @@ it('remove unnecessary from array', function () {
         ->toHaveKey('line2');
 });
 
-it('return conditional instance on null', function () {
+it('return conditional instance on not null', function () {
     expect(Conditional::ifNotNull('abc'))
         ->toBe('abc')
         ->and(Conditional::ifNotNull(''))
@@ -29,7 +29,7 @@ it('return conditional instance on null', function () {
         ->toBeInstanceOf(Conditional::class);
 });
 
-it('return conditional instance on empty', function () {
+it('return conditional instance on not empty', function () {
     expect(Conditional::ifNotEmpty('abc'))
         ->toBe('abc')
         ->and(Conditional::ifNotEmpty(true))

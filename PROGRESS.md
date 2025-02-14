@@ -43,8 +43,8 @@
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/market/orderbook">Get Orderbook</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/market/tickers">Get Tickers</a></td>
@@ -252,103 +252,103 @@
         <tr>
             <td rowspan="20">Account</td>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/wallet-balance">Get Wallet Balance</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/unified-trans-amnt">Get Transferable Amount (Unified)</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/upgrade-unified-account">Upgrade to Unified Account</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/borrow-history">Get Borrow History (2 years)</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/repay-liability">Repay Liability</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/set-collateral">Set Collateral Coin</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/batch-set-collateral">Batch Set Collateral Coin</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/collateral-info">Get Collateral Info</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/coin-greeks">Get Coin Greeks</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/fee-rate">Get Fee Rate</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/account-info">Get Account Info</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/dcp-info">Get DCP Info</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/transaction-log">Get Transaction Log (UTA)</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/contract-transaction-log">Get Transaction Log (Classic)</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/smp-group">Get SMP Group ID</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/set-margin-mode">Set Margin Mode</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/set-spot-hedge">Set Spot Hedging</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/set-mmp">Set MMP</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/reset-mmp">Reset MMP</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/get-mmp-state">Get MMP State</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td rowspan="30">Asset</td>

@@ -7,6 +7,7 @@ use BybitApi\CursorCollection;
 use BybitApi\DTOs\Market\InstrumentInfo\LinearInverse;
 use BybitApi\DTOs\Market\InstrumentInfo\Option;
 use BybitApi\DTOs\Market\InstrumentInfo\Spot;
+use BybitApi\DTOs\Market\Orderbook;
 use BybitApi\DTOs\Market\Ticker\LinearInverse as TickerLinearInverse;
 use BybitApi\DTOs\Market\Ticker\Option as TickerOption;
 use BybitApi\DTOs\Market\Ticker\Spot as TickerSpot;
@@ -19,6 +20,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Market\GetIndexPriceKline;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetInstrumentsInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetKline;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetMarkPriceKline;
+use BybitApi\Http\Integrations\Bybit\Requests\Market\GetOrderbook;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetPremiumIndexPriceKline;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetTickers;
 use Carbon\Carbon;
@@ -117,10 +119,9 @@ class Market extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/market/orderbook
      */
-    public function getOrderBook(): never
+    public function getOrderBook(Category $category, BackedEnum|string $symbol, ?int $limit = null): Orderbook
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetOrderbook($category, $symbol, $limit))->dto();
     }
 
     /**
