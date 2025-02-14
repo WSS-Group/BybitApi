@@ -5,7 +5,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Account\SetSpotHedging;
 use BybitApi\Tests\Fixtures\Bybit\Account\SetSpotHedging\OkFixture;
 use Saloon\Http\Faking\MockClient;
 
-it('can set a collateral coin', function () {
+it('can set spot hedging', function () {
     MockClient::global([
         SetSpotHedging::class => OkFixture::call(),
     ]);

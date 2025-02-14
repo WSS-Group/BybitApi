@@ -11,7 +11,6 @@ use BybitApi\Enums\Category;
 use BybitApi\Enums\CollateralSwitch;
 use BybitApi\Enums\LogType;
 use BybitApi\Enums\MarginMode;
-use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Entities\Account\CollateralCoin;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\BatchSetCollateralCoin;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetAccountInfo;
@@ -21,13 +20,16 @@ use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCoinGreeks;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCollateralInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetDcpInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetFeeRate;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\GetMmpState;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetSmpGroupId;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetTransferableAmount;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetUtaTransactionLog;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetWalletBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\RepayLiability;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\ResetMmp;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\SetCollateralCoin;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\SetMarginMode;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\SetMmp;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\SetSpotHedging;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\UpgradeToUnifiedAccount;
 use Illuminate\Support\Carbon;
@@ -224,27 +226,31 @@ class Account extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/account/set-mmp
      */
-    public function setMmp(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function setMmp(
+        BackedEnum|string $baseCoin,
+        int $window,
+        int $frozenPeriod,
+        float $qtyLimit,
+        float $deltaLimit
+    ): bool {
+        return $this->send(new SetMmp($baseCoin, $window, $frozenPeriod, $qtyLimit, $deltaLimit))->dto();
     }
 
     /**
      * @link https://bybit-exchange.github.io/docs/v5/account/reset-mmp
      */
-    public function resetMmp(): never
+    public function resetMmp(BackedEnum|string $baseCoin): bool
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new ResetMmp($baseCoin))->dto();
     }
 
     /**
+     * @return Collection<string, \BybitApi\DTOs\Account\MmpState>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/account/get-mmp-state
      */
-    public function getMmpState(): never
+    public function getMmpState(BackedEnum|string $baseCoin): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetMmpState($baseCoin))->dto();
     }
 }

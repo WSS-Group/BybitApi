@@ -13,6 +13,7 @@ use BybitApi\DTOs\Account\CollateralInfo;
 use BybitApi\DTOs\Account\DcpInfo;
 use BybitApi\DTOs\Account\FeeRate;
 use BybitApi\DTOs\Account\MarginModeReason;
+use BybitApi\DTOs\Account\MmpState;
 use BybitApi\DTOs\Account\Repayment;
 use BybitApi\DTOs\Account\TransactionLog;
 use BybitApi\DTOs\Account\UpgradeResult;
@@ -43,6 +44,9 @@ use Illuminate\Support\Collection;
  * @method int getSmpGroupId()
  * @method Collection<int, MarginModeReason> setMarginMode(MarginMode $marginMode)
  * @method bool setSpotHedging(bool $hedgeMode)
+ * @method bool setMmp(BackedEnum|string $baseCoin, int $window, int $frozenPeriod, float $qtyLimit, float $deltaLimit)
+ * @method bool resetMmp(BackedEnum|string $baseCoin)
+ * @method Collection<string, MmpState> getMmpState(BackedEnum|string $baseCoin)
  *
  * @see \BybitApi\Groups\Account
  */
