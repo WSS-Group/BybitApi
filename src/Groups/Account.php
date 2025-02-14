@@ -4,6 +4,7 @@ namespace BybitApi\Groups;
 
 use BackedEnum;
 use BybitApi\DTOs\Account\AccountInfo;
+use BybitApi\DTOs\Account\UpgradeResult;
 use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
 use BybitApi\Exceptions\NotImplementedYetException;
@@ -12,6 +13,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCollateralInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetFeeRate;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetTransferableAmount;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetWalletBalance;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\UpgradeToUnifiedAccount;
 use Illuminate\Support\Collection;
 
 class Account extends Group
@@ -37,10 +39,9 @@ class Account extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/account/upgrade-unified-account
      */
-    public function upgradeToUnifiedAccount(): never
+    public function upgradeToUnifiedAccount(): UpgradeResult
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new UpgradeToUnifiedAccount)->dto();
     }
 
     /**
