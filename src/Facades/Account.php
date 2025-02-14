@@ -22,6 +22,7 @@ use Illuminate\Support\Collection;
  * @method UpgradeResult upgradeToUnifiedAccount()
  * @method CursorCollection<int, BorrowHistory> getBorrowHistory(null|BackedEnum|string $currency = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
  * @method Collection<int, Repayment> repayLiability(null|BackedEnum|string $coin = null)
+ * @method bool setCollateralCoin(BackedEnum|string $coin, bool $collateral)
  * @method Collection<string, CollateralInfo> getCollateralInfo(null|BackedEnum|string $currency = null)
  * @method Collection<string, FeeRate> getFeeRate(Category $category, null|BackedEnum|string $symbol = null, null|BackedEnum|string $baseCoin = null)
  * @method AccountInfo getAccountInfo()
