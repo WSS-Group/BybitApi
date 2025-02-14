@@ -2,7 +2,9 @@
 
 namespace BybitApi\Groups;
 
+use BybitApi\DTOs\Account\AccountInfo;
 use BybitApi\Exceptions\NotImplementedYetException;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\GetAccountInfo;
 
 class Account extends Group
 {
@@ -99,10 +101,9 @@ class Account extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/account/account-info
      */
-    public function getAccountInfo(): never
+    public function getAccountInfo(): AccountInfo
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetAccountInfo)->dto();
     }
 
     /**
