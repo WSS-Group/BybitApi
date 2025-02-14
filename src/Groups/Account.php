@@ -7,6 +7,7 @@ use BybitApi\DTOs\Account\AccountInfo;
 use BybitApi\Enums\Category;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetAccountInfo;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCollateralInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetFeeRate;
 use Illuminate\Support\Collection;
 
@@ -76,12 +77,13 @@ class Account extends Group
     }
 
     /**
+     * @return Collection<string, \BybitApi\DTOs\Account\CollateralInfo>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/account/collateral-info
      */
-    public function getCollateralInfo(): never
+    public function getCollateralInfo(null|BackedEnum|string $currency = null): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetCollateralInfo($currency))->dto();
     }
 
     /**

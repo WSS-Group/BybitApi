@@ -21,8 +21,6 @@ it('check if all not implemented tests throw exception', function () {
         ->toThrow(NotImplementedYetException::class, "{$commonError}setCollateralCoin'.")
         ->and(fn () => $account->batchSetCollateralCoin())
         ->toThrow(NotImplementedYetException::class, "{$commonError}batchSetCollateralCoin'.")
-        ->and(fn () => $account->getCollateralInfo())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}getCollateralInfo'.")
         ->and(fn () => $account->getCoinGreeks())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getCoinGreeks'.")
         ->and(fn () => $account->getDcpInfo())

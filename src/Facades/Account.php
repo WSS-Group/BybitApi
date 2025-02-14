@@ -4,11 +4,13 @@ namespace BybitApi\Facades;
 
 use BackedEnum;
 use BybitApi\DTOs\Account\AccountInfo;
+use BybitApi\DTOs\Account\CollateralInfo;
 use BybitApi\DTOs\Account\FeeRate;
 use BybitApi\Enums\Category;
 use Illuminate\Support\Collection;
 
 /**
+ * @method Collection<string, CollateralInfo> getCollateralInfo(null|BackedEnum|string $currency = null)
  * @method Collection<string, FeeRate> getFeeRate(Category $category, null|BackedEnum|string $symbol = null, null|BackedEnum|string $baseCoin = null)
  * @method AccountInfo getAccountInfo()
  *

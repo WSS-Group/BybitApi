@@ -287,8 +287,8 @@
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/collateral-info">Get Collateral Info</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/coin-greeks">Get Coin Greeks</a></td>
