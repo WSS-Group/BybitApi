@@ -12,6 +12,7 @@ use BybitApi\DTOs\Account\CoinGreek;
 use BybitApi\DTOs\Account\CollateralInfo;
 use BybitApi\DTOs\Account\DcpInfo;
 use BybitApi\DTOs\Account\FeeRate;
+use BybitApi\DTOs\Account\MarginModeReason;
 use BybitApi\DTOs\Account\Repayment;
 use BybitApi\DTOs\Account\TransactionLog;
 use BybitApi\DTOs\Account\UpgradeResult;
@@ -19,6 +20,7 @@ use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\CollateralSwitch;
 use BybitApi\Enums\LogType;
+use BybitApi\Enums\MarginMode;
 use BybitApi\Http\Integrations\Bybit\Entities\Account\CollateralCoin;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -39,6 +41,7 @@ use Illuminate\Support\Collection;
  * @method CursorCollection<int, TransactionLog> getUtaTransactionLog(?AccountType $accountType = null, ?Category $category = null, null|BackedEnum|string $currency = null, null|BackedEnum|string $baseCoin = null, ?LogType $type = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
  * @method CursorCollection<int, TransactionLog> getClassicTransactionLog(null|BackedEnum|string $currency = null, null|BackedEnum|string $baseCoin = null, ?LogType $type = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
  * @method int getSmpGroupId()
+ * @method Collection<int, MarginModeReason> setMarginMode(MarginMode $marginMode)
  *
  * @see \BybitApi\Groups\Account
  */

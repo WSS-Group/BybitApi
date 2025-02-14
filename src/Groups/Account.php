@@ -10,6 +10,7 @@ use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\CollateralSwitch;
 use BybitApi\Enums\LogType;
+use BybitApi\Enums\MarginMode;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Entities\Account\CollateralCoin;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\BatchSetCollateralCoin;
@@ -26,6 +27,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Account\GetUtaTransactionLog;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetWalletBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\RepayLiability;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\SetCollateralCoin;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\SetMarginMode;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\UpgradeToUnifiedAccount;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -201,12 +203,13 @@ class Account extends Group
     }
 
     /**
+     * @return Collection<int, \BybitApi\DTOs\Account\MarginModeReason>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/account/set-margin-mode
      */
-    public function setMarginMode(): never
+    public function setMarginMode(MarginMode $marginMode): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new SetMarginMode($marginMode))->dto();
     }
 
     /**
