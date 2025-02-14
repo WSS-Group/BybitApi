@@ -28,6 +28,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Account\GetWalletBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\RepayLiability;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\SetCollateralCoin;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\SetMarginMode;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\SetSpotHedging;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\UpgradeToUnifiedAccount;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -215,10 +216,9 @@ class Account extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/account/set-spot-hedge
      */
-    public function setSpotHedging(): never
+    public function setSpotHedging(bool $hedgeMode): bool
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new SetSpotHedging($hedgeMode))->dto();
     }
 
     /**

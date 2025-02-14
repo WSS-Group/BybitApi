@@ -7,9 +7,7 @@ it('check if all not implemented tests throw exception', function () {
     $account = Account::actingAs($this->defaultActor());
     $commonError = "Endpoint not implemented yet on 'BybitApi\Groups\Account::";
 
-    expect(fn () => $account->setSpotHedging())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}setSpotHedging'.")
-        ->and(fn () => $account->setMmp())
+    expect(fn () => $account->setMmp())
         ->toThrow(NotImplementedYetException::class, "{$commonError}setMmp'.")
         ->and(fn () => $account->resetMmp())
         ->toThrow(NotImplementedYetException::class, "{$commonError}resetMmp'.")

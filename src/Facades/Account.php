@@ -42,6 +42,7 @@ use Illuminate\Support\Collection;
  * @method CursorCollection<int, TransactionLog> getClassicTransactionLog(null|BackedEnum|string $currency = null, null|BackedEnum|string $baseCoin = null, ?LogType $type = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
  * @method int getSmpGroupId()
  * @method Collection<int, MarginModeReason> setMarginMode(MarginMode $marginMode)
+ * @method bool setSpotHedging(bool $hedgeMode)
  *
  * @see \BybitApi\Groups\Account
  */
