@@ -16,6 +16,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Account\GetAccountInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetBorrowHistory;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCoinGreeks;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCollateralInfo;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\GetDcpInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetFeeRate;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetTransferableAmount;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetWalletBalance;
@@ -138,12 +139,13 @@ class Account extends Group
     }
 
     /**
+     * @return Collection<string, \BybitApi\DTOs\Account\DcpInfo>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/account/dcp-info
      */
-    public function getDcpInfo(): never
+    public function getDcpInfo(): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetDcpInfo)->dto();
     }
 
     /**

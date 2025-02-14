@@ -10,6 +10,7 @@ use BybitApi\DTOs\Account\BorrowHistory;
 use BybitApi\DTOs\Account\ChangedCollateral;
 use BybitApi\DTOs\Account\CoinGreek;
 use BybitApi\DTOs\Account\CollateralInfo;
+use BybitApi\DTOs\Account\DcpInfo;
 use BybitApi\DTOs\Account\FeeRate;
 use BybitApi\DTOs\Account\Repayment;
 use BybitApi\DTOs\Account\UpgradeResult;
@@ -32,6 +33,7 @@ use Illuminate\Support\Collection;
  * @method Collection<string, CoinGreek> getCoinGreeks(null|BackedEnum|string $baseCoin = null)
  * @method Collection<string, FeeRate> getFeeRate(Category $category, null|BackedEnum|string $symbol = null, null|BackedEnum|string $baseCoin = null)
  * @method AccountInfo getAccountInfo()
+ * @method Collection<int, DcpInfo> getDcpInfo()
  *
  * @see \BybitApi\Groups\Account
  */
