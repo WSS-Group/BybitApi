@@ -54,6 +54,7 @@ return [
     'sides' => [
         'buy' => 'buy',
         'sell' => 'sell',
+        'none' => 'none',
     ],
     'stop_order_types' => [
         'take_profit' => 'take profit',

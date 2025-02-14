@@ -9,16 +9,19 @@ use BybitApi\DTOs\Account\UpgradeResult;
 use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\CollateralSwitch;
+use BybitApi\Enums\LogType;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Entities\Account\CollateralCoin;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\BatchSetCollateralCoin;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetAccountInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetBorrowHistory;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\GetClassicTransactionLog;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCoinGreeks;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCollateralInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetDcpInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetFeeRate;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetTransferableAmount;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\GetUtaTransactionLog;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetWalletBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\RepayLiability;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\SetCollateralCoin;
@@ -149,21 +152,43 @@ class Account extends Group
     }
 
     /**
+     * @return CursorCollection<int, \BybitApi\DTOs\Account\TransactionLog>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/account/transaction-log
      */
-    public function getUtaTransactionLog(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getUtaTransactionLog(
+        ?AccountType $accountType = null,
+        ?Category $category = null,
+        null|BackedEnum|string $currency = null,
+        null|BackedEnum|string $baseCoin = null,
+        ?LogType $type = null,
+        ?Carbon $startTime = null,
+        ?Carbon $endTime = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): CursorCollection {
+        return $this->send(new GetUtaTransactionLog(
+            $accountType, $category, $currency, $baseCoin, $type, $startTime, $endTime, $limit, $cursor
+        ))->dto();
     }
 
     /**
+     * @return CursorCollection<int, \BybitApi\DTOs\Account\TransactionLog>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/account/contract-transaction-log
      */
-    public function getClassicTransactionLog(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getClassicTransactionLog(
+        null|BackedEnum|string $currency = null,
+        null|BackedEnum|string $baseCoin = null,
+        ?LogType $type = null,
+        ?Carbon $startTime = null,
+        ?Carbon $endTime = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): CursorCollection {
+        return $this->send(new GetClassicTransactionLog(
+            $currency, $baseCoin, $type, $startTime, $endTime, $limit, $cursor
+        ))->dto();
     }
 
     /**

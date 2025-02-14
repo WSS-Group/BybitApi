@@ -7,11 +7,7 @@ it('check if all not implemented tests throw exception', function () {
     $account = Account::actingAs($this->defaultActor());
     $commonError = "Endpoint not implemented yet on 'BybitApi\Groups\Account::";
 
-    expect(fn () => $account->getUtaTransactionLog())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}getUtaTransactionLog'.")
-        ->and(fn () => $account->getClassicTransactionLog())
-        ->toThrow(NotImplementedYetException::class, "{$commonError}getClassicTransactionLog'.")
-        ->and(fn () => $account->getSmpGroupId())
+    expect(fn () => $account->getSmpGroupId())
         ->toThrow(NotImplementedYetException::class, "{$commonError}getSmpGroupId'.")
         ->and(fn () => $account->setMarginMode())
         ->toThrow(NotImplementedYetException::class, "{$commonError}setMarginMode'.")

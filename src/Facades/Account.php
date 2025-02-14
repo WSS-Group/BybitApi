@@ -13,10 +13,12 @@ use BybitApi\DTOs\Account\CollateralInfo;
 use BybitApi\DTOs\Account\DcpInfo;
 use BybitApi\DTOs\Account\FeeRate;
 use BybitApi\DTOs\Account\Repayment;
+use BybitApi\DTOs\Account\TransactionLog;
 use BybitApi\DTOs\Account\UpgradeResult;
 use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\CollateralSwitch;
+use BybitApi\Enums\LogType;
 use BybitApi\Http\Integrations\Bybit\Entities\Account\CollateralCoin;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -34,6 +36,8 @@ use Illuminate\Support\Collection;
  * @method Collection<string, FeeRate> getFeeRate(Category $category, null|BackedEnum|string $symbol = null, null|BackedEnum|string $baseCoin = null)
  * @method AccountInfo getAccountInfo()
  * @method Collection<int, DcpInfo> getDcpInfo()
+ * @method CursorCollection<int, TransactionLog> getUtaTransactionLog(?AccountType $accountType = null, ?Category $category = null, null|BackedEnum|string $currency = null, null|BackedEnum|string $baseCoin = null, ?LogType $type = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
+ * @method CursorCollection<int, TransactionLog> getClassicTransactionLog(null|BackedEnum|string $currency = null, null|BackedEnum|string $baseCoin = null, ?LogType $type = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
  *
  * @see \BybitApi\Groups\Account
  */
