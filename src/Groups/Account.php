@@ -8,7 +8,10 @@ use BybitApi\DTOs\Account\AccountInfo;
 use BybitApi\DTOs\Account\UpgradeResult;
 use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
+use BybitApi\Enums\CollateralSwitch;
 use BybitApi\Exceptions\NotImplementedYetException;
+use BybitApi\Http\Integrations\Bybit\Entities\Account\CollateralCoin;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\BatchSetCollateralCoin;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetAccountInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetBorrowHistory;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCollateralInfo;
@@ -77,18 +80,19 @@ class Account extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/account/set-collateral
      */
-    public function setCollateralCoin(BackedEnum|string $coin, bool $collateral): bool
+    public function setCollateralCoin(BackedEnum|string $coin, CollateralSwitch $switch): bool
     {
-        return $this->send(new SetCollateralCoin($coin, $collateral))->dto();
+        return $this->send(new SetCollateralCoin($coin, $switch))->dto();
     }
 
     /**
+     * @return Collection<string, \BybitApi\DTOs\Account\ChangedCollateral>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/account/batch-set-collateral
      */
-    public function batchSetCollateralCoin(): never
+    public function batchSetCollateralCoin(CollateralCoin ...$coins): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new BatchSetCollateralCoin(...$coins))->dto();
     }
 
     /**

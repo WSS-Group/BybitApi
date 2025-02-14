@@ -1,5 +1,6 @@
 <?php
 
+use BybitApi\Enums\CollateralSwitch;
 use BybitApi\Facades\Account;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\SetCollateralCoin;
 use BybitApi\Tests\Fixtures\Bybit\Account\SetCollateralCoin\OkFixture;
@@ -10,7 +11,7 @@ it('can set a collateral coin', function () {
         SetCollateralCoin::class => OkFixture::call(),
     ]);
 
-    $result = Account::actingAs($this->defaultActor())->setCollateralCoin('BTC', true);
+    $result = Account::actingAs($this->defaultActor())->setCollateralCoin('BTC', CollateralSwitch::ON);
 
     expect($result)
         ->toBeTrue();

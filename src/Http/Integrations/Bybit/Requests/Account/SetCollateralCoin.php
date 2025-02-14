@@ -3,6 +3,7 @@
 namespace BybitApi\Http\Integrations\Bybit\Requests\Account;
 
 use BackedEnum;
+use BybitApi\Enums\CollateralSwitch;
 use BybitApi\Http\Integrations\Bybit\Requests\Request;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
@@ -23,7 +24,7 @@ class SetCollateralCoin extends Request implements HasBody
 
     public function __construct(
         public BackedEnum|string $coin,
-        public bool $collateral,
+        public CollateralSwitch $switch,
     ) {}
 
     /**
@@ -38,7 +39,7 @@ class SetCollateralCoin extends Request implements HasBody
     {
         return [
             'coin' => $this->coin,
-            'collateralSwitch' => $this->collateral ? 'ON' : 'OFF',
+            'collateralSwitch' => $this->switch,
         ];
     }
 
