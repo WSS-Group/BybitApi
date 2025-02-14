@@ -3,17 +3,20 @@
 namespace BybitApi\Groups;
 
 use BackedEnum;
+use BybitApi\CursorCollection;
 use BybitApi\DTOs\Account\AccountInfo;
 use BybitApi\DTOs\Account\UpgradeResult;
 use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetAccountInfo;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\GetBorrowHistory;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCollateralInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetFeeRate;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetTransferableAmount;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetWalletBalance;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\UpgradeToUnifiedAccount;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 class Account extends Group
@@ -45,12 +48,18 @@ class Account extends Group
     }
 
     /**
+     * @return CursorCollection<int, \BybitApi\DTOs\Account\BorrowHistory>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/account/borrow-history
      */
-    public function getBorrowHistory(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getBorrowHistory(
+        null|BackedEnum|string $currency = null,
+        ?Carbon $startTime = null,
+        ?Carbon $endTime = null,
+        ?int $limit = null,
+        ?string $cursor = null,
+    ): CursorCollection {
+        return $this->send(new GetBorrowHistory($currency, $startTime, $endTime, $limit, $cursor))->dto();
     }
 
     /**
