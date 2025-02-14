@@ -10,6 +10,7 @@ use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetAccountInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCollateralInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetFeeRate;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\GetTransferableAmount;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetWalletBalance;
 use Illuminate\Support\Collection;
 
@@ -28,10 +29,9 @@ class Account extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/account/unified-trans-amnt
      */
-    public function getTransferableAmount(): never
+    public function getTransferableAmount(BackedEnum|string $coinName): float
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetTransferableAmount($coinName))->dto();
     }
 
     /**

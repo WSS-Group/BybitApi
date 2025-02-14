@@ -257,8 +257,8 @@
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/unified-trans-amnt">Get Transferable Amount (Unified)</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/upgrade-unified-account">Upgrade to Unified Account</a></td>

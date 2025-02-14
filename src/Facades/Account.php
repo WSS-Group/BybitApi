@@ -13,6 +13,7 @@ use Illuminate\Support\Collection;
 
 /**
  * @method Collection<int, Balance> getWalletBalance(AccountType $accountType, null|BackedEnum|string $coin = null)
+ * @method float getTransferableAmount(BackedEnum|string $coinName)
  * @method Collection<string, CollateralInfo> getCollateralInfo(null|BackedEnum|string $currency = null)
  * @method Collection<string, FeeRate> getFeeRate(Category $category, null|BackedEnum|string $symbol = null, null|BackedEnum|string $baseCoin = null)
  * @method AccountInfo getAccountInfo()
