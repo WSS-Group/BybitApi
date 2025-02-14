@@ -20,6 +20,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCoinGreeks;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCollateralInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetDcpInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetFeeRate;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\GetSmpGroupId;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetTransferableAmount;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetUtaTransactionLog;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetWalletBalance;
@@ -194,10 +195,9 @@ class Account extends Group
     /**
      * @link https://bybit-exchange.github.io/docs/v5/account/smp-group
      */
-    public function getSmpGroupId(): never
+    public function getSmpGroupId(): int
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetSmpGroupId)->dto();
     }
 
     /**

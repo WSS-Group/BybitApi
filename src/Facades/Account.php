@@ -38,6 +38,7 @@ use Illuminate\Support\Collection;
  * @method Collection<int, DcpInfo> getDcpInfo()
  * @method CursorCollection<int, TransactionLog> getUtaTransactionLog(?AccountType $accountType = null, ?Category $category = null, null|BackedEnum|string $currency = null, null|BackedEnum|string $baseCoin = null, ?LogType $type = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
  * @method CursorCollection<int, TransactionLog> getClassicTransactionLog(null|BackedEnum|string $currency = null, null|BackedEnum|string $baseCoin = null, ?LogType $type = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
+ * @method int getSmpGroupId()
  *
  * @see \BybitApi\Groups\Account
  */
