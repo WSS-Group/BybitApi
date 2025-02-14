@@ -4,22 +4,25 @@ namespace BybitApi\Groups;
 
 use BackedEnum;
 use BybitApi\DTOs\Account\AccountInfo;
+use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetAccountInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCollateralInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetFeeRate;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\GetWalletBalance;
 use Illuminate\Support\Collection;
 
 class Account extends Group
 {
     /**
+     * @return Collection<int, \BybitApi\DTOs\Account\Balance>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/account/wallet-balance
      */
-    public function getWalletBalance(): never
+    public function getWalletBalance(AccountType $accountType, null|BackedEnum|string $coin = null): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetWalletBalance($accountType, $coin))->dto();
     }
 
     /**

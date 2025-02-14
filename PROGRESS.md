@@ -252,8 +252,8 @@
         <tr>
             <td rowspan="20">Account</td>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/wallet-balance">Get Wallet Balance</a></td>
-            <td class="status">❌</td>
-            <td class="status">❌</td>
+            <td class="status">✅</td>
+            <td class="status">✅</td>
         </tr>
         <tr>
             <td><a href="https://bybit-exchange.github.io/docs/v5/account/unified-trans-amnt">Get Transferable Amount (Unified)</a></td>
