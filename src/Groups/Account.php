@@ -15,6 +15,7 @@ use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCollateralInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetFeeRate;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetTransferableAmount;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetWalletBalance;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\RepayLiability;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\UpgradeToUnifiedAccount;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -63,12 +64,13 @@ class Account extends Group
     }
 
     /**
+     * @return Collection<int, \BybitApi\DTOs\Account\Repayment>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/account/repay-liability
      */
-    public function repayLiability(): never
+    public function repayLiability(null|BackedEnum|string $coin = null): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new RepayLiability($coin))->dto();
     }
 
     /**

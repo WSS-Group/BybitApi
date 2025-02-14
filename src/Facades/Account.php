@@ -9,6 +9,7 @@ use BybitApi\DTOs\Account\Balance;
 use BybitApi\DTOs\Account\BorrowHistory;
 use BybitApi\DTOs\Account\CollateralInfo;
 use BybitApi\DTOs\Account\FeeRate;
+use BybitApi\DTOs\Account\Repayment;
 use BybitApi\DTOs\Account\UpgradeResult;
 use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
@@ -20,6 +21,7 @@ use Illuminate\Support\Collection;
  * @method float getTransferableAmount(BackedEnum|string $coinName)
  * @method UpgradeResult upgradeToUnifiedAccount()
  * @method CursorCollection<int, BorrowHistory> getBorrowHistory(null|BackedEnum|string $currency = null, ?Carbon $startTime = null, ?Carbon $endTime = null, ?int $limit = null, ?string $cursor = null)
+ * @method Collection<int, Repayment> repayLiability(null|BackedEnum|string $coin = null)
  * @method Collection<string, CollateralInfo> getCollateralInfo(null|BackedEnum|string $currency = null)
  * @method Collection<string, FeeRate> getFeeRate(Category $category, null|BackedEnum|string $symbol = null, null|BackedEnum|string $baseCoin = null)
  * @method AccountInfo getAccountInfo()
