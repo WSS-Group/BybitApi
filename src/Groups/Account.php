@@ -14,6 +14,7 @@ use BybitApi\Http\Integrations\Bybit\Entities\Account\CollateralCoin;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\BatchSetCollateralCoin;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetAccountInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetBorrowHistory;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCoinGreeks;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetCollateralInfo;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetFeeRate;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetTransferableAmount;
@@ -106,12 +107,13 @@ class Account extends Group
     }
 
     /**
+     * @return Collection<string, \BybitApi\DTOs\Account\CoinGreek>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/account/coin-greeks
      */
-    public function getCoinGreeks(): never
+    public function getCoinGreeks(null|BackedEnum|string $baseCoin = null): Collection
     {
-        // TODO
-        throw new NotImplementedYetException;
+        return $this->send(new GetCoinGreeks($baseCoin))->dto();
     }
 
     /**

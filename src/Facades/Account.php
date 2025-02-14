@@ -8,6 +8,7 @@ use BybitApi\DTOs\Account\AccountInfo;
 use BybitApi\DTOs\Account\Balance;
 use BybitApi\DTOs\Account\BorrowHistory;
 use BybitApi\DTOs\Account\ChangedCollateral;
+use BybitApi\DTOs\Account\CoinGreek;
 use BybitApi\DTOs\Account\CollateralInfo;
 use BybitApi\DTOs\Account\FeeRate;
 use BybitApi\DTOs\Account\Repayment;
@@ -28,6 +29,7 @@ use Illuminate\Support\Collection;
  * @method bool setCollateralCoin(BackedEnum|string $coin, CollateralSwitch $switch)
  * @method Collection<string, ChangedCollateral> batchSetCollateralCoin(CollateralCoin ...$coins)
  * @method Collection<string, CollateralInfo> getCollateralInfo(null|BackedEnum|string $currency = null)
+ * @method Collection<string, CoinGreek> getCoinGreeks(null|BackedEnum|string $baseCoin = null)
  * @method Collection<string, FeeRate> getFeeRate(Category $category, null|BackedEnum|string $symbol = null, null|BackedEnum|string $baseCoin = null)
  * @method AccountInfo getAccountInfo()
  *
