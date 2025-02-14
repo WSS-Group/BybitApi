@@ -2,9 +2,13 @@
 
 namespace BybitApi\Groups;
 
+use BackedEnum;
 use BybitApi\DTOs\Account\AccountInfo;
+use BybitApi\Enums\Category;
 use BybitApi\Exceptions\NotImplementedYetException;
 use BybitApi\Http\Integrations\Bybit\Requests\Account\GetAccountInfo;
+use BybitApi\Http\Integrations\Bybit\Requests\Account\GetFeeRate;
+use Illuminate\Support\Collection;
 
 class Account extends Group
 {
@@ -90,12 +94,16 @@ class Account extends Group
     }
 
     /**
+     * @return \Illuminate\Support\Collection<string, \BybitApi\DTOs\Account\FeeRate>
+     *
      * @link https://bybit-exchange.github.io/docs/v5/account/fee-rate
      */
-    public function getFeeRate(): never
-    {
-        // TODO
-        throw new NotImplementedYetException;
+    public function getFeeRate(
+        Category $category,
+        null|BackedEnum|string $symbol = null,
+        null|BackedEnum|string $baseCoin = null,
+    ): Collection {
+        return $this->send(new GetFeeRate($category, $symbol, $baseCoin))->dto();
     }
 
     /**
