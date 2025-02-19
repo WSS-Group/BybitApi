@@ -45,7 +45,10 @@ abstract class Group
             }
         }
 
-        return $this->connector()->send($request->setCache($this->cacheTTL));
+        $response = $this->connector()->send($request->setCache($this->cacheTTL));
+        $this->withoutCache();
+
+        return $response;
     }
 
     public function withCache(int $ttl): self
