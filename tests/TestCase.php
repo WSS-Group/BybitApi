@@ -6,6 +6,7 @@ use BybitApi\BybitActor;
 use BybitApi\BybitApiServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use LaravelToolkit\LaravelToolkitServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Saloon\Config;
 use Saloon\Http\Faking\MockClient;
@@ -36,6 +37,7 @@ class TestCase extends Orchestra
     {
         return [
             BybitApiServiceProvider::class,
+            LaravelToolkitServiceProvider::class,
         ];
     }
 

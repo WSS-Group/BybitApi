@@ -9,6 +9,9 @@ use BybitApi\DTOs\Casts\IntCast;
 use BybitApi\DTOs\Casts\StringCast;
 use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\DTOs\DTO;
+use BybitApi\DTOs\Market\InstrumentInfo\LinearInverse\LeverageFilter;
+use BybitApi\DTOs\Market\InstrumentInfo\LinearInverse\LotSizeFilter;
+use BybitApi\DTOs\Market\InstrumentInfo\LinearInverse\PriceFilter;
 use BybitApi\Enums\ContractType;
 use BybitApi\Enums\CopyTrading;
 use BybitApi\Enums\SymbolStatus;
@@ -23,9 +26,9 @@ use BybitApi\Enums\SymbolStatus;
  * @property null|\Illuminate\Support\Carbon $deliveryTime
  * @property null|float $deliveryFeeRate
  * @property null|int $priceScale
- * @property null|\BybitApi\DTOs\Market\InstrumentInfo\LeverageFilter $leverageFilter
- * @property null|\BybitApi\DTOs\Market\InstrumentInfo\PriceFilter $priceFilter
- * @property null|\BybitApi\DTOs\Market\InstrumentInfo\LotSizeFilter $lotSizeFilter
+ * @property null|\BybitApi\DTOs\Market\InstrumentInfo\LinearInverse\LeverageFilter $leverageFilter
+ * @property null|\BybitApi\DTOs\Market\InstrumentInfo\LinearInverse\PriceFilter $priceFilter
+ * @property null|\BybitApi\DTOs\Market\InstrumentInfo\LinearInverse\LotSizeFilter $lotSizeFilter
  * @property null|bool $unifiedMarginTrade
  * @property null|int $fundingInterval
  * @property null|string $settleCoin

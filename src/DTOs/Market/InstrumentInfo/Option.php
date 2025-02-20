@@ -7,6 +7,8 @@ use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\Casts\StringCast;
 use BybitApi\DTOs\Casts\TimestampMsCast;
 use BybitApi\DTOs\DTO;
+use BybitApi\DTOs\Market\InstrumentInfo\Option\LotSizeFilter;
+use BybitApi\DTOs\Market\InstrumentInfo\Option\PriceFilter;
 use BybitApi\Enums\SymbolStatus;
 
 /**
@@ -18,8 +20,8 @@ use BybitApi\Enums\SymbolStatus;
  * @property null|\Illuminate\Support\Carbon $launchTime
  * @property null|\Illuminate\Support\Carbon $deliveryTime
  * @property null|float $deliveryFeeRate
- * @property null|\BybitApi\DTOs\Market\InstrumentInfo\PriceFilter $priceFilter
- * @property null|\BybitApi\DTOs\Market\InstrumentInfo\LotSizeFilter $lotSizeFilter
+ * @property null|\BybitApi\DTOs\Market\InstrumentInfo\Option\PriceFilter $priceFilter
+ * @property null|\BybitApi\DTOs\Market\InstrumentInfo\Option\LotSizeFilter $lotSizeFilter
  */
 class Option extends DTO
 {

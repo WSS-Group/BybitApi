@@ -1,23 +1,21 @@
 <?php
 
-namespace BybitApi\DTOs\Market\InstrumentInfo;
+namespace BybitApi\DTOs\Market\InstrumentInfo\Spot;
 
+use BcMath\Number;
 use BybitApi\DTOs\Casts\FloatCast;
-use BybitApi\DTOs\DTO;
+use BybitApi\DTOs\Market\InstrumentInfo\BaseFilter;
+use RoundingMode;
 
 /**
  * @property null|float $basePrecision
  * @property null|float $quotePrecision
  * @property null|float $minOrderAmt
  * @property null|float $maxOrderAmt
- * @property null|float $minNotionalValue
  * @property null|float $minOrderQty
  * @property null|float $maxOrderQty
- * @property null|float $maxMktOrderQty
- * @property null|float $qtyStep
- * @property null|float $postOnlyMaxOrderQty
  */
-class LotSizeFilter extends DTO
+class LotSizeFilter extends BaseFilter
 {
     public function casts(): array
     {
@@ -26,12 +24,19 @@ class LotSizeFilter extends DTO
             'quotePrecision' => FloatCast::class,
             'minOrderAmt' => FloatCast::class,
             'maxOrderAmt' => FloatCast::class,
-            'minNotionalValue' => FloatCast::class,
             'minOrderQty' => FloatCast::class,
             'maxOrderQty' => FloatCast::class,
-            'maxMktOrderQty' => FloatCast::class,
-            'qtyStep' => FloatCast::class,
-            'postOnlyMaxOrderQty' => FloatCast::class,
         ];
+    }
+
+    public function format(float $value, RoundingMode $roundMode): Number
+    {
+        return \Illuminate\Support\Number::roundAsMultipleOf(
+            $value,
+            $this->basePrecision,
+            $roundMode,
+            $this->minOrderQty,
+            $this->maxOrderQty,
+        );
     }
 }
