@@ -1,5 +1,6 @@
 <?php
 
+use BybitApi\Enums\AccountType;
 use BybitApi\Enums\Category;
 use BybitApi\Enums\Interval;
 use BybitApi\Enums\OrderStatus;
@@ -10,6 +11,11 @@ use BybitApi\Enums\StopOrderType;
 use BybitApi\Enums\SymbolStatus;
 use BybitApi\Enums\TransferStatus;
 use BybitApi\Enums\WithdrawStatus;
+
+it('test account types labels', function (AccountType $interval) {
+    expect($interval->label())
+        ->toBeString();
+})->with(AccountType::cases());
 
 it('test interval labels', function (Interval $interval) {
     expect($interval->label())

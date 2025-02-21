@@ -8,7 +8,13 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-
+    'account_types' => [
+        'unified' => 'trade unificado',
+        'fund' => 'financiamento',
+        'contract' => 'contrato',
+        'spot' => 'spot',
+        'other' => 'outro',
+    ],
     'categories' => [
         'spot' => 'spot',
         'linear' => 'linear',
