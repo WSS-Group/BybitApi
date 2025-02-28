@@ -161,3 +161,26 @@ it('can create a macro', function () {
         ->and($car->getModel())
         ->toBe('fusca');
 });
+
+it('test array access', function () {
+    $car = Car::init([
+        'model' => 'fusca',
+        'brand_name' => 'VW',
+        'year' => '1979',
+        'cost' => '21432.21',
+        'category' => 'inverse',
+        'boughtAt' => '1738108800000',
+    ]);
+
+    expect($car->offsetExists('model'))
+        ->toBeTrue()
+        ->and($car->offsetExists('foo'))
+        ->toBeFalse()
+        ->and($car->offsetGet('year'))
+        ->toBeInt()
+        ->toEqual(1979)
+        ->and(fn () => $car->offsetSet('foo', 'bar'))
+        ->toThrow('Cannot set value on DTO')
+        ->and(fn () => $car->offsetUnset('foo'))
+        ->toThrow('Cannot unset value on DTO');
+});

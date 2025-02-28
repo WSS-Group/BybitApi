@@ -2,6 +2,7 @@
 
 namespace BybitApi\DTOs;
 
+use ArrayAccess;
 use BybitApi\DTOs\Casts\Castable;
 use ErrorException;
 use Exception;
@@ -10,7 +11,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable;
 
-abstract class DTO implements Arrayable
+abstract class DTO implements Arrayable, ArrayAccess
 {
     use Macroable;
 
@@ -106,5 +107,25 @@ abstract class DTO implements Arrayable
             static::class,
             $name
         ));
+    }
+
+    public function offsetExists(mixed $offset): bool
+    {
+        return isset($this->dtoPayload[$offset]);
+    }
+
+    public function offsetGet(mixed $offset): mixed
+    {
+        return $this->{$offset};
+    }
+
+    public function offsetSet(mixed $offset, mixed $value): void
+    {
+        throw new ErrorException('Cannot set value on DTO');
+    }
+
+    public function offsetUnset(mixed $offset): void
+    {
+        throw new ErrorException('Cannot unset value on DTO');
     }
 }
