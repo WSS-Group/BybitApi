@@ -2,6 +2,14 @@
 
 All notable changes to `BybitApi` will be documented in this file.
 
+## 5.0.0-beta.3 - 2025-02-25
+
+### What's Changed
+
+* Update dependencies for Laravel 12 support by @allanmcarvalho in https://github.com/WSS-Group/BybitApi/pull/26
+
+**Full Changelog**: https://github.com/WSS-Group/BybitApi/compare/5.0.0-beta.2...5.0.0-beta.3
+
 ## 5.0.0-beta.2 - 2025-02-20
 
 ### What's Changed
