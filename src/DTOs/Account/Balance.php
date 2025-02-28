@@ -3,7 +3,7 @@
 namespace BybitApi\DTOs\Account;
 
 use BybitApi\DTOs\Account\Balance\Coin;
-use BybitApi\DTOs\Casts\DTOArrayCast;
+use BybitApi\DTOs\Casts\DTOCollectionCast;
 use BybitApi\DTOs\Casts\EnumCast;
 use BybitApi\DTOs\Casts\FloatCast;
 use BybitApi\DTOs\DTO;
@@ -21,7 +21,7 @@ use BybitApi\Enums\AccountType;
  * @property null|float $totalPerpUPL
  * @property null|float $totalInitialMargin
  * @property null|float $totalMaintenanceMargin
- * @property null|Coin[] $coins
+ * @property null|\Illuminate\Support\Collection<int, Coin> $coins
  */
 class Balance extends DTO
 {
@@ -44,7 +44,7 @@ class Balance extends DTO
             'totalPerpUPL' => FloatCast::class,
             'totalInitialMargin' => FloatCast::class,
             'totalMaintenanceMargin' => FloatCast::class,
-            'coins' => new DTOArrayCast(Coin::class),
+            'coins' => new DTOCollectionCast(Coin::class),
         ];
     }
 }
