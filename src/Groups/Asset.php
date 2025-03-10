@@ -96,7 +96,7 @@ class Asset extends Group
      */
     public function getCoinInfo(null|BackedEnum|string $coin = null): Collection
     {
-        return $this->send(new GetCoinInfo)->dto();
+        return $this->send(new GetCoinInfo($coin))->dto();
     }
 
     /**
