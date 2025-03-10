@@ -7,9 +7,9 @@ use Saloon\Http\Response;
 
 class UnexpectedResultOnResponseException extends Error
 {
-    public readonly int $retCode;
+    public readonly ?int $retCode;
 
-    public readonly string $retMsg;
+    public readonly ?string $retMsg;
 
     public function __construct(
         public Response $response
