@@ -2,6 +2,14 @@
 
 All notable changes to `BybitApi` will be documented in this file.
 
+## 5.0.0-beta.5 - 2025-03-10
+
+### What's Changed
+
+* Bump codecov/codecov-action from 5.3.1 to 5.4.0 by @dependabot in https://github.com/WSS-Group/BybitApi/pull/27
+
+**Full Changelog**: https://github.com/WSS-Group/BybitApi/compare/5.0.0-beta.3...5.0.0-beta.5
+
 ## 5.0.0-beta.4 - 2025-03-06
 
 ### What's Changed
