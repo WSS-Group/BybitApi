@@ -2,6 +2,10 @@
 
 All notable changes to `BybitApi` will be documented in this file.
 
+## 5.0.0-beta.6 - 2025-03-10
+
+**Full Changelog**: https://github.com/WSS-Group/BybitApi/compare/5.0.0-beta.5...5.0.0-beta.6
+
 ## 5.0.0-beta.5 - 2025-03-10
 
 ### What's Changed
