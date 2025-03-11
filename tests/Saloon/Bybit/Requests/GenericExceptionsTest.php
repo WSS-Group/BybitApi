@@ -6,6 +6,7 @@ use BybitApi\Facades\Market;
 use BybitApi\Http\Integrations\Bybit\Requests\Market\GetBybitServerTime;
 use BybitApi\Tests\Fixtures\Bybit\Market\GetBybitServerTime\ErrorFixture;
 use BybitApi\Tests\Fixtures\Bybit\Market\GetBybitServerTime\NotFoundFixture;
+use BybitApi\Tests\Fixtures\Bybit\Market\GetBybitServerTime\NotJsonErrorFixture;
 use Saloon\Http\Faking\MockClient;
 
 it('return an exception on not found', function () {
@@ -26,6 +27,20 @@ it('return an exception on something went wrong', function () {
         ->toThrow(function (UnexpectedResultOnResponseException $e) {
             expect($e->getMessage())
                 ->toBe('Unexpected result on response. Code: 1010; Message: Something went wrong')
+                ->and($e->context())
+                ->toBeArray();
+        });
+});
+
+it('return an exception on something went wrong on not json response', function () {
+    MockClient::global([
+        GetBybitServerTime::class => NotJsonErrorFixture::call(),
+    ]);
+
+    expect(fn () => Market::actingAs($this->defaultActor())->getBybitServerTime())
+        ->toThrow(function (UnexpectedResultOnResponseException $e) {
+            expect($e->getMessage())
+                ->toBe('Unexpected result on response. Code: 401; Message: Unauthorized')
                 ->and($e->context())
                 ->toBeArray();
         });
